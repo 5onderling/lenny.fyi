@@ -1,0 +1,57 @@
+.skip-navigation {
+  position: fixed;
+  top: 0.25em;
+  left: 50%;
+  padding: 0.5em 1em;
+  transform: translate3d(-50%, -150%, 0);
+  background-color: #111;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.1s 0.05s;
+
+  &:focus {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.nav {
+  /* make appear on scroll up... */
+  position: sticky;
+  top: -$navHeight;
+  right: 0;
+  left: 0;
+  height: $navHeight;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__inner {
+    padding: 0 $contentPadding;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 1 $contentWidth;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    margin-right: 1em;
+    color: inherit;
+  }
+}
+
+.logo {
+  color: inherit;
+}
+
+.theme-switcher {
+  width: 24px;
+  height: 24px;
+  background-image: var(--theme-switch-image);
+  transition: background-image 0.25s ease;
+}

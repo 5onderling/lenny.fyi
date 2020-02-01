@@ -1,0 +1,47 @@
+/* libre-baskerville-700 - latin */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/libre-baskerville-v7-latin-700.eot');
+  src: local('Libre Baskerville Bold'), local('LibreBaskerville-Bold'),
+    url('/fonts/libre-baskerville-v7-latin-700.woff2') format('woff2'),
+    url('/fonts/libre-baskerville-v7-latin-700.woff') format('woff');
+}
+
+/* lato-regular - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'),
+    url('/fonts/lato-v16-latin-regular.woff2') format('woff2'),
+    url('/fonts/lato-v16-latin-regular.woff') format('woff');
+}
+
+/* lato-300 - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'),
+    url('/fonts/lato-v16-latin-300.woff2') format('woff2'),
+    url('/fonts/lato-v16-latin-300.woff') format('woff');
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Lato', sans-serif;
+  font-size: calc(18 / 16 * 1rem);
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  font-family: 'Libre Baskerville', serif;
+}
+
+h3 {
+  font-weight: 400;
+}

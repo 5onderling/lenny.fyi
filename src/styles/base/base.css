@@ -1,0 +1,75 @@
+$contentWidth: 75rem;
+$contentPadding: 1rem;
+$navHeight: 5rem;
+
+@custom-media --tablet (min-width: 48rem);
+@custom-media --dark (prefers-color-scheme: dark);
+
+@define-mixin finalThemeColors {
+  --text-color: hsl(0, 0%, var(--text-color-lightness));
+  --bg-color: hsl(0, 0%, var(--bg-color-lightness));
+  --bg-color-secondary: hsl(0, 0%, var(--bg-color-secondary-lightness));
+  --footer-border-color: hsl(0, 0%, var(--footer-border-color-lightness));
+}
+@define-mixin defaultTheme {
+  --theme-switch-image: svgUrl(
+    '<svg viewBox="0 0 24 24"><path fill="#274dd8" d="M18.97 15.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 008.02 2.89m-1.64 2.02a12.08 12.08 0 01-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>'
+  );
+
+  --text-color-lightness: 12.5%;
+  --bg-color-lightness: 100%;
+  --bg-color-secondary-lightness: 92.5%;
+  --footer-border-color-lightness: 75%;
+}
+@define-mixin darkTheme {
+  --theme-switch-image: svgUrl(
+    '<svg viewBox="0 0 24 24"><path fill="#fcc21b" d="M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3m0-7l2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 005.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10l1.76-3.77a7.131 7.131 0 002.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 00-2.38-4.15l4.15.36m-.01 10l-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>'
+  );
+
+  --text-color-lightness: 100%;
+  --bg-color-lightness: 12.5%;
+  --bg-color-secondary-lightness: 20%;
+  --footer-border-color-lightness: 25%;
+}
+
+:root {
+  --primary-c: hsl(207, 90%, 54%);
+  --secondary-c: hsl(340, 82%, 52%);
+
+  @mixin defaultTheme;
+  @mixin finalThemeColors;
+
+  @media (--dark) {
+    @mixin darkTheme;
+  }
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  scroll-behavior: smooth;
+  transition: background-color 0.25s ease, color 0.25s ease;
+
+  &.other-theme {
+    @mixin darkTheme;
+    @mixin finalThemeColors;
+
+    @media (--dark) {
+      @mixin defaultTheme;
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article a {
+  box-shadow: inset 0 -0.25em var(--secondary-c);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: inset 0 -1.5em var(--secondary-c);
+  }
+}

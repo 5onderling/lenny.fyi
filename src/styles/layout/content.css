@@ -1,0 +1,12 @@
+.content {
+  min-height: 100vh;
+  max-width: $contentWidth;
+  margin: -$navHeight auto 0;
+  padding: $navHeight $contentPadding 0;
+}
+
+/* blog stuff */
+article {
+  max-width: 48rem;
+  margin: auto;
+}

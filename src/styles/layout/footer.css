@@ -1,0 +1,31 @@
+.footer {
+  border-top: 1px solid var(--footer-border-color);
+  margin: $contentPadding $contentPadding 0;
+  padding-bottom: $contentPadding;
+
+  &__inner {
+    max-width: calc($contentWidth - $contentPadding * 2);
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: $contentPadding;
+
+    &:first-child {
+      margin-right: 1em;
+    }
+  }
+
+  &__cr {
+    margin-right: 1em;
+  }
+
+  &__link + &__link {
+    margin-left: 1em;
+  }
+}

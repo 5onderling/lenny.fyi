@@ -1,0 +1,54 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+
+  &--visible {
+    opacity: 1;
+    transition: opacity 0.4s 0.1s ease;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: -0.75rem;
+    margin-left: -0.75rem;
+    border: 0.1em solid var(--text-color);
+    border-radius: 50%;
+    transition: transform 0.25s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0.1em;
+    height: 0.1em;
+    margin-top: -0.05em;
+    margin-left: -0.05em;
+    border-radius: 50%;
+    background-color: var(--text-color);
+  }
+
+  &--over-cta::before {
+    transform: scale(1.25);
+  }
+
+  &--mouse-down::before {
+    transform: scale(0.75);
+  }
+}
+
+.hide-cursor {
+  &,
+  a,
+  button {
+    cursor: none;
+  }
+}

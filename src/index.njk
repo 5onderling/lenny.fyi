@@ -1,0 +1,39 @@
+---
+layout: views/base.njk
+---
+<header class="hero">
+  <img class="hero__image" src="/me.png" alt="A Picture of Me" />
+  <h1 class="hero__headline">
+    <small>Hey I'm</small>
+    <br/>
+    {{ meta.owner.name }}
+  </h1>
+</header>
+
+<h2>My latest Posts</h2>
+<div class="cards">
+  {%- for post in collections.post | reverse %}
+    <a class="card post" href="{{ post.url }}">
+      <h3 class="post__title">{{ post.data.title }}</h3>
+     {{ post.date | htmlTime('post__date') | safe }}
+      <p>
+        {%- if post.data.excerpt -%}
+          {{ post.data.excerpt | truncate(280) | trim }}
+        {%- else -%}
+          {{ post.templateContent | striptags(true) | replace(post.data.title, '') | truncate(280) | trim }}
+        {%- endif -%}
+      </p>
+    </a>
+  {%- endfor %}
+</div>
+
+<h2>Projects i worked / i'm working on.</h2>
+<div class="cards">
+  {%- for project in collections.project | sort %}
+    <div class="card">
+      <a href="{{ project.data.url }}" target="_blank"><h3>{{ project.data.title }}</h3></a>
+      {{ project.templateContent | safe }}
+    </div>
+  {%- endfor %}
+</div>
+

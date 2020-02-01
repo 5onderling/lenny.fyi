@@ -1,0 +1,79 @@
+{%- set curUrl = page.url -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% if title %}{{ title }} | {% endif %}{{ meta.title }}</title>
+  <meta name="description" content="{{ meta.description }}">
+  <link rel="stylesheet" href="/main.css">
+  <script defer src="/main.js"></script>
+</head>
+<body>
+  <a class="skip-navigation" href="#content">Skip Navigation</a>
+
+  {# aria current !!! -> also for footer #}
+  <nav class="nav">
+    <div class="nav__inner">
+      <a
+        class="logo"
+        href="/"
+        {%- if page.url == curUrl %}
+          aria-current="Page"
+        {%- endif %}
+      >
+        Lenny
+      </a>
+      <div class="nav__menu">
+        {%- for page in collections.all -%}
+          {%- if page.data.nav %}
+            <a
+              class="nav__link"
+              href="{{ page.url }}"
+              {%- if page.url == curUrl %}
+                aria-current="Page"
+              {%- endif %}
+            >
+              {{ page.data.title }}
+            </a>
+          {%- endif %}
+        {%- endfor %}
+        <button class="theme-switcher" aria-label="Switch theme" title="Switch theme" type="button" hidden></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content" id="content">
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__menu">
+        <span class="footer__cr">© 2020 - Lenny Anders</span>
+        <div style="disply: flex;">
+          <a class="footer__link" href="/feed.xml">RSS</a>
+          <a class="footer__link" href="https://twitter.com/5onderling/" target="_blank">Twitter</a>
+          <a class="footer__link" href="https://github.com/lennyanders/" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="footer__menu">
+      {%- for page in collections.all -%}
+        {%- if page.data.legalNav %}
+          <a
+            class="footer__link"
+            href="{{ page.url }}"
+            {%- if page.url == curUrl %}
+              aria-current="Page"
+            {%- endif %}
+          >
+            {{ page.data.title }}
+          </a>
+        {%- endif %}
+      {%- endfor %}
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

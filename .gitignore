@@ -1,0 +1,8 @@
+# classic
+node_modules
+
+# 11ty output
+dist
+
+# zeit.now configuration
+now.json

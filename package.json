@@ -1,0 +1,39 @@
+{
+  "name": "lennyanders.dev",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env ELEVENTY_ENV=develop eleventy --serve",
+    "dev:prod": "cross-env ELEVENTY_ENV=production eleventy --serve",
+    "build": "cross-env ELEVENTY_ENV=production eleventy"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+    "autoprefixer": "^9.7.4",
+    "cross-env": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "fs-extra": "^8.1.0",
+    "html-minifier": "^4.0.0",
+    "postcss": "^7.0.26",
+    "postcss-calc": "^7.0.1",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-custom-properties": "^9.0.2",
+    "postcss-functions": "^3.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-import-url": "^4.0.0",
+    "postcss-mixins": "^6.2.3",
+    "postcss-nested": "^4.2.1",
+    "postcss-overflow-shorthand": "^2.0.0",
+    "postcss-selector-not": "^4.0.0",
+    "postcss-simple-vars": "^5.0.2",
+    "postcss-unprefix": "^2.1.4",
+    "rollup": "^1.31.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.2.0"
+  }
+}

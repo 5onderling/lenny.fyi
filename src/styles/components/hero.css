@@ -1,0 +1,24 @@
+.hero {
+  min-height: 50vh;
+
+  @media (--tablet) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__headline {
+    @mixin fluidSize 20rem, 75rem, 2.25rem, 5rem;
+  }
+
+  &__image {
+    @mixin fluidSize 20rem, 75rem, 9rem, 20rem, width;
+    border-radius: 50%;
+    margin: 0 auto 3rem;
+
+    @media (--tablet) {
+      margin: 0;
+    }
+  }
+}
