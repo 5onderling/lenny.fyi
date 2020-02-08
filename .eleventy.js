@@ -81,6 +81,8 @@ module.exports = eleventy => {
   }
 
   eleventy.setBrowserSyncConfig({
+    ui: false,
+    ghostMode: false,
     callbacks: {
       ready: async (err, bs) => {
         const notFound = await fs.readFile('dist/404.html');
