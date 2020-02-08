@@ -1,5 +1,5 @@
 import cursor from './cursor';
-cursor({ hideTransition: true });
+cursor();
 
 import themeSwitcher from './themeSwitcher';
 themeSwitcher();

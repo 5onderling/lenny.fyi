@@ -1,3 +1,5 @@
+@import 'abstracts/data.css';
+
 @import 'base/reset.css';
 @import 'base/base.css';
 @import 'base/typographie.css';
@@ -7,6 +9,5 @@
 @import 'layout/footer.css';
 
 @import 'components/cursor.css';
-
 @import 'components/hero.css';
-@import 'components/latest-posts.css';
+@import 'components/cards.css';

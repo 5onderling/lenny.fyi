@@ -1,0 +1,64 @@
+.cards {
+  margin: 1.5rem 0 3rem;
+
+  @media (--tablet) {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: var(--bg-color-secondary);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  transition: background-color 0.25s ease;
+}
+
+.post {
+  display: block;
+
+  &__title {
+    color: var(--secondary-c);
+  }
+
+  &__date {
+    opacity: 0.8;
+    font-size: smaller;
+  }
+}
+
+.project {
+  position: relative;
+
+  &__link {
+    display: block;
+    margin-bottom: 0.5em;
+    color: var(--secondary-c);
+
+    &:focus {
+      outline: none;
+      &::before {
+        @mixin focus;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__content {
+    p + p {
+      margin-top: 0.5em;
+    }
+    a {
+      position: relative;
+    }
+  }
+}

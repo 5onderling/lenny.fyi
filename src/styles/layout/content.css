@@ -9,4 +9,22 @@
 article {
   max-width: 48rem;
   margin: auto;
+
+  p {
+    margin: 1em 0;
+  }
+
+  p {
+    @media (--tablet) {
+      margin-left: 1em;
+    }
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-top: 2rem;
+  }
 }

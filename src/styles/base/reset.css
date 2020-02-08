@@ -59,7 +59,10 @@ select {
   font: inherit;
 }
 
-/* remove focus styles for everything that should only be focusable with JavaScript */
+/* set focus defaults */
+:focus {
+  @mixin focus;
+}
 [tabindex='-1'] {
   outline: none;
 }

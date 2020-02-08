@@ -9,7 +9,11 @@ export default ({
   button.removeAttribute('hidden');
 
   if (+localStorage.getItem(storagekey)) {
-    document.body.classList.add(bodyClass);
+    document.body.classList.add(bodyClass, 'no-transition');
+
+    requestAnimationFrame(() => {
+      document.body.classList.remove('no-transition');
+    });
   }
 
   button.addEventListener('click', () => {
