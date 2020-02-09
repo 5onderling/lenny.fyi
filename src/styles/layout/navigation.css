@@ -16,7 +16,6 @@
 }
 
 .nav {
-  /* make appear on scroll up... */
   position: sticky;
   top: -$navHeight;
   right: 0;
