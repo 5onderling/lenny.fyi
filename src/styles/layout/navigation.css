@@ -25,6 +25,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--bg-color);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, top 0.25s ease;
+  z-index: 1;
+
+  &--fixed {
+    top: 0;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  }
 
   &__inner {
     padding: 0 $contentPadding;
@@ -40,8 +48,37 @@
   }
 
   &__link {
+    position: relative;
+    margin-top: 0.3em;
+    padding: 0 0.2em 0.3rem;
     margin-right: 1em;
-    color: inherit;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      height: 0.3em;
+      width: 100%;
+      background-color: var(--secondary-c);
+      opacity: 0;
+      transition: opacity 0.25s ease, background-color 0.25s ease;
+    }
+
+    &:not([aria-current]) {
+      &:hover,
+      &:focus {
+        &::after {
+          background-color: currentColor;
+          opacity: 0.2;
+        }
+      }
+    }
+
+    &[aria-current]::after {
+      opacity: 1;
+    }
   }
 }
 
@@ -50,8 +87,13 @@
 }
 
 .theme-switcher {
+  display: none;
   width: 24px;
   height: 24px;
   background-image: var(--theme-switch-image);
   transition: background-image 0.25s ease;
+
+  @supports (display: var(--)) {
+    display: block;
+  }
 }

@@ -4,9 +4,7 @@ export default ({
   storagekey = 'otherThemeActivated'
 } = {}) => {
   const button = document.querySelector(buttonSelector);
-  if (!button || !(CSS || CSS.supports('color', 'var(--test)'))) return;
-
-  button.removeAttribute('hidden');
+  if (!button) return;
 
   if (+localStorage.getItem(storagekey)) {
     document.body.classList.add(bodyClass, 'no-transition');
