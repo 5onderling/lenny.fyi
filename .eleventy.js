@@ -63,7 +63,7 @@ module.exports = eleventy => {
   if (isProd) {
     // xml ???
     eleventy.addTransform('minify', (content, outputPath) => {
-      if (!outputPath.endsWith('.html')) return content;
+      if (!outputPath || !outputPath.endsWith('.html')) return content;
 
       return minify(content, {
         collapseWhitespace: true,

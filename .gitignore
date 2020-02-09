@@ -6,3 +6,4 @@ dist
 
 # zeit.now configuration
 now.json
+.now
