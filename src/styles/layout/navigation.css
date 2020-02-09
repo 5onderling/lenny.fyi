@@ -8,6 +8,7 @@
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
   opacity: 0;
   transition: transform 0.2s, opacity 0.1s 0.05s;
+  z-index: 2;
 
   &:focus {
     opacity: 1;
