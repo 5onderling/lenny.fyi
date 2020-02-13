@@ -1,5 +1,5 @@
 $contentWidth: 75rem;
-$contentPadding: 1rem;
+$contentPadding: 1.5rem;
 $navHeight: 5rem;
 
 @custom-media --tablet (min-width: 48rem);
