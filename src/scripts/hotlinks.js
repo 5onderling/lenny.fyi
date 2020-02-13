@@ -1,5 +1,5 @@
 const linkSelector =
-  'a[href]:not([target="_blank"]):not([href*="."]), a[href$=".html"]:not([target="_blank"])';
+  'a[href]:not([target="_blank"]):not([href*="."]):not([href^="mailto:"]):not([href^="tel:"]), a[href$=".html"]:not([target="_blank"])';
 
 export let pages = {};
 
@@ -58,6 +58,9 @@ export default ({ elementSelector = 'body' } = {}) => {
   };
 
   window.addEventListener('popstate', e => {
+    // return when theres no state (hopefully only on hashchange / anchorlinks)
+    if (!e.state) return;
+
     try {
       updatePage({ pathname: e.state }, content);
     } catch (err) {
@@ -72,11 +75,15 @@ export default ({ elementSelector = 'body' } = {}) => {
   });
   window.addEventListener('click', async e => {
     const link = e.target.closest(linkSelector);
-    if (!link || link.host !== location.host) return;
+    if (
+      !link ||
+      link.host !== location.host ||
+      link.pathname === location.pathname
+    ) {
+      return;
+    }
 
     e.preventDefault();
-    if (link.pathname === location.pathname) return;
-
     console.timeEnd(link);
     history.pushState(link.pathname, '', link.href);
 
