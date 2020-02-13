@@ -2,13 +2,22 @@
   min-height: 100vh;
   max-width: $contentWidth;
   margin: -$navHeight auto 0;
-  padding: $navHeight $contentPadding 0;
+  padding: calc($navHeight + $navHeight / 2) $contentPadding 0;
 }
 
 /* blog stuff */
 article {
   max-width: 48rem;
   margin: auto;
+
+  a:not([class]) {
+    box-shadow: inset 0 -0.25em var(--secondary-c);
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: inset 0 -1.5em var(--secondary-c);
+    }
+  }
 
   p {
     margin: 1em 0;
@@ -26,5 +35,58 @@ article {
 
   h2 {
     margin-top: 2rem;
+  }
+
+  blockquote {
+    font-style: italic;
+
+    p:first-of-type:before,
+    p:last-of-type:after {
+      display: inline-block;
+      min-width: 0.5em;
+      font-size: 2em;
+      line-height: 1rem;
+      vertical-align: text-bottom;
+      color: var(--secondary-c);
+    }
+
+    p:first-of-type:before {
+      content: open-quote;
+    }
+    p:last-of-type:after {
+      content: close-quote;
+      text-align: center;
+    }
+  }
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+
+  &:hover .permalink__icon {
+    opacity: 0.25;
+  }
+}
+.permalink {
+  $size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  height: $size;
+  width: $size;
+  margin-top: calc(-$size / 2);
+  margin-left: -$size;
+
+  &__icon {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:focus &__icon,
+  &:hover &__icon {
+    opacity: 0.5;
   }
 }

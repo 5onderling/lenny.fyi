@@ -1,25 +1,89 @@
 const fs = require('fs-extra');
 const { minify } = require('html-minifier');
 
+const markdownIt = require('markdown-it');
+const markdownItLinkAttributes = require('markdown-it-link-attributes');
+const markdownItAnchor = require('markdown-it-anchor');
+
 const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
 
-module.exports = eleventy => {
+module.exports = eleventyConfig => {
   const isProd = process.env.ELEVENTY_ENV === 'production';
 
   fs.emptyDirSync('dist');
 
-  eleventy.addPlugin(rss);
-  eleventy.addPlugin(syntaxHighlight);
-  eleventy.addPlugin(inclusiveLanguage);
+  eleventyConfig.setLibrary(
+    'md',
+    markdownIt({
+      html: true,
+      breaks: true,
+      linkify: true
+    })
+      .use(markdownItLinkAttributes, [
+        {
+          pattern: /^https?:\/\//,
+          attrs: {
+            target: '_blank'
+          }
+        }
+      ])
+      .use(markdownItAnchor, {
+        level: 2,
+        permalink: true,
+        permalinkClass: 'permalink',
+        permalinkSpace: false,
+        permalinkSymbol:
+          '<svg class="permalink__icon" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 010-7.07l3.54-3.54a5.003 5.003 0 017.07 0 5.003 5.003 0 010 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 000-4.24 2.982 2.982 0 00-4.24 0l-3.53 3.53a2.982 2.982 0 000 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 010 7.07l-3.54 3.54a5.003 5.003 0 01-7.07 0 5.003 5.003 0 010-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 000 4.24 2.982 2.982 0 004.24 0l3.53-3.53a2.982 2.982 0 000-4.24.973.973 0 010-1.42z"/></svg>',
+        permalinkBefore: true,
+        permalinkAttrs: slug => ({ 'aria-label': `${slug} permalink` }),
+        // "custom" render function (only for permalinkAttrs) (remove after new markdown-it-anchor release)
+        renderPermalink: (slug, opts, state, idx) => {
+          const position = {
+            false: 'push',
+            true: 'unshift'
+          };
 
-  eleventy.addPassthroughCopy({ 'src/assets': '.' });
+          const space = () =>
+            Object.assign(new state.Token('text', '', 0), { content: ' ' });
 
-  eleventy.addWatchTarget('src/scripts');
-  eleventy.addWatchTarget('src/styles');
+          const linkTokens = [
+            Object.assign(new state.Token('link_open', 'a', 1), {
+              attrs: [
+                ['class', opts.permalinkClass],
+                ['href', opts.permalinkHref(slug, state)],
+                ...Object.entries(opts.permalinkAttrs(slug, state))
+              ]
+            }),
+            Object.assign(new state.Token('html_block', '', 0), {
+              content: opts.permalinkSymbol
+            }),
+            new state.Token('link_close', 'a', -1)
+          ];
 
-  eleventy.addNunjucksFilter('readableDate', dateObj => {
+          // `push` or `unshift` according to position option.
+          // Space is at the opposite side.
+          if (opts.permalinkSpace) {
+            linkTokens[position[!opts.permalinkBefore]](space());
+          }
+          state.tokens[idx + 1].children[position[opts.permalinkBefore]](
+            ...linkTokens
+          );
+        }
+      })
+  );
+
+  eleventyConfig.addPlugin(rss);
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(inclusiveLanguage);
+
+  eleventyConfig.addPassthroughCopy({ 'src/assets': '.' });
+
+  eleventyConfig.addWatchTarget('src/scripts');
+  eleventyConfig.addWatchTarget('src/styles');
+
+  eleventyConfig.addNunjucksFilter('readableDate', dateObj => {
     const date = new Date(dateObj),
       day = date
         .getDate()
@@ -31,7 +95,7 @@ module.exports = eleventy => {
     return `${day} ${month} ${year}`;
   });
 
-  eleventy.addNunjucksFilter('htmlTime', (dateObj, sec) => {
+  eleventyConfig.addNunjucksFilter('htmlTime', (dateObj, sec) => {
     const months = [
         'January',
         'February',
@@ -62,7 +126,7 @@ module.exports = eleventy => {
 
   if (isProd) {
     // xml ???
-    eleventy.addTransform('minify', (content, outputPath) => {
+    eleventyConfig.addTransform('minify', (content, outputPath) => {
       if (!outputPath || !outputPath.endsWith('.html')) return content;
 
       return minify(content, {
@@ -80,7 +144,7 @@ module.exports = eleventy => {
     });
   }
 
-  eleventy.setBrowserSyncConfig({
+  eleventyConfig.setBrowserSyncConfig({
     ui: false,
     ghostMode: false,
     callbacks: {
