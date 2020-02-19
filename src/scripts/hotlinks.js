@@ -75,10 +75,10 @@ export default ({ elementSelector = 'body' } = {}) => {
   });
   window.addEventListener('click', async e => {
     const link = e.target.closest(linkSelector);
-    if (!link || link.host !== location.host) {
-      return;
-    }
+    if (!link || link.host !== location.host) return;
+    if (link.hash) return;
     e.preventDefault();
+
     if (link.pathname === location.pathname) return;
 
     console.timeEnd(link);
