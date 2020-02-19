@@ -4,7 +4,7 @@ export default ({
   storagekey = 'otherThemeActivated'
 } = {}) => {
   const button = document.querySelector(buttonSelector);
-  if (!button || !CSS.supports('top', 'var(--)')) return;
+  if (!button || !window.CSS || !CSS.supports('top', 'var(--)')) return;
 
   button.removeAttribute('hidden');
 
