@@ -17,10 +17,6 @@ module.exports = class {
         {
           input: 'src/scripts/main.js',
           output: 'main.js'
-        },
-        {
-          input: 'src/scripts/polyfills.js',
-          output: 'polyfills.js'
         }
       ]
     };

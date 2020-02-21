@@ -12,32 +12,30 @@ const main = () => {
   hotlinks({ elementSelector: 'main' });
 };
 
-const browserSupportsAllFeatures = () =>
-  window.Promise &&
-  window.fetch &&
-  window.Symbol &&
-  Object.assign &&
-  Array.from &&
-  Element.prototype.matches &&
-  Element.prototype.closest &&
-  [
-    Element.prototype,
-    Document.prototype,
-    DocumentFragment.prototype
-  ].every(item => item.hasOwnProperty('append')) &&
-  [
-    Element.prototype,
-    CharacterData.prototype,
-    DocumentType.prototype
-  ].every(item => item.hasOwnProperty('remove')) &&
-  window.NodeList &&
-  NodeList.prototype.forEach;
+// polyfill options (especially "once: true") in addEventlistener(event, cb, options)
+import 'eventlistener-polyfill';
 
-if (browserSupportsAllFeatures()) {
+const unsupportedFeatures = [
+  !window.Symbol && 'Symbol',
+  !window.Promise && 'Promise',
+  !window.fetch && 'fetch',
+  !Object.assign && 'Object.assign',
+  !Array.from && 'Array.from',
+  !Element.prototype.matches && 'Element.prototype.matches',
+  !Element.prototype.closest && 'Element.prototype.closest',
+  !Element.prototype.append && 'Element.prototype.append',
+  !Element.prototype.remove && 'Element.prototype.remove',
+  !NodeList.prototype.forEach && 'NodeList.prototype.forEach'
+]
+  .filter(item => item)
+  .join(',');
+
+if (!unsupportedFeatures) {
   main();
 } else {
   const script = document.createElement('script');
-  script.src = '/polyfills.js';
+  script.src =
+    'https://polyfill.io/v3/polyfill.min.js?features=' + unsupportedFeatures;
   script.onload = main;
   document.head.appendChild(script);
 }
