@@ -1,8 +1,8 @@
 .content {
   min-height: 100vh;
   max-width: $contentWidth;
-  margin: -$navHeight auto 0;
-  padding: calc($navHeight + $navHeight / 2) $contentPadding 0;
+  margin: 0 auto $navHeight;
+  padding: calc($navHeight * 1.5) $contentPadding 0;
 }
 
 /* blog stuff */
@@ -66,6 +66,7 @@ h4,
 h5,
 h6 {
   position: relative;
+  display: inline-block;
 
   &:hover .permalink__icon {
     opacity: 0.25;

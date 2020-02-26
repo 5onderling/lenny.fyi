@@ -17,21 +17,28 @@
 }
 
 .nav {
-  position: sticky;
-  top: -$navHeight;
+  position: absolute;
+  top: 0;
   right: 0;
   left: 0;
   height: $navHeight;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-color);
-  transition: background-color 0.25s ease, box-shadow 0.25s ease, top 0.25s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.35s ease;
   z-index: 1;
 
   &--fixed {
-    top: 0;
+    position: fixed;
+    background-color: var(--bg-color-navigation);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    animation: showNavigation 0.35s;
+  }
+
+  &--hide {
+    position: fixed;
+    transform: translate3d(0, -120%, 0);
   }
 
   &__inner {
@@ -83,7 +90,10 @@
 }
 
 .logo {
-  color: inherit;
+  svg {
+    width: auto;
+    height: $navHeight;
+  }
 }
 
 .theme-switcher {
@@ -91,4 +101,10 @@
   height: 1.5rem;
   background-image: var(--theme-switch-image);
   transition: background-image 0.25s ease;
+}
+
+@keyframes showNavigation {
+  from {
+    transform: translate3d(0, -120%, 0);
+  }
 }

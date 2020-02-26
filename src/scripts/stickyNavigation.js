@@ -1,13 +1,26 @@
-export default ({ selector = '.nav', fixedClass = 'nav--fixed' } = {}) => {
+export default ({
+  selector = '.nav',
+  fixedClass = 'nav--fixed',
+  fixedHiddenClass = 'nav--hide'
+} = {}) => {
   const nav = document.querySelector(selector);
   if (!nav) return;
 
   let prevY = window.pageYOffset;
+  let show, hide;
   const scrollHandler = () => {
     const curY = window.pageYOffset;
-    if (curY === prevY || (curY && curY < window.innerHeight / 3)) return;
+    if (curY === prevY) return;
 
-    nav.classList[curY && curY < prevY ? 'add' : 'remove'](fixedClass);
+    const isScrollingToTop = curY < prevY;
+
+    show =
+      (curY && show) || (curY > window.innerHeight / 3 && isScrollingToTop);
+
+    hide = show && !isScrollingToTop;
+
+    nav.classList[show ? 'add' : 'remove'](fixedClass);
+    nav.classList[hide ? 'add' : 'remove'](fixedHiddenClass);
     prevY = curY;
   };
   window.addEventListener('scroll', scrollHandler, { passive: true });
