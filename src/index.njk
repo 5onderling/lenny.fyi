@@ -1,12 +1,14 @@
 ---
 layout: views/base.njk
+title: Home
+nav: true
 ---
 <header class="hero">
-  <img class="hero__image" src="/me.png" alt="A Picture of Me" />
+  <img class="hero__image" src="/me.png" alt="A Picture of Me" height="320" width="320" />
   <h1 class="hero__headline">
     <small>Hey I'm</small>
     <br/>
-    {{ meta.owner.name }}
+    <a href="/about">{{ meta.owner.name }}</a>
   </h1>
 </header>
 
@@ -16,7 +18,7 @@ layout: views/base.njk
     <a class="card post" href="{{ post.url }}">
       <h3 class="post__title">{{ post.data.title }}</h3>
      {{ post.date | htmlTime('post__date') | safe }}
-      <p>
+      <p class="post__summary">
         {%- if post.data.excerpt -%}
           {{ post.data.excerpt | truncate(280) | trim }}
         {%- else -%}
@@ -30,9 +32,9 @@ layout: views/base.njk
 <h2>Projects i worked / i'm working on.</h2>
 <div class="cards">
   {%- for project in collections.project | sort %}
-    <div class="card">
-      <a href="{{ project.data.url }}" target="_blank"><h3>{{ project.data.title }}</h3></a>
-      {{ project.templateContent | safe }}
+    <div class="card project">
+      <a href="{{ project.data.url }}" class="project__link"><h3>{{ project.data.title }}</h3></a>
+      <div class="project__content">{{ project.templateContent | safe }}</div>
     </div>
   {%- endfor %}
 </div>

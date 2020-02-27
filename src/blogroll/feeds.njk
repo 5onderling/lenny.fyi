@@ -1,0 +1,13 @@
+---
+permalink: '{{ page.filePathStem | replace("/index", "") }}.xml'
+---
+<opml version="1.0">
+  <head>
+    <title>Blogroll RSS Feeds {{ title | safe }}</title>
+  </head>
+  <body>
+    {%- for blog in blogs | sort %}
+      <outline type="rss" title="{{ blog.name }}" text="{{ blog.text }}" xmlUrl="{{ blog.rss }}" htmlUrl="{{ blog.url }}" />
+    {%- endfor %}
+  </body>
+</opml>
