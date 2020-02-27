@@ -12,7 +12,7 @@ const main = () => {
   hotlinks({ elementSelector: 'main' });
 };
 
-// polyfill options (especially "once: true") in addEventlistener(event, cb, options)
+// polyfill addEventlistener option { once: true }
 import 'eventlistener-polyfill';
 
 const unsupportedFeatures = [
@@ -28,7 +28,7 @@ const unsupportedFeatures = [
   !NodeList.prototype.forEach && 'NodeList.prototype.forEach'
 ]
   .filter(item => item)
-  .join(',');
+  .join();
 
 if (!unsupportedFeatures) {
   main();
