@@ -1,6 +1,7 @@
 import cursor from './cursor';
 import skipNavigation from './skipNavigation';
 import stickyNavigation from './stickyNavigation';
+import mobileNavigation from './mobileNavigation';
 import themeSwitcher from './themeSwitcher';
 import hotlinks from './hotlinks';
 
@@ -8,6 +9,7 @@ const main = () => {
   cursor();
   themeSwitcher();
   stickyNavigation();
+  mobileNavigation();
   skipNavigation();
   hotlinks({ elementSelector: 'main' });
 };
@@ -19,6 +21,7 @@ const unsupportedFeatures = [
   !window.Symbol && 'Symbol',
   !window.Promise && 'Promise',
   !window.fetch && 'fetch',
+  typeof window.CustomEvent !== 'function' && 'CustomEvent',
   !Object.assign && 'Object.assign',
   !Array.from && 'Array.from',
   !Element.prototype.matches && 'Element.prototype.matches',

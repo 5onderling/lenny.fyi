@@ -22,43 +22,95 @@
   right: 0;
   left: 0;
   height: $navHeight;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: background-color 0.25s ease, box-shadow 0.25s ease,
     transform 0.35s ease;
   z-index: 1;
 
+  &::before {
+    content: '';
+    position: fixed;
+    top: -150vh;
+    right: -150vh;
+    width: 300vh;
+    height: 300vh;
+    transform: scale(0);
+    border-radius: 50%;
+    background-color: var(--bg-color-navigation);
+    transition: background-color 0.25s ease,
+      transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    @media screen and (orientation: landscape) {
+      top: -150vw;
+      right: -150vw;
+      width: 300vw;
+      height: 300vw;
+    }
+
+    @media (--tablet) {
+      content: none;
+    }
+  }
+
   &--fixed {
     position: fixed;
     background-color: var(--bg-color-navigation);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     animation: showNavigation 0.35s;
+  }
+
+  @keyframes showNavigation {
+    from {
+      transform: translate3d(0, -120%, 0);
+    }
   }
 
   &--hide {
     position: fixed;
-    transform: translate3d(0, -120%, 0);
+    transform: translate3d(0, -100%, 0);
   }
 
   &__inner {
     padding: 0 $contentPadding;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex: 0 1 $contentWidth;
+    max-width: $contentWidth;
+    margin: auto;
   }
 
   &__menu {
+    position: absolute;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    top: 0;
+    right: 0;
+    width: 100%;
+    overflow-y: auto;
+    min-height: 50vh;
+    max-height: 100vh;
+    padding-top: calc($navHeight * 1.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.5s, opacity 0.375s 0s;
+
+    @media (--tablet) {
+      padding-top: 0;
+      width: auto;
+      opacity: 1;
+      visibility: visible;
+      min-height: 0;
+      position: relative;
+      flex-direction: row;
+    }
   }
 
   &__link {
     position: relative;
-    margin-top: 0.3em;
     padding: 0 0.2em 0.3rem;
-    margin-right: 1em;
+    margin: 2em 0;
+
+    @media (--tablet) {
+      margin: 0.3em 0 0 1em;
+    }
 
     &::after {
       content: '';
@@ -87,24 +139,94 @@
       opacity: 1;
     }
   }
+
+  &__icon {
+    position: relative;
+    margin-left: 1em;
+  }
 }
 
 .logo {
-  svg {
-    width: auto;
-    height: $navHeight;
-  }
+  z-index: 1;
+  margin-right: auto;
+  width: calc($navHeight * (128 / 96));
+  height: $navHeight;
 }
 
 .theme-switcher {
   width: 1.5rem;
   height: 1.5rem;
   background-image: var(--theme-switch-image);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
   transition: background-image 0.25s ease;
 }
 
-@keyframes showNavigation {
-  from {
-    transform: translate3d(0, -120%, 0);
+.burger {
+  $burgerSize: 1.5rem;
+  $lineHeight: 0.25rem;
+  width: $burgerSize;
+  height: $burgerSize;
+
+  @media (--tablet) {
+    display: none;
+  }
+
+  &__line {
+    transition: background-color 0.25s ease;
+
+    &,
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin-top: -0.125rem;
+      height: $lineHeight;
+      background-color: currentColor;
+    }
+    &::before,
+    &::after {
+      content: '';
+      transition: transform 0.25s ease;
+    }
+    &::before {
+      transform: translate3d(0, calc(-$burgerSize / 2 + $lineHeight / 2), 0);
+    }
+    &::after {
+      transform: translate3d(0, calc($burgerSize / 2 - $lineHeight / 2), 0);
+    }
+  }
+}
+
+.nav-menu-open {
+  overflow: hidden;
+
+  @media (--tablet) {
+    overflow: auto;
+  }
+
+  .nav {
+    &::before {
+      transform: scale(1);
+    }
+    &__menu {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0.5s, opacity 0.375s 0.25s;
+    }
+  }
+
+  .burger__line {
+    background-color: transparent;
+
+    &::before {
+      transform: translate3d(0, 0, 0) rotate(-45deg);
+    }
+    &::after {
+      transform: translate3d(0, 0, 0) rotate(45deg);
+    }
   }
 }

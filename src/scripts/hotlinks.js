@@ -44,6 +44,8 @@ const updatePage = ({ pathname }, content) => {
 
   window.scrollTo(0, 0);
   document.body.focus();
+
+  window.dispatchEvent(new CustomEvent('navigated'));
 };
 
 export default ({ elementSelector = 'body' } = {}) => {
@@ -67,12 +69,11 @@ export default ({ elementSelector = 'body' } = {}) => {
       location.reload();
     }
   });
-  window.addEventListener('mousedown', e => {
-    const link = e.target.closest(linkSelector);
-    if (!link || link.host !== location.host || pages[link.pathname]) return;
-
-    console.time(link);
-  });
+  // implemet: start downloading on mousedown, change page on click
+  // window.addEventListener('mousedown', e => {
+  //   const link = e.target.closest(linkSelector);
+  //   if (!link || link.host !== location.host || pages[link.pathname]) return;
+  // });
   window.addEventListener('click', async e => {
     const link = e.target.closest(linkSelector);
     if (!link || link.host !== location.host) return;
@@ -81,7 +82,6 @@ export default ({ elementSelector = 'body' } = {}) => {
 
     if (link.pathname === location.pathname) return;
 
-    console.timeEnd(link);
     history.pushState(link.pathname, '', link.href);
 
     try {
