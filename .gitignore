@@ -1,5 +1,6 @@
 # classic
 node_modules
+.vscode
 
 # 11ty output
 dist
