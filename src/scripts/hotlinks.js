@@ -6,7 +6,7 @@ export let pages = {};
 const addPage = ({ pathname }, dom, elementSelector) => {
   pages[pathname] = {
     title: dom.title,
-    head: [...dom.head.querySelectorAll('script, style, link')],
+    head: [...dom.querySelectorAll('head > script, head > style, head > link')],
     content: [...dom.querySelector(elementSelector).children]
   };
 };
@@ -20,10 +20,10 @@ const updatePage = ({ pathname }, content) => {
     const selector = [...el.attributes].reduce(
       (res, { nodeName, nodeValue }) =>
         `${res}[${nodeName}${nodeValue ? `="${nodeValue}"` : ''}]`,
-      el.tagName.toLowerCase()
+      `head > ${el.tagName.toLowerCase()}`
     );
 
-    const inDom = document.head.querySelector(selector);
+    const inDom = document.querySelector(selector);
     if (inDom && inDom.innerHTML === el.innerHTML) return res;
 
     return [...res, el];
