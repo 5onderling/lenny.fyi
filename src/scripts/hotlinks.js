@@ -55,20 +55,26 @@ export default ({ elementSelector = 'body' } = {}) => {
   document.body.tabIndex = -1;
   pages[location.pathname] = {
     title: document.title,
-    head: [...document.head.querySelectorAll('script, style, link')],
+    head: [
+      ...document.querySelectorAll('head > script, head > style, head > link')
+    ],
     content: [...content.children]
   };
+  history.replaceState(location.pathname, '', location.href);
 
+  let prevPath = location.pathname;
   window.addEventListener('popstate', e => {
-    // return when theres no state (hopefully only on hashchange / anchorlinks)
-    if (!e.state) return;
+    // do nothing when still on the same Page (hashchange)
+    if (!e.state && location.pathname === prevPath) return;
 
+    prevPath = location.pathname;
     try {
       updatePage({ pathname: e.state }, content);
     } catch (err) {
       location.reload();
     }
   });
+
   // implemet: start downloading on mousedown, change page on click
   // window.addEventListener('mousedown', e => {
   //   const link = e.target.closest(linkSelector);
@@ -77,8 +83,8 @@ export default ({ elementSelector = 'body' } = {}) => {
   window.addEventListener('click', async e => {
     const link = e.target.closest(linkSelector);
     if (!link || link.host !== location.host) return;
-    if (link.hash) return;
-    e.preventDefault();
+
+    if (!link.hash) e.preventDefault();
 
     if (link.pathname === location.pathname) return;
 
