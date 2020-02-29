@@ -1,6 +1,6 @@
 ---
 layout: views/blog.njk
-title: legal
+title: Legal
 legalNav: true
 ---
 

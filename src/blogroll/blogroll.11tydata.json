@@ -3,7 +3,7 @@
     {
       "name": "Chris Ferdinandi",
       "url": "https://gomakethings.com",
-      "text": "Chris is the vanilla JS guy, who explains even more compicated stuff in a really simple and aproachable way.",
+      "text": "Chris is the vanilla JS guy, who explains even more complicated stuff in a really simple and approachable way.",
       "rss": "https://gomakethings.com/feed/index.xml",
       "twitter": "chrisferdinandi"
     },
@@ -17,14 +17,14 @@
     {
       "name": "Sāra Soueidan",
       "url": "https://www.sarasoueidan.com",
-      "text": "Sāra is the person for accessibility, SVGs and markup in general!",
+      "text": "Sāra is the person for accessibility, SVG's and markup in general!",
       "rss": "https://www.sarasoueidan.com/blog/index.xml",
       "twitter": "SaraSoueidan"
     },
     {
       "name": "Max Böck",
       "url": "https://mxb.dev",
-      "text": "Max writes about concepts and strategys in web developement and gets you in the right mindset with sometimes more personal posts.",
+      "text": "Max writes about concepts and strategies in web development and gets you in the right mindset with sometimes more personal posts.",
       "rss": "https://mxb.dev/feed.xml",
       "twitter": "mxbck"
     },
@@ -45,7 +45,7 @@
     {
       "name": "Jake Archibald",
       "url": "https://jakearchibald.com",
-      "text": "Jake is a comedian, uh, no... Developer, or both? Nonetheless, he writes and talks about the newest and coolest stuff in frontend developement.",
+      "text": "Jake is a comedian, uh, no... Developer, or both? Nonetheless, he writes and talks about the newest and coolest stuff in frontend development.",
       "rss": "https://jakearchibald.com/posts.rss",
       "twitter": "jaffathecake"
     },

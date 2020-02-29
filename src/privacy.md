@@ -12,7 +12,7 @@ It’s a free piece of content, no strings attached.
 
 ## Secure Data Transfer
 
-This website transmits itself using HTTPS, encrypting all data between the browser and the server. Your network provider may still be able to see that you are loading files from this site, but not their content. This also protects you from third parties intercepting data e.g. while browsing on public WiFi, or network providers injecting ads into this site.
+This website transmits itself using HTTPS, encrypting all data between the browser and the server. Your network provider may still be able to see that you are loading files from this site, but not their content. This also protects you from third parties intercepting data e.g. while browsing on public Wi-Fi, or network providers injecting ads into this site.
 
 ## Responsible Data Controller
 

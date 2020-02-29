@@ -10,9 +10,10 @@ nav: true
 
 Inspired by [Max Böck](https://mxb.dev/blogroll/).
 
-Here i show off the blogs i read the most, and from them i learn the most. Currently i'm discovering new interesting blogs, like on a daily basis, so this list is most probably going to grow.
+Here I show off the blogs I read the most, and from them I learn the most. Currently, I'm discovering new interesting blogs, like on a daily basis, so this list is most probably going to grow.
 
 </article>
+
 <div class="cards" style="margin-top: 5rem;">
   {%- for blog in blogs | sort(false, false, 'name') %}
     <div class="card project blog">
