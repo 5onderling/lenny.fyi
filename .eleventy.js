@@ -134,14 +134,20 @@ module.exports = eleventyConfig => {
     });
   }
 
+  let notFoundPage;
+  eleventyConfig.addTransform('minify', (content, outputPath) => {
+    if (outputPath && outputPath.endsWith('404.html')) {
+      notFoundPage = content;
+    }
+    return content;
+  });
   eleventyConfig.setBrowserSyncConfig({
     ui: false,
     ghostMode: false,
     callbacks: {
       ready: async (err, bs) => {
-        const notFound = await fs.readFile('dist/404.html');
         bs.addMiddleware('*', (req, res) => {
-          res.write(notFound);
+          res.write(notFoundPage);
           res.end();
         });
       }
