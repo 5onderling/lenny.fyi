@@ -33,7 +33,7 @@
 body {
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
-  font-size: calc(18 / 16 * 1rem);
+  font-size: 1.25rem;
 }
 
 h1,
@@ -52,4 +52,9 @@ h1 {
 
 h2 {
   @mixin fluidSize 20rem, 75rem, 1.5rem, 2rem;
+}
+
+code {
+  font-size: 1.1em;
+  font-weight: 700;
 }

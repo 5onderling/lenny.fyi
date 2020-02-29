@@ -1,6 +1,6 @@
 .footer {
   border-top: 1px solid var(--footer-border-color);
-  margin: $contentPadding $contentPadding 0;
+  margin: 0 $contentPadding;
   padding-bottom: $contentPadding;
 
   &__inner {
