@@ -8,10 +8,21 @@ const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
 
+const config = {
+  dir: {
+    input: 'src',
+    output: 'dist',
+    includes: 'templates',
+    data: 'data'
+  },
+  markdownTemplateEngine: 'njk',
+  dataTemplateEngine: '11ty.js'
+};
+
 module.exports = eleventyConfig => {
   const isProd = process.env.ELEVENTY_ENV === 'production';
 
-  fs.emptyDirSync('dist');
+  fs.emptyDirSync(config.dir.output);
 
   eleventyConfig.setLibrary(
     'md',
@@ -163,14 +174,5 @@ module.exports = eleventyConfig => {
     }
   });
 
-  return {
-    dir: {
-      input: 'src',
-      output: 'dist',
-      includes: 'templates',
-      data: 'data'
-    },
-    markdownTemplateEngine: 'njk',
-    dataTemplateEngine: '11ty.js'
-  };
+  return config;
 };
