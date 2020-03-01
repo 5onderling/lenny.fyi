@@ -6,7 +6,7 @@ export default ({
   const button = document.querySelector(buttonSelector);
   if (!button || !window.CSS || !CSS.supports('top', 'var(--)')) return;
 
-  button.removeAttribute('hidden');
+  button.hidden = false;
 
   if (+localStorage.getItem(storagekey)) {
     document.body.classList.add(bodyClass, 'no-transition');
