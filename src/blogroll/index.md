@@ -17,11 +17,13 @@ Here I show off the blogs I read the most, and from them I learn the most. Curre
 
 <div class="cards" style="margin-top: 5rem;">
   {%- for blog in blogs | sort(false, false, 'name') %}
-    <div class="card project blog">
-      <img class="blog__avatar" src="https://avatars.io/twitter/{{ blog.twitter }}/medium" width="64" height="64" alt="a picture of {{ blog.name }}" />
+    <div class="card">
+      <img class="card__avatar" src="https://avatars.io/twitter/{{ blog.twitter }}/medium" width="64" height="64" alt="a picture of {{ blog.name }}" />
       <h3>{{ blog.name }}</h3>
-      <a href="{{ blog.url }}" class="project__link">{{ blog.url | replace("https://", "") }}</a>
-      <p>{{ blog.text }}</p>
+      <a href="{{ blog.url }}" class="card__link">{{ blog.url | replace("https://", "") | replace("www.", "") }}</a>
+      <div class="card__text">
+        <p>{{ blog.text }}</p>
+      </div>
     </div>
   {%- endfor %}
 </div>

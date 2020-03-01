@@ -17,26 +17,28 @@ order: 1
 <h2>My latest Posts</h2>
 <div class="cards">
   {%- for post in collections.post | reverse %}
-    <a class="card post" href="{{ post.url }}">
-      <h3 class="post__title">{{ post.data.title }}</h3>
-      {{ post.date | htmlTime('post__date') | safe }}
-      <p class="post__summary">
-        {%- if post.data.description -%}
-          {{ post.data.description | truncate(280) | trim }}
-        {%- else -%}
-          {{ post.templateContent | striptags(true) | replace(post.data.title, '') | truncate(280) | trim }}
-        {%- endif -%}
-      </p>
-    </a>
+    <div class="card card--post">
+      <a class="card__link" href="{{ post.url }}"><h3>{{ post.data.title }}</h3></a>
+      {{ post.date | htmlTime('card__date') | safe }}
+      <div class="card__text">
+        <p>
+          {%- if post.data.description -%}
+            {{ post.data.description | truncate(280) | trim }}
+          {%- else -%}
+            {{ post.templateContent | striptags(true) | replace(post.data.title, '') | truncate(280) | trim }}
+          {%- endif -%}
+        </p>
+      </div>
+    </div>
   {%- endfor %}
 </div>
 
 <h2>Projects i worked / i'm working on.</h2>
 <div class="cards">
   {%- for project in collections.project | sort %}
-    <div class="card project">
-      <a href="{{ project.data.url }}" class="project__link"><h3>{{ project.data.title }}</h3></a>
-      <div class="project__content">{{ project.templateContent | safe }}</div>
+    <div class="card">
+      <a href="{{ project.data.url }}" class="card__link"><h3>{{ project.data.title }}</h3></a>
+      <div class="card__text">{{ project.templateContent | safe }}</div>
     </div>
   {%- endfor %}
 </div>

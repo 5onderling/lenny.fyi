@@ -30,15 +30,19 @@
   &:hover::after {
     transform: scaleY(1);
   }
-}
 
-.post {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  &--post {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
-  &__title {
-    color: var(--secondary-c);
+  &__avatar {
+    float: left;
+    width: 4rem;
+    height: auto;
+    margin-right: 1rem;
+    border-radius: 50%;
   }
 
   &__date {
@@ -46,13 +50,6 @@
     font-size: smaller;
   }
 
-  &__summary {
-    margin-top: 0.5rem;
-    flex: 1 1 100%;
-  }
-}
-
-.project {
   &__link {
     display: block;
     color: var(--secondary-c);
@@ -73,22 +70,14 @@
     }
   }
 
-  &__content {
+  &__text {
+    width: 100%;
+
     p {
       margin-top: 0.5em;
     }
     a {
       position: relative;
     }
-  }
-}
-
-.blog {
-  &__avatar {
-    float: left;
-    width: 4rem;
-    height: auto;
-    margin-right: 1rem;
-    border-radius: 50%;
   }
 }
