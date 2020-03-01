@@ -1,0 +1,31 @@
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__date {
+    margin-right: 1em;
+    opacity: 0.8;
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__cta {
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__icon {
+    width: 1.2em;
+    height: 1.2em;
+    margin-left: 0.25em;
+    fill: currentColor;
+  }
+}

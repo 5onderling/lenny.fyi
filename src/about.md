@@ -1,5 +1,5 @@
 ---
-layout: views/blog.njk
+layout: views/content.njk
 title: About
 nav: true
 order: 2
