@@ -1,31 +1,30 @@
 .footer {
   border-top: 1px solid var(--footer-border-color);
   margin: 0 $contentPadding;
-  padding-bottom: $contentPadding;
 
   &__inner {
     max-width: calc($contentWidth - $contentPadding * 2);
-    margin: auto;
+    margin: calc($contentPadding / 2) auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 
   &__menu {
+    margin: 0.5em -0.5em;
     display: flex;
     flex-wrap: wrap;
-    margin-top: $contentPadding;
 
-    &:first-child {
+    &--cr {
       margin-right: 1em;
+      margin-left: 0;
+    }
+
+    &--social {
+      margin-right: auto;
     }
   }
 
-  &__cr {
-    margin-right: 1em;
-  }
-
-  &__link + &__link {
-    margin-left: 1em;
+  &__link {
+    margin: 0 0.5em;
   }
 }
