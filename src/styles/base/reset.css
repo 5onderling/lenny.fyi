@@ -1,12 +1,20 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
 
-html,
-body {
-  min-height: 100%;
+a:not([class]) {
+  text-decoration-skip-ink: auto;
 }
 
 ul[class],
@@ -31,26 +39,15 @@ dd {
   margin: 0;
 }
 
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+main,
+svg,
+img {
+  display: block;
 }
 
 img {
   max-width: 100%;
   height: auto;
-  display: block;
-}
-
-main,
-svg {
-  display: block;
-}
-
-button {
-  border: 0;
-  padding: 0;
-  background-color: initial;
-  color: inherit;
 }
 
 input,
@@ -60,10 +57,9 @@ select {
   font: inherit;
 }
 
-/* set focus defaults */
-:focus {
-  @mixin focus;
-}
-[tabindex='-1'] {
-  outline: none;
+button {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: inherit;
 }

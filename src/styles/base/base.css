@@ -1,6 +1,5 @@
 :root {
-  --primary-c: hsl(207, 90%, 54%);
-  --secondary-c: hsl(340, 82%, 52%);
+  --primary-color: hsl(340, 82%, 52%);
 
   @mixin defaultTheme;
   @mixin finalThemeColors;
@@ -13,7 +12,6 @@
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
-  scroll-behavior: smooth;
   transition: background-color 0.25s ease, color 0.25s ease;
 
   &.other-theme {
@@ -36,4 +34,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:focus {
+  @mixin focus;
+}
+[tabindex='-1'] {
+  outline: none;
 }

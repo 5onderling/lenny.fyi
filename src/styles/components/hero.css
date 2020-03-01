@@ -1,5 +1,6 @@
 .hero {
   min-height: 40vh;
+  padding: 2rem 0;
 
   @media (--tablet) {
     display: flex;
@@ -15,7 +16,7 @@
   &__image {
     @mixin fluidSize 20rem, 75rem, 9rem, 20rem, width;
     border-radius: 50%;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
 
     @media (--tablet) {
       margin: 0;

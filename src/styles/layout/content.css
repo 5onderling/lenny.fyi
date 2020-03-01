@@ -1,8 +1,8 @@
 .content {
   min-height: 100vh;
   max-width: $contentWidth;
-  margin: 0 auto $navHeight;
-  padding: calc($navHeight * 1.5) $contentPadding 0;
+  margin: auto;
+  padding: calc($navHeight * 1.5) $contentPadding $navHeight;
 }
 
 /* blog stuff */
@@ -11,19 +11,17 @@ article {
   margin: auto;
 
   a:not([class]) {
-    box-shadow: inset 0 -0.25em var(--secondary-c);
+    box-shadow: inset 0 -0.25em var(--primary-color);
     transition: box-shadow 0.2s ease;
 
     &:hover {
-      box-shadow: inset 0 -1.5em var(--secondary-c);
+      box-shadow: inset 0 -1.5em var(--primary-color);
     }
   }
 
   p {
     margin: 1em 0;
-  }
 
-  p {
     @media (--tablet) {
       margin-left: 1em;
     }
@@ -47,7 +45,7 @@ article {
       font-size: 2em;
       line-height: 1rem;
       vertical-align: text-bottom;
-      color: var(--secondary-c);
+      color: var(--primary-color);
     }
 
     p:first-of-type:before {
@@ -72,6 +70,7 @@ h6 {
     opacity: 0.25;
   }
 }
+
 .permalink {
   $size: 1.5rem;
   position: absolute;

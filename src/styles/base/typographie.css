@@ -9,7 +9,6 @@
     url('/fonts/libre-baskerville-v7-latin-700.woff2') format('woff2'),
     url('/fonts/libre-baskerville-v7-latin-700.woff') format('woff');
 }
-
 /* lato-regular - latin */
 @font-face {
   font-family: 'Lato';
@@ -42,9 +41,8 @@
 }
 
 body {
-  line-height: 1.5;
-  font-family: 'Lato', sans-serif;
   font-size: 1.25rem;
+  font-family: 'Lato', sans-serif;
 }
 
 h1,
@@ -53,16 +51,16 @@ h2 {
   font-family: 'Libre Baskerville', serif;
 }
 
-h3 {
-  font-weight: 400;
-}
-
 h1 {
   @mixin fluidSize 20rem, 75rem, 2rem, 4rem;
 }
 
 h2 {
   @mixin fluidSize 20rem, 75rem, 1.5rem, 2rem;
+}
+
+h3 {
+  font-weight: 400;
 }
 
 code {

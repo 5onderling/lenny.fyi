@@ -120,7 +120,7 @@
       left: 0;
       height: 0.3em;
       width: 100%;
-      background-color: var(--secondary-c);
+      background-color: var(--primary-color);
       opacity: 0;
       transition: opacity 0.25s ease, background-color 0.25s ease;
     }
