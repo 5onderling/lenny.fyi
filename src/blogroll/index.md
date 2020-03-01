@@ -2,6 +2,7 @@
 layout: views/base.njk
 title: Blogroll
 nav: true
+order: 3
 ---
 
 <article>

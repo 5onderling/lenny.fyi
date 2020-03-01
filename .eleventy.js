@@ -114,6 +114,15 @@ module.exports = eleventyConfig => {
     } datetime="${year}-${month}-${day}">${day} ${shortMonth} ${year}</time>`;
   });
 
+  eleventyConfig.addNunjucksFilter('nav', pages => {
+    return pages
+      .filter(page => page.data.nav)
+      .sort(
+        ({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) =>
+          orderA - orderB
+      );
+  });
+
   if (isProd) {
     // xml ???
     eleventyConfig.addTransform('minify', (content, outputPath) => {

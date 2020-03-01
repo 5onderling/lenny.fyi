@@ -2,6 +2,7 @@
 layout: views/blog.njk
 title: About
 nav: true
+order: 2
 ---
 
 > You know what kind of plan never fails? No plan. No plan at all. You know why? Because life cannot be planned. Look around you. Did you think these people made a plan to sleep in the sports hall with you? But here we are now, sleeping together on the floor. So, there's no need for a plan. You can't go wrong with no plans. We don't need to make a plan for anything. It doesn't matter what will happen next. Even if the country gets destroyed or sold out, nobody cares. Got it?
