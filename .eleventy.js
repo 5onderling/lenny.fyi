@@ -84,6 +84,12 @@ module.exports = eleventyConfig => {
   eleventyConfig.addWatchTarget('src/scripts');
   eleventyConfig.addWatchTarget('src/styles');
 
+  eleventyConfig.addNunjucksFilter('readingTime', text => {
+    const textWithoutHtml = text.replace(/(<([^>]+)>)/gi, '');
+    const wordsCount = textWithoutHtml.split(' ').length;
+    return `${Math.ceil(wordsCount / 225)} min read`;
+  });
+
   eleventyConfig.addNunjucksFilter('readableDate', dateObj => {
     const date = new Date(dateObj),
       day = date
@@ -96,33 +102,35 @@ module.exports = eleventyConfig => {
     return `${day} ${month} ${year}`;
   });
 
-  eleventyConfig.addNunjucksFilter('htmlTime', (dateObj, sec) => {
+  eleventyConfig.addNunjucksFilter('htmlTime', (dateObj, className, long) => {
     const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ],
-      date = new Date(dateObj),
-      day = date
-        .getDate()
-        .toString()
-        .padStart(2, 0),
-      month = (date.getMonth() + 1).toString().padStart(2, 0),
-      shortMonth = months[date.getMonth()].substr(0, 3),
-      year = date.getFullYear();
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
+    const date = new Date(dateObj);
+    const day = date
+      .getDate()
+      .toString()
+      .padStart(2, 0);
+    const month = (date.getMonth() + 1).toString().padStart(2, 0);
+    const year = date.getFullYear();
+
+    let monthText = months[date.getMonth()];
+    if (!long) monthText = monthText.substr(0, 3);
 
     return `<time ${
-      sec ? `class="${sec}"` : ''
-    } datetime="${year}-${month}-${day}">${day} ${shortMonth} ${year}</time>`;
+      className ? `class="${className}"` : ''
+    } datetime="${year}-${month}-${day}">${day} ${monthText} ${year}</time>`;
   });
 
   eleventyConfig.addNunjucksFilter('nav', pages => {

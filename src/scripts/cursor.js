@@ -1,13 +1,13 @@
 export default ({
   mainClass = 'cursor',
+  visibleClass = 'cursor--visible',
   visibleBodyClass = 'hide-cursor',
   hoverClass = 'cursor--over-cta',
   hoverElements = 'a, button, input[type="submit"]',
   pressClass = 'cursor--mouse-down'
 } = {}) => {
   const cursor = Object.assign(document.createElement('div'), {
-    className: mainClass,
-    hidden: true
+    className: mainClass
   });
   let press;
 
@@ -35,7 +35,7 @@ export default ({
     window.addEventListener('mouseup', handlePress);
 
     setCursorPosition(e);
-    cursor.hidden = false;
+    cursor.classList.add(visibleClass);
     cursor.offsetTop; // wait for next event loop
     document.body.classList.add(visibleBodyClass);
     document.body.removeEventListener('mouseover', showCursor);
@@ -48,7 +48,7 @@ export default ({
     window.removeEventListener('mousedown', handlePress);
     window.removeEventListener('mouseup', handlePress);
 
-    cursor.hidden = true;
+    cursor.classList.remove(visibleClass);
     document.body.classList.remove(visibleBodyClass);
 
     document.body.addEventListener('mouseover', showCursor);

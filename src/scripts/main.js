@@ -4,14 +4,19 @@ import stickyNavigation from './stickyNavigation';
 import mobileNavigation from './mobileNavigation';
 import themeSwitcher from './themeSwitcher';
 import hotlinks from './hotlinks';
+import postWebshare from './postWebshare';
 
 const main = () => {
+  const router = hotlinks({ elementSelector: 'main' });
+
   cursor();
   themeSwitcher();
   stickyNavigation();
-  mobileNavigation();
+  mobileNavigation({ router });
   skipNavigation();
-  hotlinks({ elementSelector: 'main' });
+  postWebshare({ router });
+
+  router.init();
 };
 
 // polyfill addEventlistener option { once: true }
@@ -21,7 +26,6 @@ const unsupportedFeatures = [
   !window.Symbol && 'Symbol',
   !window.Promise && 'Promise',
   !window.fetch && 'fetch',
-  typeof window.CustomEvent !== 'function' && 'CustomEvent',
   !Object.assign && 'Object.assign',
   !Array.from && 'Array.from',
   !Element.prototype.matches && 'Element.prototype.matches',

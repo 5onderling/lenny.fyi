@@ -1,9 +1,15 @@
+let callbacks = {
+  beforePageSave: [],
+  afterPageUpdate: []
+};
+
 const linkSelector =
   'a[href]:not([target="_blank"]):not([href*="."]):not([href^="mailto:"]):not([href^="tel:"]), a[href$=".html"]:not([target="_blank"])';
 
 export let pages = {};
 
 const addPage = ({ pathname }, dom, elementSelector) => {
+  callbacks.beforePageSave.forEach(cb => cb(dom));
   pages[pathname] = {
     title: dom.title,
     head: [...dom.querySelectorAll('head > script, head > style, head > link')],
@@ -45,22 +51,15 @@ const updatePage = ({ pathname }, content) => {
   window.scrollTo(0, 0);
   document.body.focus();
 
-  window.dispatchEvent(new CustomEvent('navigated'));
+  callbacks.afterPageUpdate.forEach(cb => cb());
 };
 
-export default ({ elementSelector = 'body' } = {}) => {
+const init = ({ elementSelector }) => {
   const content = document.querySelector(elementSelector);
   if (!content) return;
 
   document.body.tabIndex = -1;
-  pages[location.pathname] = {
-    title: document.title,
-    head: [
-      ...document.querySelectorAll('head > script, head > style, head > link')
-    ],
-    content: [...content.children]
-  };
-  history.replaceState(location.pathname, '', location.href);
+  addPage(location, document, elementSelector);
 
   let prevPath = location.pathname;
   window.addEventListener('popstate', e => {
@@ -76,6 +75,7 @@ export default ({ elementSelector = 'body' } = {}) => {
   });
 
   // implemet: start downloading on mousedown, change page on click
+  //
   // window.addEventListener('mousedown', e => {
   //   const link = e.target.closest(linkSelector);
   //   if (!link || link.host !== location.host || pages[link.pathname]) return;
@@ -98,7 +98,6 @@ export default ({ elementSelector = 'body' } = {}) => {
           await (await fetch(link.href)).text(),
           'text/html'
         );
-
         addPage(link, pageDom, elementSelector);
         updatePage(link, content);
       } catch {
@@ -106,4 +105,17 @@ export default ({ elementSelector = 'body' } = {}) => {
       }
     }
   });
+};
+
+export default ({ elementSelector = 'body' } = {}) => {
+  return {
+    on: (event, cb) => {
+      if (!event || !cb || !(cb instanceof Function) || !callbacks[event]) {
+        return;
+      }
+
+      callbacks[event].push(cb);
+    },
+    init: () => init({ elementSelector })
+  };
 };

@@ -1,0 +1,36 @@
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1em;
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0.5em;
+
+    &--info {
+      opacity: 0.8;
+    }
+  }
+
+  &__item {
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+  }
+
+  &__group--ctas &__item {
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__icon {
+    width: 1.2em;
+    height: 1.2em;
+    margin-left: 0.25em;
+    fill: currentColor;
+  }
+}
