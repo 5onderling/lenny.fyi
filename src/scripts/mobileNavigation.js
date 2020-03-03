@@ -1,7 +1,8 @@
 export default ({
   buttonSelector = '.burger',
   menuSelector = '.nav__menu',
-  bodyClass = 'nav-menu-open'
+  bodyClass = 'nav-menu-open',
+  router
 } = {}) => {
   const button = document.querySelector(buttonSelector);
   const menu = document.querySelector(menuSelector);
@@ -13,7 +14,8 @@ export default ({
     document.body.classList.toggle(bodyClass);
   });
 
-  window.addEventListener('navigated', () => {
+  if (!router) return;
+  router.on('afterPageUpdate', () => {
     document.body.classList.remove(bodyClass);
   });
 };
