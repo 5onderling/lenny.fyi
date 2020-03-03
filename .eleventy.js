@@ -84,6 +84,12 @@ module.exports = eleventyConfig => {
   eleventyConfig.addWatchTarget('src/scripts');
   eleventyConfig.addWatchTarget('src/styles');
 
+  eleventyConfig.addNunjucksFilter('readingTime', text => {
+    const textWithoutHtml = text.replace(/(<([^>]+)>)/gi, '');
+    const wordsCount = textWithoutHtml.split(' ').length;
+    return `${Math.ceil(wordsCount / 225)} min read`;
+  });
+
   eleventyConfig.addNunjucksFilter('readableDate', dateObj => {
     const date = new Date(dateObj),
       day = date
