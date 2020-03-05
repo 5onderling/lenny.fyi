@@ -43,4 +43,4 @@ _Here's a fancy list of things I can do / use (well):_
 - **Computer:** Acer Swift 5 (older model)
 - **Monitor:** Eizo FlexScan EV2450-BK (older model)
 - **Keyboard:** Ducky One 2 mini
-- **Mice:** Logitech MX Master 3
+- **Mouse:** Logitech MX Master 3
