@@ -1,5 +1,4 @@
 const { rollup } = require('rollup');
-const rollupTypescript = require('@rollup/plugin-typescript');
 const rollupCommonjs = require('@rollup/plugin-commonjs');
 const rollupResolve = require('@rollup/plugin-node-resolve');
 const { terser: rollupTerser } = require('rollup-plugin-terser');
@@ -58,7 +57,6 @@ module.exports = class {
             ['@babel/plugin-proposal-nullish-coalescing-operator']
           ]
         }),
-        rollupTypescript({ allowJs: true }),
         rollupResolve(),
         rollupCommonjs()
       ]

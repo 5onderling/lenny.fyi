@@ -35,7 +35,6 @@
     "@babel/plugin-transform-template-literals": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-typescript": "^4.0.0",
     "autoprefixer": "^9.7.4",
     "babel-plugin-transform-async-to-promises": "^0.8.15",
     "cross-env": "^7.0.2",
@@ -59,8 +58,6 @@
     "postcss-unprefix": "^2.1.4",
     "rollup": "^2.0.2",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-terser": "^5.2.0",
-    "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "rollup-plugin-terser": "^5.2.0"
   }
 }
