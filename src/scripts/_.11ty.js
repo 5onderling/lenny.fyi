@@ -48,6 +48,7 @@ module.exports = class {
             ['@babel/plugin-transform-arrow-functions'],
             ['@babel/plugin-transform-parameters', { loose: true }],
             ['@babel/plugin-transform-exponentiation-operator'],
+            ['@babel/plugin-transform-classes', { loose: true }],
             // proposals (are already in chrome (v80 maybe earlier))
             [
               '@babel/plugin-proposal-object-rest-spread',
