@@ -9,7 +9,6 @@ export default ({
   const cursor = Object.assign(document.createElement('div'), {
     className: mainClass
   });
-  let press;
 
   document.body.append(cursor);
 
@@ -21,46 +20,46 @@ export default ({
 
     const overCta = e.target.closest(hoverElements);
     cursor.classList[overCta ? 'add' : 'remove'](hoverClass);
-
-    if (!press || !window.getSelection().isCollapsed) return;
-    window.scrollTo(0, window.scrollY - e.movementY);
   };
   const handlePress = e => {
-    press = e.type === 'mousedown';
-    cursor.classList[press ? 'add' : 'remove'](pressClass);
+    cursor.classList[e.type === 'mousedown' ? 'add' : 'remove'](pressClass);
   };
   const showCursor = e => {
-    window.addEventListener('mousemove', moveCursor);
-    window.addEventListener('mousedown', handlePress);
-    window.addEventListener('mouseup', handlePress);
+    window.addEventListener('mousemove', moveCursor, { passive: true });
+    window.addEventListener('mousedown', handlePress, { passive: true });
+    window.addEventListener('mouseup', handlePress, { passive: true });
 
     setCursorPosition(e);
     cursor.classList.add(visibleClass);
     cursor.offsetTop; // wait for next event loop
     document.body.classList.add(visibleBodyClass);
-    document.body.removeEventListener('mouseover', showCursor);
+    document.body.removeEventListener('mouseover', showCursor, {
+      passive: true
+    });
 
-    document.body.addEventListener('mouseleave', hideCursor);
+    document.body.addEventListener('mouseleave', hideCursor, { passive: true });
   };
   const hideCursor = () => {
     document.body.removeEventListener('mouseleave', hideCursor);
-    window.removeEventListener('mousemove', moveCursor);
-    window.removeEventListener('mousedown', handlePress);
-    window.removeEventListener('mouseup', handlePress);
+    window.removeEventListener('mousemove', moveCursor, { passive: true });
+    window.removeEventListener('mousedown', handlePress, { passive: true });
+    window.removeEventListener('mouseup', handlePress, { passive: true });
 
     cursor.classList.remove(visibleClass);
     document.body.classList.remove(visibleBodyClass);
 
-    document.body.addEventListener('mouseover', showCursor);
+    document.body.addEventListener('mouseover', showCursor, { passive: true });
   };
 
-  document.body.addEventListener('mouseover', showCursor);
+  document.body.addEventListener('mouseover', showCursor, { passive: true });
 
   window.addEventListener(
     'touchstart',
     () => {
       hideCursor();
-      document.body.removeEventListener('mouseover', showCursor);
+      document.body.removeEventListener('mouseover', showCursor, {
+        passive: true
+      });
     },
     { once: true }
   );
