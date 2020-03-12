@@ -6,18 +6,19 @@
 }
 
 /* blog stuff */
+a:not([class]) {
+  box-shadow: 0 0.1em var(--primary-color), inset 0 -0.1em var(--primary-color);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 0.1em var(--primary-color),
+      inset 0 -1.6em var(--primary-color);
+  }
+}
+
 article {
   max-width: 48rem;
   margin: auto;
-
-  a:not([class]) {
-    box-shadow: inset 0 -0.25em var(--primary-color);
-    transition: box-shadow 0.2s ease;
-
-    &:hover {
-      box-shadow: inset 0 -1.5em var(--primary-color);
-    }
-  }
 
   p {
     margin: 1em 0;
