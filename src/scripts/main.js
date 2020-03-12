@@ -33,17 +33,7 @@ const main = () => {
     }
   })(Element.prototype);
 
-  const router = new RouteHandler({
-    elementSelector: '.content',
-    on: {
-      beforePageSave() {
-        console.log('save');
-      },
-      afterPageUpdate() {
-        console.log('updated');
-      }
-    }
-  });
+  const router = new RouteHandler({ elementSelector: '#content' });
 
   cursor();
   themeSwitcher();
