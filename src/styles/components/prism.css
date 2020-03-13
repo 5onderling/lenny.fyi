@@ -1,0 +1,115 @@
+pre[class*='language-'] {
+  overflow: auto;
+  background-color: var(--bg-color-secondary);
+  transition: background-color 0.25s ease;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+
+  > code {
+    display: inline-block;
+    margin: 1.25em;
+    font-size: 1em;
+    font-family: 'Fira Code';
+    font-variant-ligatures: contextual;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 0.25rem;
+  }
+}
+
+.token {
+  color: var(--prism-token);
+  transition: color 0.25s ease;
+
+  &.comment {
+    color: var(--prism-token-comment);
+  }
+  &.prolog {
+    color: var(--prism-token-prolog);
+  }
+  &.tag {
+    color: var(--prism-token-tag);
+  }
+  &.entity {
+    color: var(--prism-token-entity);
+  }
+  &.atrule {
+    color: var(--prism-token-atrule);
+  }
+  &.url {
+    color: var(--prism-token-url);
+  }
+  &.selector {
+    color: var(--prism-token-selector);
+  }
+  &.string {
+    color: var(--prism-token-string);
+  }
+  &.property {
+    color: var(--prism-token-property);
+  }
+  &.important {
+    color: var(--prism-token-important);
+    font-weight: bold;
+  }
+  &.punctuation {
+    color: var(--prism-token-punctuation);
+  }
+  &.number {
+    color: var(--prism-token-number);
+  }
+  &.function {
+    color: var(--prism-token-function);
+  }
+  &.class-name {
+    color: var(--prism-token-class-name);
+  }
+  &.keyword {
+    color: var(--prism-token-keyword);
+  }
+  &.boolean {
+    color: var(--prism-token-boolean);
+  }
+  &.operator {
+    color: var(--prism-token-operator);
+  }
+  &.char {
+    color: var(--prism-token-char);
+  }
+  &.regex {
+    color: var(--prism-token-regex);
+  }
+  &.variable {
+    color: var(--prism-token-variable);
+  }
+  &.constant {
+    color: var(--prism-token-constant);
+  }
+  &.symbol {
+    color: var(--prism-token-symbol);
+  }
+  &.builtin {
+    color: var(--prism-token-builtin);
+  }
+  &.attr-value {
+    color: var(--prism-token-attr-value);
+  }
+  &.deleted {
+    color: var(--prism-token-deleted);
+  }
+  &.namespace {
+    color: var(--prism-token-namespace);
+  }
+  &.bold {
+    font-weight: bold;
+  }
+  &.italic {
+    font-style: italic;
+  }
+}

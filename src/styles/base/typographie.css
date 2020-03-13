@@ -52,18 +52,18 @@ h2 {
 }
 
 h1 {
-  @mixin fluidSize 20rem, 75rem, 2rem, 4rem;
+  @mixin fluid-size 20rem, 75rem, 2rem, 4rem;
 }
 
 h2 {
-  @mixin fluidSize 20rem, 75rem, 1.5rem, 2rem;
+  @mixin fluid-size 20rem, 75rem, 1.5rem, 2rem;
 }
 
 h3 {
   font-weight: 400;
 }
 
-code {
+code:not([class]) {
   font-size: 1.1em;
   font-weight: 700;
 }

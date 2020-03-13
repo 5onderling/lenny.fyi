@@ -1,11 +1,11 @@
 :root {
   --primary-color: hsl(340, 82%, 52%);
 
-  @mixin defaultTheme;
-  @mixin finalThemeColors;
+  @mixin default-theme;
+  @mixin final-theme-colors;
 
   @media (--dark) {
-    @mixin darkTheme;
+    @mixin dark-theme;
   }
 }
 
@@ -15,11 +15,11 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 
   &.other-theme {
-    @mixin darkTheme;
-    @mixin finalThemeColors;
+    @mixin dark-theme;
+    @mixin final-theme-colors;
 
     @media (--dark) {
-      @mixin defaultTheme;
+      @mixin default-theme;
     }
   }
 
