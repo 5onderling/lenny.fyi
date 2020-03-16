@@ -16,8 +16,8 @@ const postcssUnprefix = require('postcss-unprefix');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
-const mixins = require('./mixins');
-const functions = require('./functions');
+const mixins = require('./js-mixins');
+const functions = require('./js-functions');
 
 module.exports = class {
   data() {

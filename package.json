@@ -26,10 +26,10 @@
     "@babel/plugin-transform-arrow-functions": "^7.8.3",
     "@babel/plugin-transform-block-scoping": "^7.8.3",
     "@babel/plugin-transform-classes": "^7.8.6",
-    "@babel/plugin-transform-destructuring": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.8.8",
     "@babel/plugin-transform-exponentiation-operator": "^7.8.3",
     "@babel/plugin-transform-for-of": "^7.8.6",
-    "@babel/plugin-transform-parameters": "^7.8.7",
+    "@babel/plugin-transform-parameters": "^7.8.8",
     "@babel/plugin-transform-shorthand-properties": "^7.8.3",
     "@babel/plugin-transform-spread": "^7.8.3",
     "@babel/plugin-transform-strict-mode": "^7.8.3",
@@ -57,8 +57,8 @@
     "postcss-selector-not": "^4.0.0",
     "postcss-simple-vars": "^5.0.2",
     "postcss-unprefix": "^2.1.4",
-    "rollup": "^2.0.2",
+    "rollup": "^2.0.6",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-terser": "^5.2.0"
+    "rollup-plugin-terser": "^5.3.0"
   }
 }

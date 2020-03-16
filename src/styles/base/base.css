@@ -1,11 +1,22 @@
 :root {
   --primary-color: hsl(340, 82%, 52%);
 
-  @mixin defaultTheme;
-  @mixin finalThemeColors;
+  @mixin default-theme;
+  @mixin final-theme-colors;
 
   @media (--dark) {
-    @mixin darkTheme;
+    @mixin dark-theme;
+  }
+}
+
+html {
+  &.other-theme {
+    @mixin dark-theme;
+    @mixin final-theme-colors;
+
+    @media (--dark) {
+      @mixin default-theme;
+    }
   }
 }
 
@@ -13,22 +24,6 @@ body {
   color: var(--text-color);
   background-color: var(--bg-color);
   transition: background-color 0.25s ease, color 0.25s ease;
-
-  &.other-theme {
-    @mixin darkTheme;
-    @mixin finalThemeColors;
-
-    @media (--dark) {
-      @mixin defaultTheme;
-    }
-  }
-
-  &.no-transition {
-    &,
-    & * {
-      transition-duration: 0s;
-    }
-  }
 }
 
 a {
