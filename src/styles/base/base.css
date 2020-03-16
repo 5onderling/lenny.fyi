@@ -9,11 +9,7 @@
   }
 }
 
-body {
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  transition: background-color 0.25s ease, color 0.25s ease;
-
+html {
   &.other-theme {
     @mixin dark-theme;
     @mixin final-theme-colors;
@@ -22,13 +18,12 @@ body {
       @mixin default-theme;
     }
   }
+}
 
-  &.no-transition {
-    &,
-    & * {
-      transition-duration: 0s;
-    }
-  }
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 a {
