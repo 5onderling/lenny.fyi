@@ -44,7 +44,7 @@
       <a
         class="logo"
         href="/"
-        title="homepage"
+        aria-label="homepage"
         {%- if page.url == curUrl %}
           aria-current="Page"
         {%- endif %}
@@ -64,7 +64,7 @@
           </a>
         {%- endfor %}
       </nav>
-      <button class="nav__icon theme-switcher" title="Switch theme" type="button" hidden></button>
+      <button class="nav__icon theme-switcher" aria-label="Switch theme" type="button" hidden></button>
       <button class="nav__icon burger" hidden><span class="burger__line"></span></button>
     </div>
   </header>
