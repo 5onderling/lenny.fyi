@@ -1,14 +1,13 @@
 export default ({
-  router,
   webshareSelector = '.post-meta__item--webshare',
   fallbackSelector = '.post-meta__item--twittershare'
 } = {}) => {
-  if (!navigator.share || !router) return;
+  if (!navigator.share) return;
 
-  router.on('beforePageSave', dom => {
-    dom.querySelectorAll(webshareSelector).forEach(el => (el.hidden = false));
-    dom.querySelectorAll(fallbackSelector).forEach(el => el.remove());
-  });
+  document
+    .querySelectorAll(webshareSelector)
+    .forEach(el => (el.hidden = false));
+  document.querySelectorAll(fallbackSelector).forEach(el => el.remove());
 
   window.addEventListener('click', e => {
     const button = e.target.closest(webshareSelector);
