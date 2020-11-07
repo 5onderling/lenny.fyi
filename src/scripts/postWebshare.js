@@ -1,15 +1,15 @@
 export default ({
   webshareSelector = '.post-meta__item--webshare',
-  fallbackSelector = '.post-meta__item--twittershare'
+  fallbackSelector = '.post-meta__item--twittershare',
 } = {}) => {
   if (!navigator.share) return;
 
   document
     .querySelectorAll(webshareSelector)
-    .forEach(el => (el.hidden = false));
-  document.querySelectorAll(fallbackSelector).forEach(el => el.remove());
+    .forEach((el) => (el.hidden = false));
+  document.querySelectorAll(fallbackSelector).forEach((el) => el.remove());
 
-  window.addEventListener('click', e => {
+  window.addEventListener('click', (e) => {
     const button = e.target.closest(webshareSelector);
     if (!button) return;
 

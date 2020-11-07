@@ -1,7 +1,7 @@
 export default ({
   buttonSelector = '.burger',
   menuSelector = '.nav__menu',
-  bodyClass = 'nav-menu-open'
+  bodyClass = 'nav-menu-open',
 } = {}) => {
   const button = document.querySelector(buttonSelector);
   const menu = document.querySelector(menuSelector);

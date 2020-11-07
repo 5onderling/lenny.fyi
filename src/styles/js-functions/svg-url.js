@@ -1,4 +1,4 @@
-module.exports = svg => {
+module.exports = (svg) => {
   // remove questionmarks
   svg = svg.slice(1, -1);
 

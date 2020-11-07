@@ -1,7 +1,7 @@
 export default ({
   selector = '.nav',
   fixedClass = 'nav--fixed',
-  fixedHiddenClass = 'nav--hide'
+  fixedHiddenClass = 'nav--hide',
 } = {}) => {
   const nav = document.querySelector(selector);
   if (!nav) return;
@@ -31,7 +31,7 @@ export default ({
     window.addEventListener(
       'scroll',
       () => window.addEventListener('scroll', scrollHandler, { passive: true }),
-      { once: true, passive: true }
+      { once: true, passive: true },
     );
   });
 };

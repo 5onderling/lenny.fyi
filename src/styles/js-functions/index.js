@@ -1,5 +1,5 @@
 const svgUrl = require('./svg-url');
 
 module.exports = {
-  'svg-url': svgUrl
+  'svg-url': svgUrl,
 };

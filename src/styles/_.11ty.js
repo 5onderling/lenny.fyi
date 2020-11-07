@@ -25,15 +25,15 @@ module.exports = class {
       pagination: {
         data: 'entrys',
         size: 1,
-        alias: 'entry'
+        alias: 'entry',
       },
       permalink: ({ entry: { output } }) => output,
       entrys: [
         {
           input: 'src/styles/main.css',
-          output: 'main.css'
-        }
-      ]
+          output: 'main.css',
+        },
+      ],
     };
   }
 
@@ -52,11 +52,11 @@ module.exports = class {
       postcssCalc(),
       postcssOverflowShorthand(),
       postcssSelectorNot(),
-      ...(isProd ? [postcssUnprefix(), autoprefixer(), cssnano()] : [])
+      ...(isProd ? [postcssUnprefix(), autoprefixer(), cssnano()] : []),
     ]).process(await fs.readFile(input), {
       from: input,
       to: output,
-      map: !isProd
+      map: !isProd,
     });
 
     return css;

@@ -1,6 +1,6 @@
 export default ({
   buttonSelector = '.theme-switcher',
-  documentClass = 'other-theme'
+  documentClass = 'other-theme',
 } = {}) => {
   const button = document.querySelector(buttonSelector);
   if (!button || !window.CSS || !CSS.supports('top', 'var(--)')) return;

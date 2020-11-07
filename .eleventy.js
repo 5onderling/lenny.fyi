@@ -13,13 +13,13 @@ const config = {
     input: 'src',
     output: 'dist',
     includes: 'templates',
-    data: 'data'
+    data: 'data',
   },
   markdownTemplateEngine: 'njk',
-  dataTemplateEngine: '11ty.js'
+  dataTemplateEngine: '11ty.js',
 };
 
-module.exports = eleventyConfig => {
+module.exports = (eleventyConfig) => {
   const isProd = process.env.ELEVENTY_ENV === 'production';
 
   fs.emptyDirSync(config.dir.output);
@@ -29,7 +29,7 @@ module.exports = eleventyConfig => {
     markdownIt({
       html: true,
       breaks: true,
-      linkify: true
+      linkify: true,
     }).use(markdownItAnchor, {
       level: 2,
       permalink: true,
@@ -38,12 +38,12 @@ module.exports = eleventyConfig => {
       permalinkSymbol:
         '<svg class="permalink__icon" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 010-7.07l3.54-3.54a5.003 5.003 0 017.07 0 5.003 5.003 0 010 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 000-4.24 2.982 2.982 0 00-4.24 0l-3.53 3.53a2.982 2.982 0 000 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 010 7.07l-3.54 3.54a5.003 5.003 0 01-7.07 0 5.003 5.003 0 010-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 000 4.24 2.982 2.982 0 004.24 0l3.53-3.53a2.982 2.982 0 000-4.24.973.973 0 010-1.42z"/></svg>',
       permalinkBefore: true,
-      permalinkAttrs: slug => ({ 'aria-label': `${slug} permalink` }),
+      permalinkAttrs: (slug) => ({ 'aria-label': `${slug} permalink` }),
       // "custom" render function (only for permalinkAttrs) (remove after new markdown-it-anchor release)
       renderPermalink: (slug, opts, state, idx) => {
         const position = {
           false: 'push',
-          true: 'unshift'
+          true: 'unshift',
         };
 
         const space = () =>
@@ -54,13 +54,13 @@ module.exports = eleventyConfig => {
             attrs: [
               ['class', opts.permalinkClass],
               ['href', opts.permalinkHref(slug, state)],
-              ...Object.entries(opts.permalinkAttrs(slug, state))
-            ]
+              ...Object.entries(opts.permalinkAttrs(slug, state)),
+            ],
           }),
           Object.assign(new state.Token('html_block', '', 0), {
-            content: opts.permalinkSymbol
+            content: opts.permalinkSymbol,
           }),
-          new state.Token('link_close', 'a', -1)
+          new state.Token('link_close', 'a', -1),
         ];
 
         // `push` or `unshift` according to position option.
@@ -69,10 +69,10 @@ module.exports = eleventyConfig => {
           linkTokens[position[!opts.permalinkBefore]](space());
         }
         state.tokens[idx + 1].children[position[opts.permalinkBefore]](
-          ...linkTokens
+          ...linkTokens,
         );
-      }
-    })
+      },
+    }),
   );
 
   eleventyConfig.addPlugin(rss);
@@ -84,18 +84,15 @@ module.exports = eleventyConfig => {
   eleventyConfig.addWatchTarget('src/scripts');
   eleventyConfig.addWatchTarget('src/styles');
 
-  eleventyConfig.addNunjucksFilter('readingTime', text => {
+  eleventyConfig.addNunjucksFilter('readingTime', (text) => {
     const textWithoutHtml = text.replace(/(<([^>]+)>)/gi, '');
     const wordsCount = textWithoutHtml.split(' ').length;
     return `${Math.ceil(wordsCount / 225)} min read`;
   });
 
-  eleventyConfig.addNunjucksFilter('readableDate', dateObj => {
+  eleventyConfig.addNunjucksFilter('readableDate', (dateObj) => {
     const date = new Date(dateObj),
-      day = date
-        .getDate()
-        .toString()
-        .padStart(2, 0),
+      day = date.getDate().toString().padStart(2, 0),
       month = (date.getMonth() + 1).toString().padStart(2, 0),
       year = date.getFullYear();
 
@@ -115,13 +112,10 @@ module.exports = eleventyConfig => {
       'September',
       'October',
       'November',
-      'December'
+      'December',
     ];
     const date = new Date(dateObj);
-    const day = date
-      .getDate()
-      .toString()
-      .padStart(2, 0);
+    const day = date.getDate().toString().padStart(2, 0);
     const month = (date.getMonth() + 1).toString().padStart(2, 0);
     const year = date.getFullYear();
 
@@ -133,12 +127,12 @@ module.exports = eleventyConfig => {
     } datetime="${year}-${month}-${day}">${day} ${monthText} ${year}</time>`;
   });
 
-  eleventyConfig.addNunjucksFilter('nav', pages => {
+  eleventyConfig.addNunjucksFilter('nav', (pages) => {
     return pages
-      .filter(page => page.data.nav)
+      .filter((page) => page.data.nav)
       .sort(
         ({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) =>
-          orderA - orderB
+          orderA - orderB,
       );
   });
 
@@ -157,7 +151,7 @@ module.exports = eleventyConfig => {
         sortClassName: true,
         useShortDoctype: true,
         minifyCSS: true,
-        minifyJS: true
+        minifyJS: true,
       });
     });
   }
@@ -178,8 +172,8 @@ module.exports = eleventyConfig => {
           res.write(notFoundPage);
           res.end();
         });
-      }
-    }
+      },
+    },
   });
 
   return config;

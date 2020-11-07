@@ -23,9 +23,9 @@ const unsupportedFeatures = [
   !Element.prototype.closest && 'Element.prototype.closest',
   !Element.prototype.append && 'Element.prototype.append',
   !Element.prototype.remove && 'Element.prototype.remove',
-  !NodeList.prototype.forEach && 'NodeList.prototype.forEach'
+  !NodeList.prototype.forEach && 'NodeList.prototype.forEach',
 ]
-  .filter(item => item)
+  .filter((item) => item)
   .join();
 
 if (!unsupportedFeatures) {

@@ -10,15 +10,15 @@ module.exports = class {
       pagination: {
         data: 'entrys',
         size: 1,
-        alias: 'entry'
+        alias: 'entry',
       },
       permalink: ({ entry: { output } }) => output,
       entrys: [
         {
           input: 'src/scripts/main.js',
-          output: 'main.js'
-        }
-      ]
+          output: 'main.js',
+        },
+      ],
     };
   }
 
@@ -33,7 +33,7 @@ module.exports = class {
           plugins: [
             [
               'babel-plugin-transform-async-to-promises',
-              { inlineHelpers: true }
+              { inlineHelpers: true },
             ],
             ['@babel/plugin-transform-strict-mode'],
             ['@babel/plugin-transform-block-scoping'],
@@ -41,7 +41,7 @@ module.exports = class {
             ['@babel/plugin-transform-spread'],
             [
               '@babel/plugin-transform-destructuring',
-              { loose: true, useBuiltIns: true }
+              { loose: true, useBuiltIns: true },
             ],
             ['@babel/plugin-transform-shorthand-properties'],
             ['@babel/plugin-transform-template-literals', { loose: true }],
@@ -52,28 +52,28 @@ module.exports = class {
             // proposals (are already in chrome (v80 maybe earlier))
             [
               '@babel/plugin-proposal-object-rest-spread',
-              { loose: true, useBuiltIns: true }
+              { loose: true, useBuiltIns: true },
             ],
             ['@babel/plugin-proposal-optional-chaining'],
-            ['@babel/plugin-proposal-nullish-coalescing-operator']
-          ]
+            ['@babel/plugin-proposal-nullish-coalescing-operator'],
+          ],
         }),
         rollupResolve(),
-        rollupCommonjs()
-      ]
+        rollupCommonjs(),
+      ],
     });
 
     const {
-      output: [{ code, map }]
+      output: [{ code, map }],
     } = await bundle.generate({
       format: 'iife',
-      sourcemap: !isProd
+      sourcemap: !isProd,
     });
 
     if (!map) return code;
 
     return `${code}\n//# sourceMappingURL=data:application/json;base64,${Buffer.from(
-      JSON.stringify(map)
+      JSON.stringify(map),
     ).toString('base64')}`;
   }
 };

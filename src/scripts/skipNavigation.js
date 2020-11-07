@@ -5,7 +5,7 @@ export default () => {
   if (!target) return;
 
   target.tabIndex = -1;
-  link.addEventListener('click', e => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
     target.focus();
   });
