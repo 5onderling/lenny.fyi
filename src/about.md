@@ -33,7 +33,7 @@ _Here's a fancy list of things I can do / use (well):_
 
 - [Twitter](https://twitter.com/5onderling)
 - [Github](https://github.com/lennyanders)
-- [E-Mail](mailto:contact@lennyanders.dev)
+- [E-Mail](mailto:hey@lenny.fyi)
 
 ## Things I use
 
