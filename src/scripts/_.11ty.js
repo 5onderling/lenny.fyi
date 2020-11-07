@@ -1,6 +1,6 @@
 const { rollup } = require('rollup');
 const rollupCommonjs = require('@rollup/plugin-commonjs');
-const rollupResolve = require('@rollup/plugin-node-resolve');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const { terser: rollupTerser } = require('rollup-plugin-terser');
 const rollupBabel = require('rollup-plugin-babel');
 
@@ -58,7 +58,7 @@ module.exports = class {
             ['@babel/plugin-proposal-nullish-coalescing-operator'],
           ],
         }),
-        rollupResolve(),
+        nodeResolve(),
         rollupCommonjs(),
       ],
     });

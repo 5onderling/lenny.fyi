@@ -39,39 +39,6 @@ module.exports = (eleventyConfig) => {
         '<svg class="permalink__icon" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 010-7.07l3.54-3.54a5.003 5.003 0 017.07 0 5.003 5.003 0 010 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 000-4.24 2.982 2.982 0 00-4.24 0l-3.53 3.53a2.982 2.982 0 000 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 010 7.07l-3.54 3.54a5.003 5.003 0 01-7.07 0 5.003 5.003 0 010-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 000 4.24 2.982 2.982 0 004.24 0l3.53-3.53a2.982 2.982 0 000-4.24.973.973 0 010-1.42z"/></svg>',
       permalinkBefore: true,
       permalinkAttrs: (slug) => ({ 'aria-label': `${slug} permalink` }),
-      // "custom" render function (only for permalinkAttrs) (remove after new markdown-it-anchor release)
-      renderPermalink: (slug, opts, state, idx) => {
-        const position = {
-          false: 'push',
-          true: 'unshift',
-        };
-
-        const space = () =>
-          Object.assign(new state.Token('text', '', 0), { content: ' ' });
-
-        const linkTokens = [
-          Object.assign(new state.Token('link_open', 'a', 1), {
-            attrs: [
-              ['class', opts.permalinkClass],
-              ['href', opts.permalinkHref(slug, state)],
-              ...Object.entries(opts.permalinkAttrs(slug, state)),
-            ],
-          }),
-          Object.assign(new state.Token('html_block', '', 0), {
-            content: opts.permalinkSymbol,
-          }),
-          new state.Token('link_close', 'a', -1),
-        ];
-
-        // `push` or `unshift` according to position option.
-        // Space is at the opposite side.
-        if (opts.permalinkSpace) {
-          linkTokens[position[!opts.permalinkBefore]](space());
-        }
-        state.tokens[idx + 1].children[position[opts.permalinkBefore]](
-          ...linkTokens,
-        );
-      },
     }),
   );
 
