@@ -4,6 +4,7 @@ node_modules
 
 # 11ty output
 dist
+.cache
 
 # zeit.now configuration
 .now
