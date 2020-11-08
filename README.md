@@ -1,3 +1,3 @@
-# lennyanders.dev
+# lenny.fyi
 
-My website <https://lennyanders.dev>
+My website <https://lenny.fyi>
