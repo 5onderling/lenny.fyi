@@ -20,14 +20,14 @@ jobs:
       - name: Get server folder
         id: serverDir
         run: |
-          if [$REF == 'refs/heads/main']
+          if [$IS_MAIN]
           then
             echo "::set-output name=serverDir::./public_html/lenny.fyi/"
           else
             echo "::set-output name=serverDir::./public_html/qa.lenny.fyi/"
           fi
         env:
-          REF: ${{ github.ref }}
+          IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Deploy build to server
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
