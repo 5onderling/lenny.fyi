@@ -28,4 +28,4 @@ jobs:
           port: 21
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ./public_html/qa.lenny.fyi
+          server-dir: ./public_html/qa.lenny.fyi/
