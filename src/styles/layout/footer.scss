@@ -3,8 +3,8 @@
   margin: 0 $contentPadding;
 
   &__inner {
-    max-width: calc($contentWidth - $contentPadding * 2);
-    margin: calc($contentPadding / 2) auto;
+    max-width: #{$contentWidth - $contentPadding * 2};
+    margin: #{$contentPadding / 2} auto;
     display: flex;
     flex-wrap: wrap;
   }

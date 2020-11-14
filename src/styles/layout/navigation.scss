@@ -46,7 +46,7 @@
       height: 300vw;
     }
 
-    @media (--tablet) {
+    @include minTablet {
       content: none;
     }
   }
@@ -87,12 +87,12 @@
     overflow-y: auto;
     min-height: 50vh;
     max-height: 100vh;
-    padding-top: calc($navHeight * 1.5);
+    padding-top: #{$navHeight * 1.5};
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s, opacity 0.375s 0s;
 
-    @media (--tablet) {
+    @include minTablet {
       padding-top: 0;
       width: auto;
       opacity: 1;
@@ -108,7 +108,7 @@
     padding: 0 0.2em 0.3rem;
     margin: 2em 0;
 
-    @media (--tablet) {
+    @include minTablet {
       margin: 0.3em 0 0 1em;
     }
 
@@ -149,7 +149,7 @@
 .logo {
   z-index: 1;
   margin-right: auto;
-  width: calc($navHeight * (128 / 96));
+  width: #{$navHeight * (128 / 96)};
   height: $navHeight;
 }
 
@@ -169,7 +169,7 @@
   width: $burgerSize;
   height: $burgerSize;
 
-  @media (--tablet) {
+  @include minTablet {
     display: none;
   }
 
@@ -193,10 +193,10 @@
       transition: transform 0.25s ease;
     }
     &::before {
-      transform: translate3d(0, calc(-$burgerSize / 2 + $lineHeight / 2), 0);
+      transform: translate3d(0, #{-$burgerSize / 2 + $lineHeight / 2}, 0);
     }
     &::after {
-      transform: translate3d(0, calc($burgerSize / 2 - $lineHeight / 2), 0);
+      transform: translate3d(0, #{$burgerSize / 2 - $lineHeight / 2}, 0);
     }
   }
 }
@@ -204,7 +204,7 @@
 .nav-menu-open {
   overflow: hidden;
 
-  @media (--tablet) {
+  @include minTablet {
     overflow: auto;
   }
 

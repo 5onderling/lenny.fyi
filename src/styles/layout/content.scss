@@ -2,7 +2,7 @@
   min-height: 100vh;
   max-width: $contentWidth;
   margin: 0 auto $navHeight;
-  padding: calc($navHeight * 1.5) $contentPadding 0;
+  padding: #{$navHeight * 1.5} $contentPadding 0;
 }
 
 /* blog stuff */
@@ -23,7 +23,7 @@ article {
   p {
     margin: 1em 0;
 
-    @media (--tablet) {
+    @include minTablet {
       margin-left: 1em;
     }
   }
@@ -78,7 +78,7 @@ h6 {
   top: 50%;
   height: $size;
   width: $size;
-  margin-top: calc(-$size / 2);
+  margin-top: #{-$size / 2};
   margin-left: -$size;
 
   &__icon {

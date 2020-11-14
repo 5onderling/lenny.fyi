@@ -1,23 +1,20 @@
-const fs = require('fs-extra');
+const { writeFile } = require('fs/promises');
 
 const postcss = require('postcss');
-const postcssImport = require('postcss-import');
-const postcssImportUrl = require('postcss-import-url');
-const postcssMixins = require('postcss-mixins');
-const postcssFunctions = require('postcss-functions');
-const postcssSimpleVars = require('postcss-simple-vars');
-const postcssNested = require('postcss-nested');
-const postcssCustomMedia = require('postcss-custom-media');
 const postcssCustomProperties = require('postcss-custom-properties');
-const postcssCalc = require('postcss-calc');
-const postcssOverflowShorthand = require('postcss-overflow-shorthand');
-const postcssSelectorNot = require('postcss-selector-not');
 const postcssUnprefix = require('postcss-unprefix');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const sass = require('sass');
 
-const mixins = require('./js-mixins');
-const functions = require('./js-functions');
+const sassRenderer = (options) =>
+  new Promise((resolve, reject) => {
+    sass.render(options, (error, result) => {
+      if (error) return reject(error);
+
+      resolve(result);
+    });
+  });
 
 module.exports = class {
   data() {
@@ -30,7 +27,7 @@ module.exports = class {
       permalink: ({ entry: { output } }) => output,
       entrys: [
         {
-          input: 'src/styles/main.css',
+          input: 'src/styles/main.scss',
           output: 'main.css',
         },
       ],
@@ -38,27 +35,32 @@ module.exports = class {
   }
 
   async render({ entry: { input, output } }) {
-    const isProd = process.env.ELEVENTY_ENV === 'production';
+    try {
+      const { css: sassCss } = await sassRenderer({
+        file: input,
+        outFile: output,
+        sourceMap: true,
+        sourceMapEmbed: true,
+      });
 
-    const { css } = await postcss([
-      postcssImport(),
-      postcssImportUrl(),
-      postcssMixins({ mixins }),
-      postcssFunctions({ functions }),
-      postcssSimpleVars(),
-      postcssNested(),
-      postcssCustomMedia(),
-      postcssCustomProperties(),
-      postcssCalc(),
-      postcssOverflowShorthand(),
-      postcssSelectorNot(),
-      ...(isProd ? [postcssUnprefix(), autoprefixer(), cssnano()] : []),
-    ]).process(await fs.readFile(input), {
-      from: input,
-      to: output,
-      map: !isProd,
-    });
+      const { css, map } = await postcss([
+        postcssCustomProperties(),
+        postcssUnprefix(),
+        autoprefixer(),
+        cssnano(),
+      ]).process(sassCss, {
+        from: input,
+        to: output,
+        map: {
+          inline: false,
+        },
+      });
 
-    return css;
+      await writeFile(`dist/${output}.map`, JSON.stringify(map));
+
+      return css;
+    } catch (error) {
+      console.error(error);
+    }
   }
 };

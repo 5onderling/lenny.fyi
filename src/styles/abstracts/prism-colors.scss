@@ -1,7 +1,7 @@
 /*
  * Colors from Material Light Theme for Prism.JS
  */
-@define-mixin prism-default-theme-colors {
+@mixin prism-default-theme-colors {
   --prism-token: hsl(13, 92%, 62%);
   --prism-token-namespace: hsla(13, 92%, 62%, 0.5);
 
@@ -40,7 +40,7 @@
 /*
  * Colors from Dracula Theme for Prism.JS
  */
-@define-mixin prisim-dark-theme-colors {
+@mixin prisim-dark-theme-colors {
   --prism-token: hsl(326, 100%, 74%);
   --prism-token-important: var(--prism-token);
   --prism-token-keyword: var(--prism-token);

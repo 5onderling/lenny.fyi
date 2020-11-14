@@ -3,7 +3,7 @@
   display: grid;
   grid-gap: 2rem;
 
-  @media (--tablet) {
+  @include minTablet {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 }
@@ -42,8 +42,9 @@
     }
     &:focus {
       outline: none;
+
       &::before {
-        @mixin focus;
+        @include focus;
       }
     }
 

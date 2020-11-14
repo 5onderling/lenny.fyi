@@ -1,21 +1,21 @@
 :root {
   --primary-color: hsl(340, 82%, 52%);
 
-  @mixin default-theme;
-  @mixin final-theme-colors;
+  @include default-theme;
+  @include final-theme-colors;
 
-  @media (--dark) {
-    @mixin dark-theme;
+  @include schemeDark {
+    @include dark-theme;
   }
 }
 
 html {
   &.other-theme {
-    @mixin dark-theme;
-    @mixin final-theme-colors;
+    @include dark-theme;
+    @include final-theme-colors;
 
-    @media (--dark) {
-      @mixin default-theme;
+    @include schemeDark {
+      @include default-theme;
     }
   }
 }
@@ -32,7 +32,7 @@ a {
 }
 
 :focus {
-  @mixin focus;
+  @include focus;
 }
 [tabindex='-1'] {
   outline: none;

@@ -52,11 +52,11 @@ h2 {
 }
 
 h1 {
-  @mixin fluid-size 20rem, 75rem, 2rem, 4rem;
+  @include fluid-size(20rem, 75rem, 2rem, 4rem);
 }
 
 h2 {
-  @mixin fluid-size 20rem, 75rem, 1.5rem, 2rem;
+  @include fluid-size(20rem, 75rem, 1.5rem, 2rem);
 }
 
 h3 {
