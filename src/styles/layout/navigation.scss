@@ -24,7 +24,7 @@
   height: $navHeight;
   transition: background-color 0.25s ease, box-shadow 0.25s ease,
     transform 0.35s ease;
-  z-index: 1;
+  z-index: 3;
 
   &::before {
     content: '';
