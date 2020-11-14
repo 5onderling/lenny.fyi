@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+const { rmSync } = require('fs');
 const { minify } = require('html-minifier');
 
 const markdownIt = require('markdown-it');
@@ -22,7 +22,7 @@ const config = {
 module.exports = (eleventyConfig) => {
   const isProd = process.env.ELEVENTY_ENV === 'production';
 
-  fs.emptyDirSync(config.dir.output);
+  rmSync('dist', { force: true, recursive: true });
 
   eleventyConfig.setLibrary(
     'md',
