@@ -20,7 +20,7 @@ jobs:
       - name: Get server folder
         id: serverDir
         run: |
-          if [$IS_MAIN = true]
+          if [$IS_MAIN == true]
           then
             echo "::set-output name=serverDir::./public_html/lenny.fyi/"
           else
