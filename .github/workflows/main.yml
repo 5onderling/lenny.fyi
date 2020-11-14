@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [$default-branch, next]
+    branches: [main, next]
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
       - name: Get server folder
         id: serverDir
         run: |
-          if [${{ github.ref }} == 'refs/heads/$default-branch']
+          if [${{ github.ref }} == 'refs/heads/main']
           then
             echo "::set-output name=serverDir::'./public_html/lenny.fyi/'"
           else
