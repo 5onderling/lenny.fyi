@@ -1,9 +1,6 @@
-const { rollup } = require('rollup');
-const rollupCommonjs = require('@rollup/plugin-commonjs');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const { terser: rollupTerser } = require('rollup-plugin-terser');
-const rollupBabel = require('rollup-plugin-babel');
+const { startService } = require('esbuild');
 
+let service;
 module.exports = class {
   data() {
     return {
@@ -22,58 +19,21 @@ module.exports = class {
     };
   }
 
-  async render({ entry: { input } }) {
-    const isProd = process.env.ELEVENTY_ENV === 'production';
+  async render({ entry: { input, output } }) {
+    try {
+      if (!service) service = await startService();
 
-    const bundle = await rollup({
-      input: input,
-      plugins: [
-        isProd && rollupTerser(),
-        rollupBabel({
-          plugins: [
-            [
-              'babel-plugin-transform-async-to-promises',
-              { inlineHelpers: true },
-            ],
-            ['@babel/plugin-transform-strict-mode'],
-            ['@babel/plugin-transform-block-scoping'],
-            ['@babel/plugin-transform-for-of', { assumeArray: true }],
-            ['@babel/plugin-transform-spread'],
-            [
-              '@babel/plugin-transform-destructuring',
-              { loose: true, useBuiltIns: true },
-            ],
-            ['@babel/plugin-transform-shorthand-properties'],
-            ['@babel/plugin-transform-template-literals', { loose: true }],
-            ['@babel/plugin-transform-arrow-functions'],
-            ['@babel/plugin-transform-parameters', { loose: true }],
-            ['@babel/plugin-transform-exponentiation-operator'],
-            ['@babel/plugin-transform-classes', { loose: true }],
-            // proposals (are already in chrome (v80 maybe earlier))
-            [
-              '@babel/plugin-proposal-object-rest-spread',
-              { loose: true, useBuiltIns: true },
-            ],
-            ['@babel/plugin-proposal-optional-chaining'],
-            ['@babel/plugin-proposal-nullish-coalescing-operator'],
-          ],
-        }),
-        nodeResolve(),
-        rollupCommonjs(),
-      ],
-    });
-
-    const {
-      output: [{ code, map }],
-    } = await bundle.generate({
-      format: 'iife',
-      sourcemap: !isProd,
-    });
-
-    if (!map) return code;
-
-    return `${code}\n//# sourceMappingURL=data:application/json;base64,${Buffer.from(
-      JSON.stringify(map),
-    ).toString('base64')}`;
+      await service.build({
+        entryPoints: [input],
+        outfile: `dist/${output}`,
+        format: 'esm',
+        bundle: true,
+        minify: true,
+        sourcemap: true,
+        target: 'es2015',
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 };

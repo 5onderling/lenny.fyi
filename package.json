@@ -10,36 +10,16 @@
     "start": "cross-env ELEVENTY_ENV=develop eleventy --serve",
     "build": "cross-env ELEVENTY_ENV=production eleventy"
   },
-  "dependencies": {
-    "eventlistener-polyfill": "^1.0.5"
-  },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-cache-assets": "^2.0.3",
     "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
     "@11ty/eleventy-plugin-rss": "^1.0.9",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
-    "@babel/plugin-transform-arrow-functions": "^7.12.1",
-    "@babel/plugin-transform-block-scoping": "^7.12.1",
-    "@babel/plugin-transform-classes": "^7.12.1",
-    "@babel/plugin-transform-destructuring": "^7.12.1",
-    "@babel/plugin-transform-exponentiation-operator": "^7.12.1",
-    "@babel/plugin-transform-for-of": "^7.12.1",
-    "@babel/plugin-transform-parameters": "^7.12.1",
-    "@babel/plugin-transform-shorthand-properties": "^7.12.1",
-    "@babel/plugin-transform-spread": "^7.12.1",
-    "@babel/plugin-transform-strict-mode": "^7.12.1",
-    "@babel/plugin-transform-template-literals": "^7.12.1",
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
     "autoprefixer": "^9.8.6",
-    "babel-plugin-transform-async-to-promises": "^0.8.15",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
+    "esbuild": "^0.8.7",
     "fs-extra": "^9.0.1",
     "html-minifier": "^4.0.0",
     "markdown-it": "^12.0.2",
@@ -47,9 +27,6 @@
     "postcss": "^7.0.35",
     "postcss-custom-properties": "^10.0.0",
     "postcss-unprefix": "^2.1.4",
-    "rollup": "^2.33.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.29.0"
   }
 }
