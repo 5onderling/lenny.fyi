@@ -38,7 +38,7 @@ module.exports = class {
     try {
       const { css: sassCss } = await sassRenderer({
         file: input,
-        outFile: output,
+        outFile: `dist/${output}`,
         sourceMap: true,
         sourceMapEmbed: true,
       });
@@ -51,9 +51,7 @@ module.exports = class {
       ]).process(sassCss, {
         from: input,
         to: output,
-        map: {
-          inline: false,
-        },
+        map: { inline: false },
       });
 
       await writeFile(`dist/${output}.map`, JSON.stringify(map));

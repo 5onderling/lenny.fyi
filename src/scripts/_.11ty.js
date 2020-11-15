@@ -1,5 +1,6 @@
-const { startService } = require('esbuild');
+const { startService, build } = require('esbuild');
 
+const isServing = process.argv.includes('--serve');
 let service;
 module.exports = class {
   data() {
@@ -21,9 +22,9 @@ module.exports = class {
 
   async render({ entry: { input, output } }) {
     try {
-      if (!service) service = await startService();
+      if (isServing && !service) service = await startService();
 
-      await service.build({
+      await (isServing ? service.build : build)({
         entryPoints: [input],
         outfile: `dist/${output}`,
         format: 'esm',
