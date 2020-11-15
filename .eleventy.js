@@ -20,8 +20,6 @@ const config = {
 };
 
 module.exports = (eleventyConfig) => {
-  const isProd = process.env.ELEVENTY_ENV === 'production';
-
   rmSync('dist', { force: true, recursive: true });
 
   eleventyConfig.setLibrary(
@@ -103,25 +101,22 @@ module.exports = (eleventyConfig) => {
       );
   });
 
-  if (isProd) {
-    // xml ???
-    eleventyConfig.addTransform('minify', (content, outputPath) => {
-      if (!outputPath || !outputPath.endsWith('.html')) return content;
+  eleventyConfig.addTransform('minify', (content, outputPath) => {
+    if (!outputPath || !outputPath.endsWith('.html')) return content;
 
-      return minify(content, {
-        collapseWhitespace: true,
-        conservativeCollapse: true,
-        removeComments: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        sortAttributes: true,
-        sortClassName: true,
-        useShortDoctype: true,
-        minifyCSS: true,
-        minifyJS: true,
-      });
+    return minify(content, {
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+      removeComments: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      sortAttributes: true,
+      sortClassName: true,
+      useShortDoctype: true,
+      minifyCSS: true,
+      minifyJS: true,
     });
-  }
+  });
 
   let notFoundPage;
   eleventyConfig.addTransform('minify', (content, outputPath) => {
