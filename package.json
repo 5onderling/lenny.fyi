@@ -7,8 +7,8 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "node -r esm node_modules/@11ty/eleventy/cmd.js --serve",
+    "build": "node -r esm node_modules/@11ty/eleventy/cmd.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
@@ -19,6 +19,7 @@
     "autoprefixer": "^9.8.6",
     "cssnano": "^4.1.10",
     "esbuild": "^0.8.7",
+    "esm": "^3.2.25",
     "html-minifier": "^4.0.0",
     "markdown-it": "^12.0.2",
     "markdown-it-anchor": "^6.0.0",
@@ -26,5 +27,10 @@
     "postcss-custom-properties": "^10.0.0",
     "postcss-unprefix": "^2.1.4",
     "sass": "^1.29.0"
+  },
+  "esm": {
+    "cjs": {
+      "dedefault": true
+    }
   }
 }

@@ -1,64 +1,62 @@
-const { writeFile } = require('fs/promises');
+import { writeFile } from 'fs/promises';
 
-const postcss = require('postcss');
-const postcssCustomProperties = require('postcss-custom-properties');
-const postcssUnprefix = require('postcss-unprefix');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const sass = require('sass');
+import postcss from 'postcss';
+import postcssCustomProperties from 'postcss-custom-properties';
+import postcssUnprefix from 'postcss-unprefix';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import sass from 'sass';
 
-const sassRenderer = (options) =>
-  new Promise((resolve, reject) => {
+const sassRenderer = (options) => {
+  return new Promise((resolve, reject) => {
     sass.render(options, (error, result) => {
       if (error) return reject(error);
 
       resolve(result);
     });
   });
+};
 
-module.exports = class {
-  data() {
-    return {
-      pagination: {
-        data: 'entrys',
-        size: 1,
-        alias: 'entry',
-      },
-      permalink: ({ entry: { output } }) => output,
-      entrys: [
-        {
-          input: 'src/styles/main.scss',
-          output: 'main.css',
-        },
-      ],
-    };
-  }
+export const data = {
+  pagination: {
+    data: 'entrys',
+    size: 1,
+    alias: 'entry',
+  },
+  permalink: ({ entry: { output } }) => output,
+  entrys: [
+    {
+      input: 'src/styles/main.scss',
+      output: 'main.css',
+    },
+  ],
+};
 
-  async render({ entry: { input, output } }) {
-    try {
-      const { css: sassCss } = await sassRenderer({
-        file: input,
-        outFile: `dist/${output}`,
-        sourceMap: true,
-        sourceMapEmbed: true,
-      });
+const postcssInstance = postcss([
+  postcssCustomProperties(),
+  postcssUnprefix(),
+  autoprefixer(),
+  cssnano(),
+]);
+export const render = async ({ entry: { input, output } }) => {
+  try {
+    const { css: sassCss } = await sassRenderer({
+      file: input,
+      outFile: `dist/${output}`,
+      sourceMap: true,
+      sourceMapEmbed: true,
+    });
 
-      const { css, map } = await postcss([
-        postcssCustomProperties(),
-        postcssUnprefix(),
-        autoprefixer(),
-        cssnano(),
-      ]).process(sassCss, {
-        from: input,
-        to: output,
-        map: { inline: false },
-      });
+    const { css, map } = await postcssInstance.process(sassCss, {
+      from: input,
+      to: `dist/${output}`,
+      map: { inline: false },
+    });
 
-      await writeFile(`dist/${output}.map`, JSON.stringify(map));
+    await writeFile(`dist/${output}.map`, JSON.stringify(map));
 
-      return css;
-    } catch (error) {
-      console.error(error);
-    }
+    return css;
+  } catch (error) {
+    console.error(error);
   }
 };

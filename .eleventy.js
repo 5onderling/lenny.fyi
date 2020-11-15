@@ -1,12 +1,12 @@
-const { rmSync } = require('fs');
-const { minify } = require('html-minifier');
+import { rmSync } from 'fs';
+import { minify } from 'html-minifier';
 
-const markdownIt = require('markdown-it');
-const markdownItAnchor = require('markdown-it-anchor');
+import markdownIt from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
 
-const rss = require('@11ty/eleventy-plugin-rss');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
+import rss from '@11ty/eleventy-plugin-rss';
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
+import inclusiveLanguage from '@11ty/eleventy-plugin-inclusive-language';
 
 const config = {
   dir: {
@@ -19,7 +19,7 @@ const config = {
   dataTemplateEngine: '11ty.js',
 };
 
-module.exports = (eleventyConfig) => {
+export default (eleventyConfig) => {
   rmSync('dist', { force: true, recursive: true });
 
   eleventyConfig.setLibrary(
@@ -129,8 +129,8 @@ module.exports = (eleventyConfig) => {
     ui: false,
     ghostMode: false,
     callbacks: {
-      ready: async (err, bs) => {
-        bs.addMiddleware('*', (req, res) => {
+      ready: async (_err, bs) => {
+        bs.addMiddleware('*', (_req, res) => {
           res.write(notFoundPage);
           res.end();
         });
