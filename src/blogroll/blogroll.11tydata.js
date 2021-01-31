@@ -19,8 +19,7 @@ module.exports = async () => {
     {
       name: 'Sāra Soueidan',
       url: 'https://www.sarasoueidan.com',
-      text:
-        "Sāra is the person for accessibility, SVG's and markup in general!",
+      text: "Sāra is the person for accessibility, SVG's and markup in general!",
       rss: 'https://www.sarasoueidan.com/blog/index.xml',
       twitter: 'SaraSoueidan',
     },

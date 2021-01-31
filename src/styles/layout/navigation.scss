@@ -22,8 +22,7 @@
   right: 0;
   left: 0;
   height: $navHeight;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease,
-    transform 0.35s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.35s ease;
   z-index: 3;
 
   &::before {
@@ -36,8 +35,7 @@
     transform: scale(0);
     border-radius: 50%;
     background-color: var(--bg-color-navigation);
-    transition: background-color 0.25s ease,
-      transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: background-color 0.25s ease, transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     @media screen and (orientation: landscape) {
       top: -150vw;

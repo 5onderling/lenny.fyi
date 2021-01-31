@@ -95,10 +95,7 @@ export default (eleventyConfig) => {
   eleventyConfig.addNunjucksFilter('nav', (pages) => {
     return pages
       .filter((page) => page.data.nav)
-      .sort(
-        ({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) =>
-          orderA - orderB,
-      );
+      .sort(({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) => orderA - orderB);
   });
 
   eleventyConfig.addTransform('minify', (content, outputPath) => {

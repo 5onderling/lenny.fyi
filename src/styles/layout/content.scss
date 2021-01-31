@@ -11,8 +11,7 @@ a:not([class]) {
   transition: box-shadow 0.2s ease;
 
   &:hover {
-    box-shadow: 0 0.1em var(--primary-color),
-      inset 0 -1.6em var(--primary-color);
+    box-shadow: 0 0.1em var(--primary-color), inset 0 -1.6em var(--primary-color);
   }
 }
 

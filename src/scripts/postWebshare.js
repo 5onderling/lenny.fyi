@@ -4,9 +4,7 @@ export default ({
 } = {}) => {
   if (!navigator.share) return;
 
-  document
-    .querySelectorAll(webshareSelector)
-    .forEach((el) => (el.hidden = false));
+  document.querySelectorAll(webshareSelector).forEach((el) => (el.hidden = false));
   document.querySelectorAll(fallbackSelector).forEach((el) => el.remove());
 
   window.addEventListener('click', (e) => {

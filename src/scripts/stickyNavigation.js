@@ -14,8 +14,7 @@ export default ({
 
     const isScrollingToTop = curY < prevY;
 
-    show =
-      (curY && show) || (curY > window.innerHeight / 3 && isScrollingToTop);
+    show = (curY && show) || (curY > window.innerHeight / 3 && isScrollingToTop);
 
     hide = show && !isScrollingToTop;
 
