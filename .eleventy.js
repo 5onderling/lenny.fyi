@@ -56,11 +56,10 @@ export default (eleventyConfig) => {
   });
 
   eleventyConfig.addNunjucksFilter('readableDate', (dateObj) => {
-    const date = new Date(dateObj),
-      day = date.getDate().toString().padStart(2, 0),
-      month = (date.getMonth() + 1).toString().padStart(2, 0),
-      year = date.getFullYear();
-
+    const date = new Date(dateObj);
+    const day = date.getDate().toString().padStart(2, 0);
+    const month = (date.getMonth() + 1).toString().padStart(2, 0);
+    const year = date.getFullYear();
     return `${day} ${month} ${year}`;
   });
 
@@ -92,11 +91,11 @@ export default (eleventyConfig) => {
     } datetime="${year}-${month}-${day}">${day} ${monthText} ${year}</time>`;
   });
 
-  eleventyConfig.addNunjucksFilter('nav', (pages) => {
-    return pages
+  eleventyConfig.addNunjucksFilter('nav', (pages) =>
+    pages
       .filter((page) => page.data.nav)
-      .sort(({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) => orderA - orderB);
-  });
+      .sort(({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) => orderA - orderB),
+  );
 
   eleventyConfig.addTransform('minify', (content, outputPath) => {
     if (!outputPath || !outputPath.endsWith('.html')) return content;
@@ -116,10 +115,8 @@ export default (eleventyConfig) => {
   });
 
   let notFoundPage;
-  eleventyConfig.addTransform('minify', (content, outputPath) => {
-    if (outputPath && outputPath.endsWith('404.html')) {
-      notFoundPage = content;
-    }
+  eleventyConfig.addTransform('updateNotFoundPage', (content, outputPath) => {
+    if (outputPath && outputPath.endsWith('404.html')) notFoundPage = content;
     return content;
   });
   eleventyConfig.setBrowserSyncConfig({
