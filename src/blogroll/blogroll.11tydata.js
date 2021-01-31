@@ -1,5 +1,3 @@
-const CacheAsset = require('@11ty/eleventy-cache-assets');
-
 module.exports = async () => {
   const blogs = [
     {
@@ -74,24 +72,6 @@ module.exports = async () => {
       twitter: 'zachleat',
     },
   ];
-
-  await Promise.all(
-    blogs.map(async (blog) => {
-      // https://github.com/Kikobeats/unavatar/blob/master/src/providers/twitter.js
-      const page = await CacheAsset(
-        `https://mobile.twitter.com/${blog.twitter}`,
-        { duration: '1d', type: 'text' },
-      );
-
-      const startIndex =
-        page.indexOf('"https://pbs.twimg.com/profile_images/') + 1;
-      const endIndex = page.indexOf('"', startIndex);
-
-      blog.profileImageUrl = page
-        .substring(startIndex, endIndex)
-        .replace('_normal', '_400x400');
-    }),
-  );
 
   return { blogs };
 };
