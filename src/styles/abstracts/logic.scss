@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @mixin minTablet {
   @media screen and (min-width: 48rem) {
     @content;
@@ -11,7 +13,7 @@
 }
 
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, $value * 0 + 1);
 }
 
 @mixin fluid-size($minWidth, $maxWidth, $minSize, $maxSize, $property: 'font-size') {
@@ -50,7 +52,7 @@
   $encoded: '';
   $slice: 2000;
   $index: 0;
-  $loops: ceil(str-length($svg) / $slice);
+  $loops: ceil(math.div(str-length($svg), $slice));
   @for $i from 1 through $loops {
     $chunk: str-slice($svg, $index, $index + $slice - 1);
     //

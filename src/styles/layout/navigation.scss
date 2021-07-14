@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .skip-navigation {
   position: fixed;
   top: 0.25em;
@@ -147,7 +149,7 @@
 .logo {
   z-index: 1;
   margin-right: auto;
-  width: #{$navHeight * (128 / 96)};
+  width: #{$navHeight * math.div(128, 96)};
   height: $navHeight;
 }
 
@@ -191,10 +193,10 @@
       transition: transform 0.25s ease;
     }
     &::before {
-      transform: translate3d(0, #{-$burgerSize / 2 + $lineHeight / 2}, 0);
+      transform: translate3d(0, #{math.div(-$burgerSize, 2) + math.div($lineHeight, 2)}, 0);
     }
     &::after {
-      transform: translate3d(0, #{$burgerSize / 2 - $lineHeight / 2}, 0);
+      transform: translate3d(0, #{math.div($burgerSize, 2) - math.div($lineHeight, 2)}, 0);
     }
   }
 }

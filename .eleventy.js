@@ -1,12 +1,14 @@
-import { rmSync } from 'fs';
-import { minify } from 'html-minifier';
+const { rmSync } = require('fs');
+const { minify } = require('html-minifier');
 
-import markdownIt from 'markdown-it';
-import markdownItAnchor from 'markdown-it-anchor';
+const markdownIt = require('markdown-it');
+const markdownItAnchor = require('markdown-it-anchor');
 
-import rss from '@11ty/eleventy-plugin-rss';
-import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
-import inclusiveLanguage from '@11ty/eleventy-plugin-inclusive-language';
+const rss = require('@11ty/eleventy-plugin-rss');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
+
+const { build } = require('esbuild');
 
 const config = {
   dir: {
@@ -19,7 +21,7 @@ const config = {
   dataTemplateEngine: '11ty.js',
 };
 
-export default (eleventyConfig) => {
+module.exports = (eleventyConfig) => {
   rmSync('dist', { force: true, recursive: true });
 
   eleventyConfig.setLibrary(
@@ -30,13 +32,13 @@ export default (eleventyConfig) => {
       linkify: true,
     }).use(markdownItAnchor, {
       level: 2,
-      permalink: true,
-      permalinkClass: 'permalink',
-      permalinkSpace: false,
-      permalinkSymbol:
-        '<svg class="permalink__icon" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 010-7.07l3.54-3.54a5.003 5.003 0 017.07 0 5.003 5.003 0 010 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 000-4.24 2.982 2.982 0 00-4.24 0l-3.53 3.53a2.982 2.982 0 000 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 010 7.07l-3.54 3.54a5.003 5.003 0 01-7.07 0 5.003 5.003 0 010-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 000 4.24 2.982 2.982 0 004.24 0l3.53-3.53a2.982 2.982 0 000-4.24.973.973 0 010-1.42z"/></svg>',
-      permalinkBefore: true,
-      permalinkAttrs: (slug) => ({ 'aria-label': `${slug} permalink` }),
+      permalink: markdownItAnchor.permalink.ariaHidden({
+        placement: 'before',
+        class: 'permalink',
+        symbol:
+          '<svg class="permalink__icon" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 010-7.07l3.54-3.54a5.003 5.003 0 017.07 0 5.003 5.003 0 010 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 000-4.24 2.982 2.982 0 00-4.24 0l-3.53 3.53a2.982 2.982 0 000 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 010 7.07l-3.54 3.54a5.003 5.003 0 01-7.07 0 5.003 5.003 0 010-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 000 4.24 2.982 2.982 0 004.24 0l3.53-3.53a2.982 2.982 0 000-4.24.973.973 0 010-1.42z"/></svg>',
+        renderAttrs: (slug) => ({ 'aria-label': `${slug} permalink` }),
+      }),
     }),
   );
 
@@ -46,7 +48,6 @@ export default (eleventyConfig) => {
 
   eleventyConfig.addPassthroughCopy({ 'src/assets': '.' });
 
-  eleventyConfig.addWatchTarget('src/scripts');
   eleventyConfig.addWatchTarget('src/styles');
 
   eleventyConfig.addNunjucksFilter('readingTime', (text) => {
@@ -130,6 +131,17 @@ export default (eleventyConfig) => {
         });
       },
     },
+  });
+
+  build({
+    entryPoints: ['src/scripts/main.js'],
+    outfile: 'dist/main.js',
+    format: 'esm',
+    watch: process.argv.includes('--serve'),
+    bundle: true,
+    minify: true,
+    sourcemap: true,
+    target: 'es2015',
   });
 
   return config;

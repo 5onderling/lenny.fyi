@@ -7,29 +7,22 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start": "node -r esm node_modules/@11ty/eleventy/cmd.js --serve",
-    "build": "node -r esm node_modules/@11ty/eleventy/cmd.js"
+    "start": "eleventy --serve",
+    "build": "eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "^1.0.0-canary.39",
     "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
     "@11ty/eleventy-plugin-rss": "^1.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
     "autoprefixer": "^10.2.4",
-    "cssnano": "^4.1.10",
-    "esbuild": "^0.8.38",
-    "esm": "^3.2.25",
+    "cssnano": "^5.0.6",
+    "esbuild": "^0.12.15",
     "html-minifier": "^4.0.0",
     "markdown-it": "^12.0.4",
-    "markdown-it-anchor": "^7.0.1",
+    "markdown-it-anchor": "^8.1.0",
     "postcss": "^8.2.4",
     "postcss-custom-properties": "^11.0.0",
-    "postcss-unprefix": "^2.1.4",
     "sass": "^1.32.5"
-  },
-  "esm": {
-    "cjs": {
-      "dedefault": true
-    }
   }
 }

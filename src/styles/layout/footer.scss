@@ -1,10 +1,12 @@
+@use 'sass:math';
+
 .footer {
   border-top: 1px solid var(--footer-border-color);
   margin: 0 $contentPadding;
 
   &__inner {
     max-width: #{$contentWidth - $contentPadding * 2};
-    margin: #{$contentPadding / 2} auto;
+    margin: math.div($contentPadding, 2) auto;
     display: flex;
     flex-wrap: wrap;
   }

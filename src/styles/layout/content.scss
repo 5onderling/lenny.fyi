@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .content {
   min-height: 100vh;
   max-width: $contentWidth;
@@ -77,7 +79,7 @@ h6 {
   top: 50%;
   height: $size;
   width: $size;
-  margin-top: #{-$size / 2};
+  margin-top: math.div(-$size, 2);
   margin-left: -$size;
 
   &__icon {

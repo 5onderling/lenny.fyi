@@ -1,11 +1,10 @@
-import { writeFile } from 'fs/promises';
+const { writeFile } = require('fs/promises');
 
-import postcss from 'postcss';
-import postcssCustomProperties from 'postcss-custom-properties';
-import postcssUnprefix from 'postcss-unprefix';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import sass from 'sass';
+const postcss = require('postcss');
+const postcssCustomProperties = require('postcss-custom-properties');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const sass = require('sass');
 
 const sassRenderer = (options) => {
   return new Promise((resolve, reject) => {
@@ -17,7 +16,7 @@ const sassRenderer = (options) => {
   });
 };
 
-export const data = {
+exports.data = {
   pagination: {
     data: 'entrys',
     size: 1,
@@ -32,13 +31,9 @@ export const data = {
   ],
 };
 
-const postcssInstance = postcss([
-  postcssCustomProperties(),
-  postcssUnprefix(),
-  autoprefixer(),
-  cssnano(),
-]);
-export const render = async ({ entry: { input, output } }) => {
+const postcssInstance = postcss([postcssCustomProperties(), autoprefixer(), cssnano()]);
+
+exports.render = async ({ entry: { input, output } }) => {
   try {
     const { css: sassCss } = await sassRenderer({
       file: input,
