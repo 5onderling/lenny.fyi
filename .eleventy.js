@@ -8,7 +8,7 @@ const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
 
-const { build } = require('esbuild');
+const esbuild = require('esbuild');
 
 const config = {
   dir: {
@@ -133,16 +133,19 @@ module.exports = (eleventyConfig) => {
     },
   });
 
-  build({
-    entryPoints: ['src/scripts/main.js'],
-    outfile: 'dist/main.js',
-    format: 'esm',
-    watch: process.argv.includes('--serve'),
-    bundle: true,
-    minify: true,
-    sourcemap: true,
-    target: 'es2015',
-  });
+  esbuild
+    .context({
+      entryPoints: ['src/scripts/main.js'],
+      outfile: 'dist/main.js',
+      format: 'esm',
+      bundle: true,
+      minify: true,
+      sourcemap: true,
+      target: 'es2015',
+    })
+    .then((context) => {
+      if (process.argv.includes('--serve')) context.watch();
+    });
 
   return config;
 };
