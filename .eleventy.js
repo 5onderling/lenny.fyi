@@ -143,8 +143,12 @@ module.exports = (eleventyConfig) => {
       sourcemap: true,
       target: 'es2015',
     })
-    .then((context) => {
-      if (process.argv.includes('--serve')) context.watch();
+    .then(async (context) => {
+      if (process.argv.includes('--serve')) await context.watch();
+      else {
+        await context.rebuild();
+        await context.dispose();
+      }
     });
 
   return config;
