@@ -12,7 +12,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Install node_modules and run build
         run: npm i && npm run build
@@ -22,15 +24,15 @@ jobs:
         run: |
           if [ $IS_MAIN ]
           then
-            echo "::set-output name=serverDir::./public_html/lenny.fyi/"
+            echo "SERVER_DIR=./public_html/lenny.fyi/" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=serverDir::./public_html/qa.lenny.fyi/"
+            echo "SERVER_DIR=./public_html/qa.lenny.fyi/" >> $GITHUB_OUTPUT
           fi
         env:
           IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Deploy build to server
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USER }}
@@ -38,4 +40,4 @@ jobs:
           port: 21
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ steps.serverDir.outputs.serverDir }}
+          server-dir: ${{ steps.serverDir.outputs.SERVER_DIR }}
