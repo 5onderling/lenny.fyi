@@ -41,7 +41,9 @@ module.exports = (eleventyConfig) => {
     }),
   );
 
-  eleventyConfig.addPlugin(EleventyVitePlugin);
+  eleventyConfig.addPlugin(EleventyVitePlugin, {
+    viteOptions: { build: { sourcemap: true } },
+  });
   eleventyConfig.addPlugin(rss);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(inclusiveLanguage);
