@@ -14,7 +14,8 @@
   <title>{% if (title) and (curUrl != '/') %}{{ title }} | {% endif %}{{ meta.title }}</title>
   <meta name="description" content="{{ desc }}">
   <meta property="og:description" content="{{ desc }}">
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/styles/main.scss">
+  <script type="module" src="/scripts/main.js"></script>
   <script>document.documentElement.className = localStorage.getItem('theme') || ''</script>
   <noscript>
     <style>
@@ -98,7 +99,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="/main.js"></script>
 </body>
 </html>

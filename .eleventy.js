@@ -4,11 +4,10 @@ const { minify } = require('html-minifier');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 
+const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
 const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
-
-const esbuild = require('esbuild');
 
 const config = {
   dir: {
@@ -42,13 +41,15 @@ module.exports = (eleventyConfig) => {
     }),
   );
 
+  eleventyConfig.addPlugin(EleventyVitePlugin);
   eleventyConfig.addPlugin(rss);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(inclusiveLanguage);
 
-  eleventyConfig.addPassthroughCopy({ 'src/assets': '.' });
-
-  eleventyConfig.addWatchTarget('src/styles');
+  eleventyConfig.addPassthroughCopy('src/assets');
+  eleventyConfig.addPassthroughCopy('src/public');
+  eleventyConfig.addPassthroughCopy('src/scripts');
+  eleventyConfig.addPassthroughCopy('src/styles');
 
   eleventyConfig.addNunjucksFilter('readingTime', (text) => {
     const textWithoutHtml = text.replace(/(<([^>]+)>)/gi, '');
@@ -114,42 +115,6 @@ module.exports = (eleventyConfig) => {
       minifyJS: true,
     });
   });
-
-  let notFoundPage;
-  eleventyConfig.addTransform('updateNotFoundPage', (content, outputPath) => {
-    if (outputPath && outputPath.endsWith('404.html')) notFoundPage = content;
-    return content;
-  });
-  eleventyConfig.setBrowserSyncConfig({
-    ui: false,
-    ghostMode: false,
-    callbacks: {
-      ready: async (_err, bs) => {
-        bs.addMiddleware('*', (_req, res) => {
-          res.write(notFoundPage);
-          res.end();
-        });
-      },
-    },
-  });
-
-  esbuild
-    .context({
-      entryPoints: ['src/scripts/main.js'],
-      outfile: 'dist/main.js',
-      format: 'esm',
-      bundle: true,
-      minify: true,
-      sourcemap: true,
-      target: 'es2015',
-    })
-    .then(async (context) => {
-      if (process.argv.includes('--serve')) await context.watch();
-      else {
-        await context.rebuild();
-        await context.dispose();
-      }
-    });
 
   return config;
 };
