@@ -13,20 +13,20 @@ order: 2
 
 Hello I'm Lenny Anders, a frontend developer based in Kürten, Germany. I started learning developing in 2015 with basic HTML and CSS, fell since then in love with it, and never stopped learning.
 
-I am currently training as an IT specialist for application development at Oevermann, with the focus on frontend web development.
+I am currently training as an software developer at Oevermann, with the focus on frontend web development.
 
-In my free time I'm currently learning a lot about accessibility and HTML markup in general. When I'm not programming (what rarely happens), I probably watch a great piece of audio-visual entertainment, listen to fantastic music, browse through Reddit/twitter or enjoy wonderful art.
+In my free time I'm currently learning a lot about accessibility and HTML markup in general. When I'm not programming, I probably watch a great piece of audio-visual entertainment, listen to fantastic music, browse through Reddit/twitter or enjoy wonderful art.
 
 ## My skills
 
-Over the time I learned a few things, I mostly like writing vanilla JavaScript (ES6), CSS with PostCSS or SCSS, HTML5 and Vue. For bundling I like to use Rollup or Webpack.
+Over the time I learned a few things, I mostly like writing vanilla JavaScript, TypeScript, CSS, SCSS, HTML5 and Voby. For bundling I like to use Vite or esbuild.
 
 _Here's a fancy list of things I can do / use (well):_
 
 - CSS / SASS / SCSS / PostCSS
-- JavaScript (up to ES6)
-- Rollup / Webpack / Gulp
-- Vue / Svelte / Mithril / jQuery
+- JavaScript / TypeScript
+- Vite / esbuild / Rollup / Webpack / Gulp
+- Vue / Angular / Voby / Preact / Svelte / Mithril / jQuery
 - Node.js / NPM
 
 ## Here you can find me
@@ -39,8 +39,8 @@ _Here's a fancy list of things I can do / use (well):_
 
 - **Editor:** [Visual Studio Code](https://code.visualstudio.com/)
 - **Programming font:** [Fira Code](https://github.com/tonsky/FiraCode)
-- **Programming theme:** [Dracula](https://draculatheme.com/)
-- **Computer:** Acer Swift 5 (older model)
-- **Monitor:** Eizo FlexScan EV2450-BK (older model)
+- **Programming theme:** [SynthWave '84](https://github.com/robb0wen/synthwave-vscode)
+- **Computer:** Mac Mini (M1, 16 GB RAM)
+- **Monitor:** LG 27GP950 and Eizo FlexScan EV2450-BK (older model)
 - **Keyboard:** Ducky One 2 mini
 - **Mouse:** Logitech MX Master 3
