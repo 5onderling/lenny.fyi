@@ -1,13 +1,13 @@
 @use 'sass:math';
 
 .content {
-  min-height: 100vh;
-  max-width: $contentWidth;
+  min-block-size: 100vh;
+  max-inline-size: $contentWidth;
   margin: 0 auto $navHeight;
   padding: #{$navHeight * 1.5} $contentPadding 0;
 
   > *:not([class], hr) {
-    max-width: 48rem;
+    max-inline-size: 48rem;
     margin-inline: auto;
   }
 
@@ -19,12 +19,12 @@
     }
   }
 
-  > h1:not([class]) {
-    margin-bottom: 2rem;
+  > h1 {
+    margin-block-end: 2rem;
   }
 
   > h2 {
-    margin-top: 2rem;
+    margin-block-start: 2rem;
   }
 
   > blockquote {
@@ -33,7 +33,7 @@
     p:first-of-type:before,
     p:last-of-type:after {
       display: inline-block;
-      min-width: 0.5em;
+      min-inline-size: 0.5em;
       font-size: 2em;
       line-height: 1rem;
       vertical-align: text-bottom;

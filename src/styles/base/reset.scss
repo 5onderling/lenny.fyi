@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  min-height: 100vh;
+  min-block-size: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -50,8 +50,8 @@ img {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 input,

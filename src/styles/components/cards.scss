@@ -14,14 +14,6 @@
   background-color: var(--bg-color-secondary);
   transition: background-color 0.25s ease;
 
-  &__avatar {
-    float: left;
-    width: 4rem;
-    height: auto;
-    margin-right: 1rem;
-    border-radius: 50%;
-  }
-
   &__date {
     opacity: 0.8;
     font-size: smaller;
@@ -34,10 +26,7 @@
     &::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       z-index: 1;
     }
     &:focus {
@@ -51,10 +40,9 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0.5rem;
+      inset-block-end: 0;
+      inset-inline: 0;
+      block-size: 0.5rem;
       background-color: var(--primary-color);
       transform-origin: bottom;
       transform: scaleY(0);
@@ -66,7 +54,6 @@
   }
 
   &__text {
-    width: 100%;
     margin-block-start: 0.5em;
 
     a {

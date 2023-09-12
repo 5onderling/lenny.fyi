@@ -2,8 +2,8 @@
 
 .skip-navigation {
   position: fixed;
-  top: 0.25em;
-  left: 50%;
+  inset-block-start: 0.25em;
+  inset-inline-start: 50%;
   padding: 0.5em 1em;
   transform: translate3d(-50%, -150%, 0);
   background-color: #111;
@@ -20,30 +20,29 @@
 
 .nav {
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: $navHeight;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: $navHeight;
   transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.35s ease;
   z-index: 3;
 
   &::before {
     content: '';
     position: fixed;
-    top: -150vh;
-    right: -150vh;
-    width: 300vh;
-    height: 300vh;
+    inset-block-start: -150vh;
+    inset-inline-end: -150vh;
+    inline-size: 300vh;
+    block-size: 300vh;
     transform: scale(0);
     border-radius: 50%;
     background-color: var(--bg-color-navigation);
     transition: background-color 0.25s ease, transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     @media screen and (orientation: landscape) {
-      top: -150vw;
-      right: -150vw;
-      width: 300vw;
-      height: 300vw;
+      inset-block-start: -150vw;
+      inset-inline-end: -150vw;
+      inline-size: 300vw;
+      block-size: 300vw;
     }
 
     @include minTablet {
@@ -72,8 +71,9 @@
     padding: 0 $contentPadding;
     display: flex;
     align-items: center;
-    max-width: $contentWidth;
-    margin: auto;
+    gap: 1rem;
+    max-inline-size: $contentWidth;
+    margin-inline: auto;
   }
 
   &__menu {
@@ -81,23 +81,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 0;
-    right: 0;
-    width: 100%;
+    gap: 4rem;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inline-size: 100%;
     overflow-y: auto;
-    min-height: 50vh;
-    max-height: 100vh;
-    padding-top: #{$navHeight * 1.5};
+    max-block-size: 100vh;
+    padding-block-start: #{$navHeight * 1.5 + 2rem};
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s, opacity 0.375s 0s;
 
     @include minTablet {
-      padding-top: 0;
-      width: auto;
+      gap: 1rem;
+      padding-block-start: 0;
+      inline-size: auto;
       opacity: 1;
       visibility: visible;
-      min-height: 0;
       position: relative;
       flex-direction: row;
     }
@@ -106,20 +106,18 @@
   &__link {
     position: relative;
     padding: 0 0.2em 0.3rem;
-    margin: 2em 0;
 
     @include minTablet {
-      margin: 0.3em 0 0 1em;
+      margin-block-start: 0.3em;
     }
 
     &::after {
       content: '';
       position: absolute;
       display: block;
-      bottom: 0;
-      left: 0;
-      height: 0.3em;
-      width: 100%;
+      inset-block-end: 0;
+      inset-inline: 0;
+      block-size: 0.3em;
       background-color: var(--primary-color);
       opacity: 0;
       transition: opacity 0.25s ease, background-color 0.25s ease;
@@ -142,20 +140,19 @@
 
   &__icon {
     position: relative;
-    margin-left: 1em;
   }
 }
 
 .logo {
   z-index: 1;
-  margin-right: auto;
-  width: #{$navHeight * math.div(128, 96)};
-  height: $navHeight;
+  margin-inline-end: auto;
+  inline-size: #{$navHeight * math.div(128, 96)};
+  block-size: $navHeight;
 }
 
 .theme-switcher {
-  width: 1.5rem;
-  height: 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   background-image: var(--theme-switch-image);
   background-position: center;
   background-size: contain;
@@ -166,8 +163,8 @@
 .burger {
   $burgerSize: 1.5rem;
   $lineHeight: 0.25rem;
-  width: $burgerSize;
-  height: $burgerSize;
+  inline-size: $burgerSize;
+  block-size: $burgerSize;
 
   @include minTablet {
     display: none;
@@ -180,11 +177,10 @@
     &::before,
     &::after {
       position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      margin-top: -0.125rem;
-      height: $lineHeight;
+      inset-block-start: 50%;
+      inset-inline: 0;
+      margin-block-start: -0.125rem;
+      block-size: $lineHeight;
       background-color: currentColor;
     }
     &::before,
