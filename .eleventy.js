@@ -6,7 +6,6 @@ const markdownItAnchor = require('markdown-it-anchor');
 
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
 const rss = require('@11ty/eleventy-plugin-rss');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
 
 const config = {
@@ -45,7 +44,6 @@ module.exports = (eleventyConfig) => {
     viteOptions: { build: { sourcemap: true } },
   });
   eleventyConfig.addPlugin(rss);
-  eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(inclusiveLanguage);
 
   eleventyConfig.addPassthroughCopy('src/assets');
