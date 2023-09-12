@@ -1,17 +1,20 @@
 ---
-layout: views/content.njk
-title: About
+layout: views/base.njk
+title: Home
 nav: true
-order: 2
+order: 1
 ---
 
-> You know what kind of plan never fails? No plan. No plan at all. You know why? Because life cannot be planned. Look around you. Did you think these people made a plan to sleep in the sports hall with you? But here we are now, sleeping together on the floor. So, there's no need for a plan. You can't go wrong with no plans. We don't need to make a plan for anything. It doesn't matter what will happen next. Even if the country gets destroyed or sold out, nobody cares. Got it?
+<div class="hero">
+  <img class="hero__image" src="/assets/me.jpg" alt="A Picture of 'Me'" height="320" width="320" />
+  <h1 class="hero__headline">
+    <small>Hey I'm</small><br/>{{ meta.owner.name }}
+  </h1>
+</div>
 
-— [Ki-taek (Parasite)](https://www.imdb.com/title/tt6751668/quotes/qt4669228)
+## About me
 
-# {{ title }} me
-
-Hello I'm Lenny Anders, a frontend developer based in Kürten, Germany. I started learning developing in 2015 with basic HTML and CSS, fell since then in love with it, and never stopped learning.
+I'm a frontend developer based in Kürten, Germany. I started learning developing in 2015 with basic HTML and CSS, fell since then in love with it, and never stopped learning.
 
 I am currently training as an software developer at Oevermann, with the focus on frontend web development.
 
@@ -44,3 +47,9 @@ _Here's a fancy list of things I can do / use (well):_
 - **Monitor:** LG 27GP950 and Eizo FlexScan EV2450-BK (older model)
 - **Keyboard:** Ducky One 2 mini
 - **Mouse:** Logitech MX Master 3
+
+---
+
+> You know what kind of plan never fails? No plan. No plan at all. You know why? Because life cannot be planned. Look around you. Did you think these people made a plan to sleep in the sports hall with you? But here we are now, sleeping together on the floor. So, there's no need for a plan. You can't go wrong with no plans. We don't need to make a plan for anything. It doesn't matter what will happen next. Even if the country gets destroyed or sold out, nobody cares. Got it?
+
+— [Ki-taek (Parasite)](https://www.imdb.com/title/tt6751668/quotes/qt4669228)

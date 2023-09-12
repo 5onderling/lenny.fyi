@@ -37,3 +37,9 @@ a {
 [tabindex='-1'] {
   outline: none;
 }
+
+hr {
+  border: 0;
+  border-block-start: 1px solid grey;
+  margin-block: 5rem;
+}

@@ -1,5 +1,0 @@
-{
-  "layout": "views/post.njk",
-  "tags": "post",
-  "permalink": "posts/{{ title | slug }}/"
-}

@@ -73,31 +73,5 @@
   <main class="content" id="content">
     {{ content | safe }}
   </main>
-
-  <footer class="footer">
-    <div class="footer__inner">
-      <span class="footer__menu footer__menu--cr">© {{ helpers.currentYear() }} – Lenny Anders</span>
-      <div class="footer__menu footer__menu--social">
-        <a class="footer__link" href="/feed.xml" target="_blank" rel="noopener noreferrer">RSS</a>
-        <a class="footer__link" href="https://twitter.com/5onderling/" target="_blank" rel="noopener noreferrer">Twitter</a>
-        <a class="footer__link" href="https://github.com/lennyanders/" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-      <div class="footer__menu">
-      {%- for page in collections.all -%}
-        {%- if page.data.legalNav %}
-          <a
-            class="footer__link"
-            href="{{ page.url }}"
-            {%- if page.url == curUrl %}
-              aria-current="Page"
-            {%- endif %}
-          >
-            {{ page.data.title }}
-          </a>
-        {%- endif %}
-      {%- endfor %}
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

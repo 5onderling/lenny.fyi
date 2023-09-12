@@ -5,39 +5,29 @@
   max-width: $contentWidth;
   margin: 0 auto $navHeight;
   padding: #{$navHeight * 1.5} $contentPadding 0;
-}
 
-/* blog stuff */
-a:not([class]) {
-  box-shadow: 0 0.1em var(--primary-color), inset 0 -0.1em var(--primary-color);
-  transition: box-shadow 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 0.1em var(--primary-color), inset 0 -1.6em var(--primary-color);
+  > *:not([class], hr) {
+    max-width: 48rem;
+    margin-inline: auto;
   }
-}
 
-article {
-  max-width: 48rem;
-  margin: auto;
-
-  p {
-    margin: 1em 0;
+  > p {
+    margin-block: 1em;
 
     @include minTablet {
-      margin-left: 1em;
+      padding-inline-start: 1em;
     }
   }
 
-  h1 {
+  > h1:not([class]) {
     margin-bottom: 2rem;
   }
 
-  h2 {
+  > h2 {
     margin-top: 2rem;
   }
 
-  blockquote {
+  > blockquote {
     font-style: italic;
 
     p:first-of-type:before,
@@ -60,13 +50,21 @@ article {
   }
 }
 
+a:not([class]) {
+  box-shadow: 0 0.1em var(--primary-color), inset 0 -0.1em var(--primary-color);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 0.1em var(--primary-color), inset 0 -1.6em var(--primary-color);
+  }
+}
+
 h2,
 h3,
 h4,
 h5,
 h6 {
   position: relative;
-  display: inline-block;
 
   &:hover .permalink__icon {
     opacity: 0.25;
@@ -76,11 +74,11 @@ h6 {
 .permalink {
   $size: 1.5rem;
   position: absolute;
-  top: 50%;
-  height: $size;
-  width: $size;
-  margin-top: math.div(-$size, 2);
-  margin-left: -$size;
+  inset-inline-start: -$size;
+  inset-block-start: 50%;
+  inline-size: $size;
+  block-size: $size;
+  margin-block-start: math.div(-$size, 2);
 
   &__icon {
     opacity: 0;

@@ -4,11 +4,6 @@
   "description": "Lenny Anders is a frontend developer based in Kürten, Germany.",
   "owner": {
     "name": "Lenny Anders",
-    "email": "hey@lenny.fyi",
-    "address": {
-      "street": "Kölner Str. 374",
-      "city": "51515 Kürten",
-      "country": "Germany"
-    }
+    "email": "hey@lenny.fyi"
   }
 }
