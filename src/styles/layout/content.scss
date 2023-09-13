@@ -66,7 +66,7 @@ h5,
 h6 {
   position: relative;
 
-  &:hover .permalink__icon {
+  &:hover .permalink {
     opacity: 0.25;
   }
 }
@@ -79,14 +79,6 @@ h6 {
   inline-size: $size;
   block-size: $size;
   margin-block-start: math.div(-$size, 2);
-
-  &__icon {
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-
-  &:focus &__icon,
-  &:hover &__icon {
-    opacity: 0.5;
-  }
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
