@@ -1,7 +1,6 @@
 const { md } = require('./utils/index.js');
 
 exports.data = {
-  layout: 'views/base.njk',
   title: 404,
   permalink: '404.html',
 };

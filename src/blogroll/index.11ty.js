@@ -1,7 +1,6 @@
 const { html, md } = require('../utils/index.js');
 
 exports.data = {
-  layout: 'views/base.njk',
   title: 'Blogroll',
   nav: true,
   order: 2,

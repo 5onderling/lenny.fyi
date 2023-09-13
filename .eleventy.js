@@ -27,12 +27,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('src/scripts');
   eleventyConfig.addPassthroughCopy('src/styles');
 
-  eleventyConfig.addNunjucksFilter('nav', (pages) =>
-    pages
-      .filter((page) => page.data.nav)
-      .sort(({ data: { order: orderA = 0 } }, { data: { order: orderB = 0 } }) => orderA - orderB),
-  );
-
   eleventyConfig.addTransform('minify', (content, outputPath) => {
     if (!outputPath || !outputPath.endsWith('.html')) return content;
 
