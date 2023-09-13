@@ -87,6 +87,6 @@ module.exports.getImage = async (url) => {
 
     return await getImageHtml(imageUrl);
   } catch (_err) {
-    return '';
+    return '<div class="page-list__image"></div>';
   }
 };
