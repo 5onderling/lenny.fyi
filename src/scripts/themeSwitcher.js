@@ -1,4 +1,4 @@
-export default ({ buttonSelector = '.theme-switcher', documentClass = 'other-theme' } = {}) => {
+(({ buttonSelector = '.theme-switcher', documentClass = 'other-theme' } = {}) => {
   const button = document.querySelector(buttonSelector);
   if (!button || !window.CSS || !CSS.supports('top', 'var(--v)')) return;
 
@@ -10,4 +10,4 @@ export default ({ buttonSelector = '.theme-switcher', documentClass = 'other-the
     localStorage.setItem('theme', newTheme);
     document.documentElement.className = newTheme;
   });
-};
+})();

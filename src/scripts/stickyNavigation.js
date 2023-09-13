@@ -1,15 +1,12 @@
-export default ({
-  selector = '.nav',
-  fixedClass = 'nav--fixed',
-  fixedHiddenClass = 'nav--hide',
-} = {}) => {
+(({ selector = '.nav', fixedClass = 'nav--fixed', fixedHiddenClass = 'nav--hide' } = {}) => {
   const nav = document.querySelector(selector);
   if (!nav) return;
 
-  let prevY = window.pageYOffset;
-  let show, hide;
+  let prevY = window.scrollY;
+  let show;
+  let hide;
   const scrollHandler = () => {
-    const curY = window.pageYOffset;
+    const curY = window.scrollY;
     if (curY === prevY) return;
 
     const isScrollingToTop = curY < prevY;
@@ -18,8 +15,8 @@ export default ({
 
     hide = show && !isScrollingToTop;
 
-    nav.classList[show ? 'add' : 'remove'](fixedClass);
-    nav.classList[hide ? 'add' : 'remove'](fixedHiddenClass);
+    nav.classList.toggle(fixedClass, show);
+    nav.classList.toggle(fixedHiddenClass, hide);
     prevY = curY;
   };
   window.addEventListener('scroll', scrollHandler, { passive: true });
@@ -33,4 +30,4 @@ export default ({
       { once: true, passive: true },
     );
   });
-};
+})();

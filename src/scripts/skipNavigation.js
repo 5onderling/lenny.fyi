@@ -1,4 +1,4 @@
-export default () => {
+(() => {
   const link = document.querySelector('.skip-navigation');
   if (!link) return;
   const target = document.querySelector(link.hash);
@@ -9,4 +9,4 @@ export default () => {
     e.preventDefault();
     target.focus();
   });
-};
+})();

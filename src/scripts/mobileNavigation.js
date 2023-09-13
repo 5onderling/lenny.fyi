@@ -1,4 +1,4 @@
-export default ({
+(({
   buttonSelector = '.burger',
   menuSelector = '.nav__menu',
   bodyClass = 'nav-menu-open',
@@ -12,4 +12,4 @@ export default ({
   button.addEventListener('click', () => {
     document.body.classList.toggle(bodyClass);
   });
-};
+})();
