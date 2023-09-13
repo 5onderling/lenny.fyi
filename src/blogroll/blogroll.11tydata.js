@@ -57,7 +57,9 @@ module.exports = async () => {
   for (const category in blogs) {
     blogs[category] = await Promise.all(
       blogs[category]
-        .sort((a, b) => a.name - b.name)
+        .sort((a, b) => {
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        })
         .map(async (blog) => ({
           ...blog,
           icon: blog.imageUrl ? await getImageHtml(blog.imageUrl) : await getImage(blog.url),
