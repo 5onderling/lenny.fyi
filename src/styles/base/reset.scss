@@ -23,8 +23,8 @@ a:not([class]) {
 
 ul[class],
 ol[class] {
-  margin: 0;
-  padding: 0;
+  margin-inline: 0;
+  padding-inline-start: 0;
   list-style: none;
 }
 
