@@ -1,67 +1,123 @@
-module.exports = {
-  blogs: [
+const { getImage, getImageHtml } = require('./getImage.js');
+
+module.exports = async () => {
+  const blogs = [
     {
-      name: 'Chris Ferdinandi',
-      url: 'https://gomakethings.com',
-      text: 'Chris is the vanilla JS guy, who explains even more complicated stuff in a really simple and approachable way.',
-      rss: 'https://gomakethings.com/feed/index.xml',
-      twitter: 'chrisferdinandi',
+      name: 'Adam Silver',
+      url: 'https://adamsilver.io',
     },
     {
-      name: 'Tania Rascia',
-      url: 'https://www.taniarascia.com',
-      text: 'Tania writes articles that dive real deep into a topic, about many entirely different topics like React, PHP and Authentication.',
-      rss: 'https://www.taniarascia.com/rss.xml',
-      twitter: 'taniarascia',
+      name: 'Andrea Giammarchi',
+      url: 'https://webreflection.medium.com',
+      imageUrl:
+        'https://files.mastodon.social/accounts/avatars/000/033/932/original/b2dc758e49bdc71e.jpg',
     },
     {
-      name: 'Sāra Soueidan',
-      url: 'https://www.sarasoueidan.com',
-      text: "Sāra is the person for accessibility, SVG's and markup in general!",
-      rss: 'https://www.sarasoueidan.com/blog/index.xml',
-      twitter: 'SaraSoueidan',
+      name: 'Anthony Fu',
+      url: 'https://antfu.me',
     },
     {
-      name: 'Max Böck',
-      url: 'https://mxb.dev',
-      text: 'Max writes about concepts and strategies in web development and gets you in the right mindset with sometimes more personal posts.',
-      rss: 'https://mxb.dev/feed.xml',
-      twitter: 'mxbck',
+      name: 'bitsofcode',
+      url: 'https://bitsofco.de',
     },
     {
-      name: 'Marcus Herrmann',
-      url: 'https://marcus.io',
-      text: 'Marcus is a specialist for accessibility in combination with frontend Frameworks like React and Vue.',
-      rss: 'https://marcus.io/feed',
-      twitter: '_marcusherrmann',
+      name: 'CSS { In Real Life }',
+      url: 'https://css-irl.info',
     },
     {
-      name: 'Manuel Matuzovic',
-      url: 'https://www.matuzo.at',
-      text: 'Manuel writes a lot about CSS and how it is often underestimated. His articles are often very impressive.',
-      rss: 'https://www.matuzo.at/feed.xml',
-      twitter: 'mmatuzo',
+      name: 'David Darnes',
+      url: 'https://darn.es',
+    },
+    {
+      name: 'Der Schepp',
+      url: 'https://schepp.dev',
+    },
+    {
+      name: 'HeydonWorks',
+      url: 'https://heydonworks.com',
     },
     {
       name: 'Jake Archibald',
       url: 'https://jakearchibald.com',
-      text: 'Jake is a comedian, uh, no... Developer, or both? Nonetheless, he writes and talks about the newest and coolest stuff in frontend development.',
-      rss: 'https://jakearchibald.com/posts.rss',
-      twitter: 'jaffathecake',
     },
     {
-      name: 'Mike Riethmuller',
-      url: 'https://www.madebymike.com.au',
-      text: 'Mike writes about the basics/fundamentals of CSS and JavaScript.',
-      rss: 'https://www.madebymike.com.au/feed.xml',
-      twitter: 'MikeRiethmuller',
+      name: 'Josh W Comeau',
+      url: 'https://www.joshwcomeau.com',
+    },
+    {
+      name: 'Lynn Fisher',
+      url: 'https://lynnandtonic.com',
+    },
+    {
+      name: 'Manuel Matuzovic',
+      url: 'https://www.matuzo.at',
+    },
+    {
+      name: 'Marvin Hagemeister',
+      url: 'https://marvinh.dev',
+    },
+    {
+      name: 'Max Böck',
+      url: 'https://mxb.dev',
+    },
+    {
+      name: 'Modern CSS Solutions',
+      url: 'https://moderncss.dev',
+    },
+    {
+      name: 'Paweł Grzybek',
+      url: 'https://pawelgrzybek.com',
+    },
+    {
+      name: 'Philip Walton',
+      url: 'https://philipwalton.com',
+    },
+    {
+      name: 'PQINA',
+      url: 'https://pqina.nl',
+    },
+    {
+      name: 'Sara Soueidan',
+      url: 'https://www.sarasoueidan.com',
+    },
+    {
+      name: "Scott O'Hara",
+      url: 'https://www.scottohara.me',
+    },
+    {
+      name: 'Sebastian De Deyne',
+      url: 'https://sebastiandedeyne.com',
+    },
+    {
+      name: 'Tania Rascia',
+      url: 'https://www.taniarascia.com',
+    },
+    {
+      name: 'Tobias Ahlin',
+      url: 'https://tobiasahlin.com',
+    },
+    {
+      name: 'Nikita Prokopov',
+      url: 'https://tonsky.me',
     },
     {
       name: 'Zach Leatherman',
       url: 'https://www.zachleat.com',
-      text: 'Zach is the one who build the foundation for this Page, 11ty, and made, at least for me, the IndieWeb big.',
-      rss: 'https://www.zachleat.com/web/feed/',
-      twitter: 'zachleat',
     },
-  ],
+    {
+      name: 'zserge',
+      url: 'https://zserge.com',
+    },
+  ];
+
+  const blogsWithImages = await Promise.all(
+    blogs.map(async (blog) => ({
+      ...blog,
+      icon: blog.imageUrl ? await getImageHtml(blog.imageUrl) : await getImage(blog.url),
+    })),
+  );
+
+  const sortet = blogsWithImages.sort((a, b) => a.name - b.name);
+
+  return { blogs: sortet };
 };

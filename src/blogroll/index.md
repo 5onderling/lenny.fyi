@@ -11,12 +11,10 @@ Inspired by [Max Böck](https://mxb.dev/blogroll/).
 
 Here I show off the blogs I read the most, and from them I learn the most. Currently, I'm discovering new interesting blogs, like on a daily basis, so this list is most probably going to grow.
 
-<div class="cards" style="margin-top: 5rem;">
+<ul class="page-list">
   {%- for blog in blogs | sort(false, false, 'name') %}
-    <div class="card">
-      <h3>{{ blog.name }}</h3>
-      <a href="{{ blog.url }}" class="card__link">{{ blog.url | replace("https://", "") | replace("www.", "") }}</a>
-      <p class="card__text">{{ blog.text }}</p>
-    </div>
+    <li class="page-list__item">
+      <a href="{{ blog.url }}" class="page-list__link">{{ blog.icon | safe }} {{ blog.name }} ({{ blog.url | replace("https://", "") | replace("www.", "") }})</a>
+    </li>
   {%- endfor %}
-</div>
+</ul>

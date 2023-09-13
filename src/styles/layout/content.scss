@@ -6,17 +6,17 @@
   margin: 0 auto $navHeight;
   padding: #{$navHeight * 1.5} $contentPadding 0;
 
-  > *:not([class], hr) {
+  > *:not(.hero, hr) {
     max-inline-size: 48rem;
     margin-inline: auto;
+
+    &:not(h1, h2) {
+      max-inline-size: 47rem;
+    }
   }
 
   > p {
     margin-block: 1em;
-
-    @include minTablet {
-      padding-inline-start: 1em;
-    }
   }
 
   > h1 {

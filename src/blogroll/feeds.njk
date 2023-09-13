@@ -7,7 +7,7 @@ permalink: '{{ page.filePathStem | replace("/index", "") }}.xml'
   </head>
   <body>
     {%- for blog in blogs | sort %}
-      <outline type="rss" title="{{ blog.name }}" text="{{ blog.text }}" xmlUrl="{{ blog.rss }}" htmlUrl="{{ blog.url }}" />
+      <outline type="rss" title="{{ blog.name }}" xmlUrl="{{ blog.rss }}" htmlUrl="{{ blog.url }}" />
     {%- endfor %}
   </body>
 </opml>
