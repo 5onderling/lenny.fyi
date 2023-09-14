@@ -51,6 +51,8 @@
 }
 
 a:not([class]) {
+  padding-inline: 0.125rem;
+  margin-inline: -0.125rem;
   box-shadow: 0 0.1em var(--primary-color), inset 0 -0.1em var(--primary-color);
   transition: box-shadow 0.2s ease;
 

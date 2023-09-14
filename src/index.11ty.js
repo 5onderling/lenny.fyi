@@ -36,9 +36,15 @@ exports.render = (data) => md`
 
   ## Here you can find me
 
-  - [Twitter](https://twitter.com/5onderling)
-  - [Github](https://github.com/lennyanders)
-  - [E-Mail](mailto:hey@lenny.fyi)
+  - [<span class="icon icon--bluesky"></span> Bluesky](https://bsky.app/profile/lenny.fyi)
+  - [<span class="icon icon--twitter"></span> Twitter / x](https://twitter.com/5onderling)
+  - [<span class="icon icon--letterboxd"></span> Letterboxd](https://letterboxd.com/LennyAnders)
+  - [<span class="icon icon--anilist"></span> AniList](https://anilist.co/user/lenny)
+  - [<span class="icon icon--discogs"></span> Discogs](https://www.discogs.com/user/5onderling)
+  - [<span class="icon icon--linkedin"></span> Linkedin](https://www.linkedin.com/in/lenny-anders-698684271)
+  - [<span class="icon icon--xing"></span> Xing](https://www.xing.com/profile/Lenny_Anders)
+  - [<span class="icon icon--github"></span> Github](https://github.com/lennyanders)
+  - [<span class="icon icon--email"></span> E-Mail](mailto:hey@lenny.fyi)
 
   ## Things I use
 
