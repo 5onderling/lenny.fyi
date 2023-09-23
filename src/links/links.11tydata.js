@@ -29,6 +29,18 @@ module.exports = async () => {
       },
       { name: 'CSS Full Bleed Background', url: 'https://codepen.io/SelenIT/pen/bGLmGVq' },
     ],
+    Talks: [
+      { name: 'Hakim El Hattab | Building Better Interfaces', url: 'https://youtu.be/o0NtjY17v5w' },
+      {
+        name: '3.143 ways to synchronize data across documents - HTTP 203',
+        url: 'https://youtu.be/9UNwHmagedE',
+      },
+      { name: 'Bret Victor - Inventing on Principle', url: 'https://youtu.be/PGDrIy1G1gU' },
+      {
+        name: 'Heydon Pickering / Capitalism, The Web, And You',
+        url: 'https://youtu.be/GZsIhiXJjpY',
+      },
+    ],
   };
 
   for (const category in links) {
