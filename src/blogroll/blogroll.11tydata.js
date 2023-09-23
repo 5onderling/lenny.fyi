@@ -12,6 +12,7 @@ module.exports = async () => {
       },
       { name: 'Anthony Fu', url: 'https://antfu.me' },
       { name: 'bitsofcode', url: 'https://bitsofco.de' },
+      { name: 'Chris Coyier', url: 'https://chriscoyier.net' },
       { name: 'CSS { In Real Life }', url: 'https://css-irl.info' },
       { name: 'David Darnes', url: 'https://darn.es' },
       { name: 'Der Schepp', url: 'https://schepp.dev' },
