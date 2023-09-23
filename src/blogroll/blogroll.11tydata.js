@@ -1,4 +1,4 @@
-const { getImage, getImageHtml } = require('./getImage.js');
+const { getWebsiteImage, getImageHtml } = require('../utils/getImage.js');
 
 module.exports = async () => {
   const blogs = {
@@ -63,7 +63,7 @@ module.exports = async () => {
         })
         .map(async (blog) => ({
           ...blog,
-          icon: blog.imageUrl ? await getImageHtml(blog.imageUrl) : await getImage(blog.url),
+          icon: blog.imageUrl ? await getImageHtml(blog.imageUrl) : await getWebsiteImage(blog.url),
         })),
     );
   }

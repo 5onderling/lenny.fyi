@@ -11,6 +11,11 @@ const icoToPng = require('ico-to-png');
  * @param {string} url
  */
 const normalizePath = (path, url) => {
+  if (path.startsWith('http')) return path;
+
+  if (!path.startsWith('/')) {
+    path = new URL(url).pathname + '/' + path;
+  }
   const fullUrl = new URL(path, url);
   return fullUrl.href;
 };
@@ -75,7 +80,7 @@ const getImageHtml = async (urlOrBuffer) => {
 module.exports.getImageHtml = getImageHtml;
 
 /** @param {string} url */
-module.exports.getImage = async (url) => {
+module.exports.getWebsiteImage = async (url) => {
   try {
     const imageUrl = await getImageUrl(url);
 
@@ -87,6 +92,6 @@ module.exports.getImage = async (url) => {
 
     return await getImageHtml(imageUrl);
   } catch (_err) {
-    return '<div class="page-list__image"></div>';
+    return '<div class="page-list__image icon icon--website"></div>';
   }
 };
