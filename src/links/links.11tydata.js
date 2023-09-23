@@ -41,6 +41,10 @@ module.exports = async () => {
         url: 'https://youtu.be/GZsIhiXJjpY',
       },
     ],
+    Documentaries: [
+      { name: 'Vue.js: The Documentary', url: 'https://youtu.be/OrxmtDw4pVI' },
+      { name: 'TypeScript Origins: The Documentary', url: 'https://youtu.be/U6s2pdxebSo' },
+    ],
   };
 
   for (const category in links) {
