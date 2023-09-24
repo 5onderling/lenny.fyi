@@ -1,7 +1,7 @@
 (() => {
-  const link = document.querySelector('.skip-navigation');
+  const link = document.querySelector<HTMLAnchorElement>('.skip-navigation');
   if (!link) return;
-  const target = document.querySelector(link.hash);
+  const target = document.querySelector<HTMLAnchorElement>(link.hash);
   if (!target) return;
 
   target.tabIndex = -1;

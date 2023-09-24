@@ -3,8 +3,8 @@
   if (!nav) return;
 
   let prevY = window.scrollY;
-  let show;
-  let hide;
+  let show: boolean;
+  let hide: boolean;
   const scrollHandler = () => {
     const curY = window.scrollY;
     if (curY === prevY) return;
@@ -23,7 +23,7 @@
 
   // don't make the navigation sticky by navigating through anchors in history
   window.addEventListener('hashchange', () => {
-    window.removeEventListener('scroll', scrollHandler, { passive: true });
+    window.removeEventListener('scroll', scrollHandler);
     window.addEventListener(
       'scroll',
       () => window.addEventListener('scroll', scrollHandler, { passive: true }),

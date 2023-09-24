@@ -3,7 +3,7 @@
   menuSelector = '.nav__menu',
   bodyClass = 'nav-menu-open',
 } = {}) => {
-  const button = document.querySelector(buttonSelector);
+  const button = document.querySelector<HTMLButtonElement>(buttonSelector);
   const menu = document.querySelector(menuSelector);
   if (!button || !menu) return;
 

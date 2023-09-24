@@ -16,7 +16,7 @@ exports.render = (data) => {
         <meta name="description" content="${desc}" />
         <meta property="og:description" content="${desc}" />
         <link rel="stylesheet" href="/styles/main.scss" />
-        <script type="module" src="/scripts/main.js"></script>
+        <script type="module" src="/scripts/main.ts"></script>
         <script>
           document.documentElement.className = localStorage.getItem('theme') || '';
         </script>

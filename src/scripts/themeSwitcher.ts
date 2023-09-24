@@ -1,5 +1,5 @@
 (({ buttonSelector = '.theme-switcher', documentClass = 'other-theme' } = {}) => {
-  const button = document.querySelector(buttonSelector);
+  const button = document.querySelector<HTMLButtonElement>(buttonSelector);
   if (!button || !window.CSS || !CSS.supports('top', 'var(--v)')) return;
 
   button.hidden = false;
