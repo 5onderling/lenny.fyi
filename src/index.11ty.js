@@ -18,9 +18,9 @@ exports.render = (data) => md`
 
   I'm a frontend developer based in Kürten, Germany. I started learning developing in 2015 with basic HTML and CSS, fell since then in love with it, and never stopped learning.
 
-  I am currently training as an software developer at Oevermann, with the focus on frontend web development.
+  I am currently a software developer at TWT On, with a slight focus on backend development. My passion lies in frontend development, though.
 
-  In my free time I'm currently learning a lot about accessibility and HTML markup in general. When I'm not programming, I probably watch a great piece of audio-visual entertainment, listen to fantastic music, browse through Reddit/twitter or enjoy wonderful art.
+  In my free time I'm currently learning a lot about accessibility and HTML markup in general. When I'm not programming, I probably watch a great piece of audio-visual entertainment, listen to fantastic music, browse through Reddit/twitter or enjoy wonderful art. Recently I started learning the piano.
 
   ## My skills
 
@@ -30,9 +30,10 @@ exports.render = (data) => md`
 
   - CSS / SASS / SCSS / PostCSS
   - JavaScript / TypeScript
-  - Vite / esbuild / Rollup / Webpack / Gulp
-  - Vue / Angular / Voby / Preact / Svelte / Mithril / jQuery
+  - Vite / esbuild / Rollup
+  - Vue / Angular / Voby / Preact
   - Node.js / NPM
+  - .net / C#
 
   ## Here you can find me
 
