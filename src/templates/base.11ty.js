@@ -1,4 +1,5 @@
 const { html } = require('../utils');
+const { getTitle } = require('../utils/layout.js');
 
 exports.render = (data) => {
   const curUrl = data.page.url;
@@ -11,7 +12,7 @@ exports.render = (data) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>${data.title && curUrl !== '/' && `${data.title} | `}${data.meta.title}</title>
+        <title>${getTitle(data)}</title>
         <meta name="description" content="${desc}" />
         <meta property="og:description" content="${desc}" />
         <link rel="stylesheet" href="/styles/main.scss" />

@@ -1,7 +1,7 @@
 const { md } = require('./utils/index.js');
 
 exports.data = {
-  title: 404,
+  title: '404',
   permalink: '404.html',
 };
 
