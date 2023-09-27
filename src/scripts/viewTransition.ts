@@ -1,6 +1,5 @@
 // document.createRange().createContextualFragment makes scripts work on append (do not work with insertAdjacentHTML or innerHTML), script is for setting title
 
-import { isNavigationVisible, toggleNavigation } from './mobileNavigation';
 import { Try } from './utils/try';
 
 (() => {
@@ -42,9 +41,6 @@ import { Try } from './utils/try';
           throw error;
         }
 
-        const mobileMenuOpen = window.innerWidth < 768 && isNavigationVisible();
-        const useViewTransition = !!document.startViewTransition && !mobileMenuOpen;
-
         const updatePageContent = () => {
           contentParent.innerHTML = '';
           contentParent.append(document.createRange().createContextualFragment(partial));
@@ -59,10 +55,8 @@ import { Try } from './utils/try';
           }
         };
 
-        if (useViewTransition) document.startViewTransition(updatePageContent);
+        if (!!document.startViewTransition) document.startViewTransition(updatePageContent);
         else updatePageContent();
-
-        if (mobileMenuOpen) toggleNavigation(false);
 
         const activeNav = document.querySelector('.nav__link[aria-current="Page"]');
         if (activeNav) activeNav.ariaCurrent = null;
