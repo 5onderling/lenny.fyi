@@ -3,7 +3,7 @@
 .content {
   min-block-size: 100vh;
   max-inline-size: $contentWidth;
-  margin: math.div($navHeight, 2) auto $navHeight;
+  margin: math.div($navHeight, 1.5) auto $navHeight;
   padding: 0 $contentPadding;
 
   > *:not(.hero, hr) {
