@@ -118,22 +118,18 @@
       inset-block-end: 0;
       inset-inline: 0;
       block-size: 0.3em;
-      background-color: var(--primary-color);
+      background-color: currentColor;
       opacity: 0;
       transition: opacity 0.25s ease, background-color 0.25s ease;
     }
 
-    &:not([aria-current]) {
-      &:hover,
-      &:focus {
-        &::after {
-          background-color: currentColor;
-          opacity: 0.2;
-        }
-      }
+    &:hover::after,
+    &:focus::after {
+      opacity: 0.2;
     }
 
     &[aria-current]::after {
+      background-color: var(--primary-color);
       opacity: 1;
     }
   }
