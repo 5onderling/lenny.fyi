@@ -3,8 +3,8 @@
 .content {
   min-block-size: 100vh;
   max-inline-size: $contentWidth;
-  margin: 0 auto $navHeight;
-  padding: #{$navHeight * 1.5} $contentPadding 0;
+  margin: math.div($navHeight, 2) auto $navHeight;
+  padding: 0 $contentPadding;
 
   > *:not(.hero, hr) {
     max-inline-size: 48rem;

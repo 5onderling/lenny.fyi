@@ -19,12 +19,7 @@
 }
 
 .nav {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline: 0;
   block-size: $navHeight;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.35s ease;
-  z-index: 3;
 
   &::before {
     content: '';
@@ -48,23 +43,6 @@
     @include minTablet {
       content: none;
     }
-  }
-
-  &--fixed {
-    position: fixed;
-    background-color: var(--bg-color-navigation);
-    animation: showNavigation 0.35s;
-  }
-
-  @keyframes showNavigation {
-    from {
-      transform: translate3d(0, -120%, 0);
-    }
-  }
-
-  &--hide {
-    position: fixed;
-    transform: translate3d(0, -100%, 0);
   }
 
   &__inner {
