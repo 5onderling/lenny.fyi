@@ -3,7 +3,7 @@ const { getTitle } = require('../utils/layout.js');
 
 exports.render = ({ partial: { data } }) => html`
   <script>
-    document.title = '${getTitle(data)}';
+    document.title = ${JSON.stringify(getTitle(data))};
   </script>
   ${data.content}
 `;
