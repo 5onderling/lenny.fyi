@@ -23,5 +23,8 @@
     "ico-to-png": "^0.2.1",
     "marked": "^9.0.0",
     "sass": "^1.68.0"
+  },
+  "dependencies": {
+    "mitt": "^3.0.1"
   }
 }

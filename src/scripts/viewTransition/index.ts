@@ -2,7 +2,7 @@
 
 import { Try } from '../utils/try';
 import { updatePageWithViewTransition } from '../utils/viewTransition';
-import { cacheInitialPage, getPagePartial } from './partialsCache';
+import { cacheInitialPage, getPagePartial, loadPage } from './partialsCache';
 
 const contentParent = document.getElementById('content');
 
@@ -19,8 +19,8 @@ const updatePageContent = (contentParent: HTMLElement, partial: string, event: N
 
   if (event.navigationType === 'push') return scroll(0);
 
-  const navigationState = window.navigation.currentEntry?.getState() as any;
-  scroll(typeof navigationState.scrollY === 'number' ? navigationState.scrollY : 0);
+  const stateScrollY = (<any>event.destination?.getState())?.scrollY;
+  scroll(typeof stateScrollY === 'number' ? stateScrollY : 0);
 };
 
 const getNavigationInterceptHandler = (contentParent: HTMLElement, event: NavigateEvent) => {
@@ -49,6 +49,15 @@ const navigateHandler = (event: NavigateEvent) => {
   event.intercept({ scroll: 'manual', handler });
 };
 
+const preloadLinkHandler = (event: MouseEvent | TouchEvent) => {
+  if (event.ctrlKey || event.metaKey) return;
+
+  const link = event.target instanceof HTMLElement && event.target.closest('a');
+  if (!link || link.origin !== location.origin) return;
+
+  loadPage(link.pathname);
+};
+
 if (contentParent && window.navigation) {
   cacheInitialPage(contentParent);
 
@@ -60,4 +69,8 @@ if (contentParent && window.navigation) {
 
     location.reload();
   });
+
+  window.addEventListener('mouseover', preloadLinkHandler);
+  window.addEventListener('mousedown', preloadLinkHandler);
+  window.addEventListener('touchstart', preloadLinkHandler);
 }

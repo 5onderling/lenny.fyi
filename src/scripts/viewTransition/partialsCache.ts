@@ -1,18 +1,33 @@
-const pagesCache: Record<string, string> = {};
+import mitt from 'mitt';
+
+const isLoading = Symbol();
+
+const cacheEmitter = mitt<Record<string, string>>();
+const partialsCache: Record<string, string | Symbol> = {};
 
 export const cacheInitialPage = (contentParent: HTMLElement) => {
-  pagesCache[location.pathname] = `
+  partialsCache[location.pathname] = `
     <script>document.title=${JSON.stringify(document.title)}</script>
     ${contentParent.innerHTML}
   `;
 };
 
-export const getPagePartial = async (event: NavigateEvent) => {
-  const cachePage = pagesCache[location.pathname];
-  if (cachePage) return cachePage;
+export const loadPage = async (path: string, signal?: AbortSignal): Promise<string | void> => {
+  const partialCache = partialsCache[path];
+  if (typeof partialCache === 'string') return partialCache;
 
-  const partial = await fetch(`${location.pathname}index.partial.html`, {
-    signal: event.signal,
-  }).then((res) => res.text());
-  return (pagesCache[location.pathname] = partial);
+  if (partialCache === isLoading) {
+    return new Promise((resolve) => cacheEmitter.on(path, resolve));
+  }
+
+  try {
+    partialsCache[path] = isLoading;
+    const partial = await fetch(`${path}index.partial.html`, { signal }).then((res) => res.text());
+    cacheEmitter.emit(path, partial);
+    return (partialsCache[path] = partial);
+  } catch (_error) {
+    delete partialsCache[path];
+  }
 };
+
+export const getPagePartial = (event: NavigateEvent) => loadPage(location.pathname, event.signal);
