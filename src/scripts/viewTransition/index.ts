@@ -12,6 +12,16 @@ const updatePageContent = (contentParent: HTMLElement, partial: string, event: N
   contentParent.innerHTML = '';
   contentParent.append(document.createRange().createContextualFragment(partial));
 
+  // https://github.com/withastro/astro/blob/345808170fce783ddd3c9a4035a91fa64dcc5f46/packages/astro/src/transitions/router.ts#L23
+  const div = Object.assign(document.createElement('div'), {
+    ariaLive: 'assertive',
+    ariaAtomic: 'true',
+    style:
+      'position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px',
+  });
+  contentParent.append(div);
+  setTimeout(() => (div.textContent = document.title), 60);
+
   const activeNav = document.querySelector('.nav__link[aria-current="Page"]');
   if (activeNav) activeNav.ariaCurrent = null;
   const newActiveNav = document.querySelector(`.nav__link[href="${location.pathname}"]`);
