@@ -15,6 +15,34 @@ exports.render = (data) => {
         <title>${getTitle(data)}</title>
         <meta name="description" content="${desc}" />
         <meta property="og:description" content="${desc}" />
+        <link
+          rel="preload"
+          href="/assets/fonts/libre-baskerville-v7-latin-700.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/lato-v16-latin-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/lato-v16-latin-italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/lato-v16-latin-700.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
         <link rel="stylesheet" href="/styles/main.scss" />
         <script type="module" src="/scripts/main.ts"></script>
         <script>
