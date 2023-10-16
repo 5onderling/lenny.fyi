@@ -1,1 +1,8 @@
 ErrorDocument 404 /404.html
+
+# BROWSER CACHING USING CACHE-CONTROL HEADERS
+<ifModule mod_headers.c>
+  <filesMatch ".(gif|ico|jpg|jpeg|png|svg|webp|avif|css|js|woff|woff2)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </filesMatch>
+</ifModule>
