@@ -7,7 +7,7 @@ module.exports = async () => {
       { name: 'Utopia', url: 'https://utopia.fyi' },
     ],
     'GUI Tools': [
-      { name: 'SVGOMG', url: 'https://jakearchibald.github.io/svgomg' },
+      { name: 'SVGOMG', url: 'https://jakearchibald.github.io/svgomg', useFullUrlForImage: true },
       {
         name: 'Encode SVG SCSS',
         url: 'https://codepen.io/jakob-e/full/doMoML',
@@ -53,7 +53,7 @@ module.exports = async () => {
         ...link,
         icon: link.imageUrl
           ? await getWebsiteImageHtml(link.imageUrl)
-          : await getWebsiteImage(link.url),
+          : await getWebsiteImage(link.url, link.useFullUrlForImage),
       })),
     );
   }

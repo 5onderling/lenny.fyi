@@ -86,9 +86,9 @@ const getWebsiteImageHtml = (urlOrBuffer) => {
 module.exports.getWebsiteImageHtml = getWebsiteImageHtml;
 
 /** @param {string} url */
-module.exports.getWebsiteImage = async (url) => {
+module.exports.getWebsiteImage = async (url, useFullUrl) => {
   try {
-    const imageUrl = await getImageUrl(url);
+    const imageUrl = await getImageUrl(useFullUrl ? url : new URL(url).origin);
 
     if (extname(imageUrl) === '.ico') {
       const icoBuffer = await EleventyFetch(imageUrl);
