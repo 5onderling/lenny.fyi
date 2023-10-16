@@ -69,13 +69,20 @@ const getImageUrl = async (url) => {
   }
 };
 
-const getImageHtml = async (urlOrBuffer, { width = 'auto', alt = '', class: css = '' } = {}) => {
+const getImageHtml = async (
+  urlOrBuffer,
+  { width = 'auto', alt = '', class: css = '', lazy = true } = {},
+) => {
   const imageMetadata = await EleventyImage(urlOrBuffer, {
     widths: [width],
     outputDir: './dist/img',
     formats: ['avif', 'webp', 'jpeg'],
   });
-  return EleventyImage.generateHTML(imageMetadata, { alt, class: css, loading: 'lazy' });
+  return EleventyImage.generateHTML(imageMetadata, {
+    alt,
+    class: css,
+    ...(lazy && { loading: 'lazy' }),
+  });
 };
 module.exports.getImageHtml = getImageHtml;
 

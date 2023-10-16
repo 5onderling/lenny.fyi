@@ -13,6 +13,7 @@ exports.render = async (data) => md`
       width: 640,
       class: 'hero__image',
       alt: 'My avatar (An image of Majime Mitsuya from The Great Passage)',
+      lazy: false,
     })}
     <h1 class="hero__headline">
       <small>Hey I'm</small><br/>${data.meta.owner.name}
