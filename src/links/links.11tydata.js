@@ -1,4 +1,4 @@
-const { getWebsiteImage, getImageHtml } = require('../utils/getImage.js');
+const { getWebsiteImage, getWebsiteImageHtml } = require('../utils/getImage.js');
 
 module.exports = async () => {
   const links = {
@@ -51,7 +51,9 @@ module.exports = async () => {
     links[category] = await Promise.all(
       links[category].map(async (link) => ({
         ...link,
-        icon: link.imageUrl ? await getImageHtml(link.imageUrl) : await getWebsiteImage(link.url),
+        icon: link.imageUrl
+          ? await getWebsiteImageHtml(link.imageUrl)
+          : await getWebsiteImage(link.url),
       })),
     );
   }

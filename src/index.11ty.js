@@ -1,3 +1,4 @@
+const { getImageHtml } = require('./utils/getImage.js');
 const { md } = require('./utils/index.js');
 
 exports.data = {
@@ -6,9 +7,13 @@ exports.data = {
   order: 1,
 };
 
-exports.render = (data) => md`
+exports.render = async (data) => md`
   <div class="hero">
-    <img class="hero__image" src="/assets/me.jpg" alt="A Picture of 'Me'" height="320" width="320" />
+    ${await getImageHtml('./src/assets/avatar.png', {
+      width: 640,
+      class: 'hero__image',
+      alt: 'My avatar (An image of Majime Mitsuya from The Great Passage)',
+    })}
     <h1 class="hero__headline">
       <small>Hey I'm</small><br/>${data.meta.owner.name}
     </h1>

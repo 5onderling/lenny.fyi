@@ -69,15 +69,21 @@ const getImageUrl = async (url) => {
   }
 };
 
-const getImageHtml = async (urlOrBuffer) => {
+const getImageHtml = async (urlOrBuffer, { width = 'auto', alt = '', class: css = '' } = {}) => {
   const imageMetadata = await EleventyImage(urlOrBuffer, {
-    widths: [40],
+    widths: [width],
     outputDir: './dist/img',
+    formats: ['avif', 'webp', 'jpeg'],
   });
-  return EleventyImage.generateHTML(imageMetadata, { alt: '', class: 'page-list__image' });
+  return EleventyImage.generateHTML(imageMetadata, { alt, class: css });
 };
-
 module.exports.getImageHtml = getImageHtml;
+
+const websiteImageClass = 'page-list__image';
+const getWebsiteImageHtml = (urlOrBuffer) => {
+  return getImageHtml(urlOrBuffer, { width: 40, class: websiteImageClass });
+};
+module.exports.getWebsiteImageHtml = getWebsiteImageHtml;
 
 /** @param {string} url */
 module.exports.getWebsiteImage = async (url) => {
@@ -87,11 +93,11 @@ module.exports.getWebsiteImage = async (url) => {
     if (extname(imageUrl) === '.ico') {
       const icoBuffer = await EleventyFetch(imageUrl);
       const buffer = await icoToPng(icoBuffer, 64);
-      return await getImageHtml(buffer);
+      return await getWebsiteImageHtml(buffer);
     }
 
-    return await getImageHtml(imageUrl);
+    return await getWebsiteImageHtml(imageUrl);
   } catch (_err) {
-    return '<div class="page-list__image icon icon--website"></div>';
+    return `<div class="${websiteImageClass} icon icon--website"></div>`;
   }
 };
