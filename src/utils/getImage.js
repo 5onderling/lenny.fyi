@@ -75,7 +75,7 @@ const getImageHtml = async (urlOrBuffer, { width = 'auto', alt = '', class: css 
     outputDir: './dist/img',
     formats: ['avif', 'webp', 'jpeg'],
   });
-  return EleventyImage.generateHTML(imageMetadata, { alt, class: css });
+  return EleventyImage.generateHTML(imageMetadata, { alt, class: css, loading: 'lazy' });
 };
 module.exports.getImageHtml = getImageHtml;
 
