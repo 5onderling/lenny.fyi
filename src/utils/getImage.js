@@ -11,7 +11,7 @@ const icoToPng = require('ico-to-png');
  * @param {string} url
  */
 const normalizePath = (path, url) => {
-  if (path.startsWith('http')) return path;
+  if (path.startsWith('http') || path.startsWith('data:')) return path;
 
   if (!path.startsWith('/')) {
     path = new URL(url).pathname + '/' + path;
@@ -76,7 +76,7 @@ const getImageHtml = async (
   const imageMetadata = await EleventyImage(urlOrBuffer, {
     widths: [width],
     outputDir: './dist/img',
-    formats: ['avif', 'webp', 'jpeg'],
+    formats: ['avif', 'webp', 'jpeg', 'svg'],
   });
   return EleventyImage.generateHTML(imageMetadata, {
     alt,
@@ -96,6 +96,11 @@ module.exports.getWebsiteImageHtml = getWebsiteImageHtml;
 module.exports.getWebsiteImage = async (url, useFullUrl) => {
   try {
     const imageUrl = await getImageUrl(useFullUrl ? url : new URL(url).origin);
+
+    if (imageUrl.startsWith('data:')) {
+      const icoBuffer = Buffer.from(await fetch(imageUrl).then((res) => res.arrayBuffer()));
+      return await getWebsiteImageHtml(icoBuffer);
+    }
 
     if (extname(imageUrl) === '.ico') {
       const icoBuffer = await EleventyFetch(imageUrl);

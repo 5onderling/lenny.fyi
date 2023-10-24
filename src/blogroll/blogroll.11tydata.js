@@ -31,6 +31,7 @@ module.exports = async () => {
       { name: 'Sara Soueidan', url: 'https://www.sarasoueidan.com' },
       { name: "Scott O'Hara", url: 'https://www.scottohara.me' },
       { name: 'Sebastian De Deyne', url: 'https://sebastiandedeyne.com' },
+      { name: 'Sindre Sorhus', url: 'https://sindresorhus.com' },
       { name: 'Tania Rascia', url: 'https://www.taniarascia.com' },
       { name: 'Tobias Ahlin', url: 'https://tobiasahlin.com' },
       { name: 'Nikita Prokopov', url: 'https://tonsky.me' },
