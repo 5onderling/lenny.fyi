@@ -4,12 +4,22 @@
   gap: 0.5rem;
 
   &__item {
-    display: flex;
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  &__link-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto auto;
+    gap: 0.5rem;
+    align-items: center;
   }
 
   &__link {
     display: grid;
-    grid-template-columns: 1em 1fr;
+    justify-self: start;
+    grid-template-columns: 1.25rem 1fr;
     gap: 0.5rem;
     padding-inline: 0.5rem;
     transition: background-color 0.2s ease;
@@ -22,5 +32,28 @@
   &__image {
     margin-block-start: 0.25em;
     border-radius: 0.5em;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  &__rss {
+    justify-self: end;
+    color: var(--text-color-secondary);
+    transition: color 0.25s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  &__latest-post {
+    padding-left: 2.25rem;
+    display: block;
+    color: var(--text-color-secondary);
+
+    a:hover {
+      color: var(--text-color);
+    }
   }
 }

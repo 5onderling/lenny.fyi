@@ -6,6 +6,11 @@ $navHeight: 6rem;
 
 @mixin final-theme-colors {
   --text-color: hsl(0, 0%, var(--text-color-lightness));
+  --text-color-secondary: hsl(
+    0,
+    0%,
+    calc(var(--text-color-lightness) + var(--text-color-secondary-lightness-add))
+  );
 
   --bg-color: hsl(0, 0%, var(--bg-color-lightness));
   --bg-color-navigation: hsl(0, 0%, var(--bg-color-navigation-lighness));
@@ -19,6 +24,7 @@ $navHeight: 6rem;
     )};
 
   --text-color-lightness: 10%;
+  --text-color-secondary-lightness-add: 10%;
 
   --bg-color-lightness: 100%;
   --bg-color-navigation-lighness: 92.5%;
@@ -34,6 +40,7 @@ $navHeight: 6rem;
     )};
 
   --text-color-lightness: 90%;
+  --text-color-secondary-lightness-add: -10%;
 
   --bg-color-lightness: 10%;
   --bg-color-navigation-lighness: 7.5%;

@@ -23,9 +23,20 @@ exports.render = (data) => {
           ${blogs.map((blog) => {
             return html`
               <li class="page-list__item">
-                <a href="${blog.url}" class="page-list__link">
-                  ${blog.icon}${blog.name} (${blog.url.replace('https://', '').replace('www.', '')})
-                </a>
+                <div class="page-list__link-wrapper">
+                  <a href="${blog.url}" class="page-list__link">${blog.icon}${blog.name}</a>
+                  ${blog.feedUrl &&
+                  html`<a class="page-list__rss" href="${blog.feedUrl}">
+                    <small>RSS</small>
+                    <span class="icon icon--rss"></span>
+                  </a>`}
+                </div>
+                ${blog.latestBlogPost &&
+                html`<small class="page-list__latest-post">
+                  Latest
+                  post${blog.latestBlogPost.updated && ` from ${blog.latestBlogPost.updated}`}:
+                  <a href="${blog.latestBlogPost.link}">${blog.latestBlogPost.title}</a>
+                </small>`}
               </li>
             `;
           })}

@@ -28,9 +28,17 @@ const getImageUrl = async (url) => {
     const $ = cheerio.load(siteTextContent);
 
     if (url.includes('.medium.com')) {
-      const twitterImage = $("meta[name~='twitter:image:src']");
-      if (twitterImage.length) {
-        return normalizePath(twitterImage[0].attribs.content, url);
+      const twitterImages = $("meta[name~='twitter:image:src']");
+      if (twitterImages.length) {
+        return normalizePath(twitterImages[0].attribs.content, url);
+      }
+    }
+
+    if (url.includes('vakantio.de')) {
+      const ogImages = $("meta[property~='og:image']");
+      if (ogImages.length) {
+        console.log(url, ogImages[0].attribs.content);
+        return normalizePath(ogImages[0].attribs.content, url);
       }
     }
 
@@ -72,7 +80,7 @@ const getImageUrl = async (url) => {
 
     return normalizePath('/favicon.ico', url);
   } catch (_err) {
-    console.log(_err);
+    // console.log(_err);
     return;
   }
 };
