@@ -1,14 +1,14 @@
 const { getWebsiteImage, getWebsiteImageHtml } = require('../utils/getImage.js');
+const { getLatestBlogPost } = require('../utils/getLatestBlogPost.js');
 
 module.exports = async () => {
   const blogs = {
     WebDev: [
-      { name: 'Adam Silver', url: 'https://adamsilver.io' },
+      { name: 'Adam Silver', url: 'https://adamsilver.io', feed: '/atom.xml' },
       {
         name: 'Andrea Giammarchi',
         url: 'https://webreflection.medium.com',
-        imageUrl:
-          'https://files.mastodon.social/accounts/avatars/000/033/932/original/b2dc758e49bdc71e.jpg',
+        feed: 'https://medium.com/feed/@webreflection',
       },
       { name: 'Anthony Fu', url: 'https://antfu.me' },
       { name: 'bitsofcode', url: 'https://bitsofco.de' },
@@ -68,6 +68,7 @@ module.exports = async () => {
           icon: blog.imageUrl
             ? await getWebsiteImageHtml(blog.imageUrl)
             : await getWebsiteImage(blog.url),
+          latestBlogPost: blog.feed && (await getLatestBlogPost(blog.url, blog.feed)),
         })),
     );
   }

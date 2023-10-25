@@ -5,6 +5,7 @@ const EleventyImage = require('@11ty/eleventy-img');
 const EleventyFetch = require('@11ty/eleventy-fetch');
 const cheerio = require('cheerio');
 const icoToPng = require('ico-to-png');
+const { fetchOptions } = require('../shared/fetchOptions.js');
 
 /**
  * @param {string} path
@@ -23,8 +24,15 @@ const normalizePath = (path, url) => {
 /** @param {string} url */
 const getImageUrl = async (url) => {
   try {
-    const siteTextContent = await EleventyFetch(url, { type: 'text' });
+    const siteTextContent = await EleventyFetch(url, { type: 'text', fetchOptions });
     const $ = cheerio.load(siteTextContent);
+
+    if (url.includes('.medium.com')) {
+      const twitterImage = $("meta[name~='twitter:image:src']");
+      if (twitterImage.length) {
+        return normalizePath(twitterImage[0].attribs.content, url);
+      }
+    }
 
     const appleTouchIcons = $("link[rel~='apple-touch-icon']");
     if (appleTouchIcons.length) {
@@ -77,6 +85,7 @@ const getImageHtml = async (
     widths: [width],
     outputDir: './dist/img',
     formats: ['avif', 'webp', 'jpeg', 'svg'],
+    cacheOptions: { fetchOptions },
   });
   return EleventyImage.generateHTML(imageMetadata, {
     alt,
