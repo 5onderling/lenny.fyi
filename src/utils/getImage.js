@@ -36,10 +36,7 @@ const getImageUrl = async (url) => {
 
     if (url.includes('vakantio.de')) {
       const ogImages = $("meta[property~='og:image']");
-      if (ogImages.length) {
-        console.log(url, ogImages[0].attribs.content);
-        return normalizePath(ogImages[0].attribs.content, url);
-      }
+      if (ogImages.length) return normalizePath(ogImages[0].attribs.content, url);
     }
 
     const appleTouchIcons = $("link[rel~='apple-touch-icon']");

@@ -30,10 +30,17 @@
   }
 
   &__image {
+    block-size: 1.25rem;
+    inline-size: 1.25rem;
     margin-block-start: 0.25em;
     border-radius: 0.5em;
     aspect-ratio: 1;
     object-fit: cover;
+  }
+
+  &__link[href="https://blog.sakugabooru.com"] &__image
+  {
+    image-rendering: pixelated;
   }
 
   &__rss {

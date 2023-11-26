@@ -68,6 +68,7 @@ module.exports = async () => {
         useFullUrlForImage: true,
         feed: 'https://vakantio.de/vak-service/rss/cassiopeia.xml',
       },
+      { name: 'Sakuga Blog', url: 'https://blog.sakugabooru.com', feed: '/feed' },
       { name: 'StorySplinters', url: 'https://storysplinters.com', feed: '/feed' },
     ],
   };
