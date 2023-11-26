@@ -21,7 +21,7 @@
     "cheerio": "^1.0.0-rc.12",
     "html-minifier": "^4.0.0",
     "ico-to-png": "^0.2.1",
-    "marked": "^9.0.0",
+    "marked": "^10.0.0",
     "sass": "^1.68.0"
   },
   "dependencies": {
