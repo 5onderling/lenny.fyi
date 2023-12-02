@@ -26,6 +26,12 @@ module.exports = async () => {
       { name: 'Max Böck', url: 'https://mxb.dev', feed: '/feed.xml' },
       { name: 'Modern CSS Solutions', url: 'https://moderncss.dev', feed: '/feed' },
       { name: 'Nikita Prokopov', url: 'https://tonsky.me', feed: '/atom.xml' },
+      {
+        name: 'Own Your Web',
+        url: 'https://buttondown.email/ownyourweb/archive',
+        feed: '/ownyourweb/rss',
+        useFullUrlForImage: true,
+      },
       { name: 'Paweł Grzybek', url: 'https://pawelgrzybek.com', feed: '/feed.xml' },
       {
         name: 'Philip Walton',
