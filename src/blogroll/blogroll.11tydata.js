@@ -68,12 +68,6 @@ module.exports = async () => {
         feed: '/feed',
       },
       { name: 'Björn Ottosson', url: 'https://bottosson.github.io', feed: '/feed/feed.xml' },
-      {
-        name: 'Cassiopeia (German)',
-        url: 'https://vakantio.de/cassiopeia',
-        useFullUrlForImage: true,
-        feed: 'https://vakantio.de/vak-service/rss/cassiopeia.xml',
-      },
       { name: 'Sakuga Blog', url: 'https://blog.sakugabooru.com', feed: '/feed' },
       { name: 'StorySplinters', url: 'https://storysplinters.com', feed: '/feed' },
     ],

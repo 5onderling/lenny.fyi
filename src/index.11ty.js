@@ -49,7 +49,6 @@ exports.render = async (data) => md`
   - [<span class="icon icon--anilist"></span> AniList](https://anilist.co/user/lenny)
   - [<span class="icon icon--discogs"></span> Discogs](https://www.discogs.com/user/5onderling)
   - [<span class="icon icon--linkedin"></span> Linkedin](https://www.linkedin.com/in/lenny-anders-698684271)
-  - [<span class="icon icon--xing"></span> Xing](https://www.xing.com/profile/Lenny_Anders)
   - [<span class="icon icon--github"></span> Github](https://github.com/lennyanders)
   - [<span class="icon icon--email"></span> E-Mail](mailto:hey@lenny.fyi)
 
@@ -58,7 +57,7 @@ exports.render = async (data) => md`
   - **Editor:** [Visual Studio Code](https://code.visualstudio.com/)
   - **Programming font:** [Fira Code](https://github.com/tonsky/FiraCode)
   - **Programming theme:** [SynthWave '84](https://github.com/robb0wen/synthwave-vscode)
-  - **Computer:** Mac Mini (M1, 16 GB RAM)
+  - **Computer:** MacBook Pro (M3 Max, 36 GB RAM)
   - **Monitor:** LG 27GP950 and Eizo FlexScan EV2450-BK (older model)
   - **Keyboard:** Ducky One 2 mini
   - **Mouse:** Logitech MX Master 3
