@@ -4,6 +4,7 @@ const { getLatestBlogPost } = require('../utils/getLatestBlogPost.js');
 module.exports = async () => {
   const blogs = {
     WebDev: [
+      { name: 'Adam Argyle', url: 'https://nerdy.dev', feed: '/rss.xml' },
       { name: 'Adam Silver', url: 'https://adamsilver.io', feed: '/atom.xml' },
       {
         name: 'Andrea Giammarchi',
