@@ -1,13 +1,13 @@
-const { getImageHtml } = require('./utils/getImage.js');
-const { md } = require('./utils/index.js');
+import { getImageHtml } from './utils/getImage.js';
+import { md } from './utils/index.js';
 
-exports.data = {
+export const data = {
   title: 'Home',
   nav: true,
   order: 1,
 };
 
-exports.render = async (data) => md`
+export const render = async (data) => md`
   <div class="hero">
     ${await getImageHtml('./src/assets/avatar.png', {
       width: 640,

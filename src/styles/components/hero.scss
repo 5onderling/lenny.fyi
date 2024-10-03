@@ -14,9 +14,9 @@
   }
 
   &__image {
-    @include fluid-size(20rem, 75rem, 9rem, 20rem, 'inline-size');
     border-radius: 50%;
     margin: 0 auto 2rem;
+    @include fluid-size(20rem, 75rem, 9rem, 20rem, 'inline-size');
 
     @include minTablet {
       margin: 0;

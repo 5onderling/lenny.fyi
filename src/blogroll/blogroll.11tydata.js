@@ -1,7 +1,7 @@
-const { getWebsiteImage, getWebsiteImageHtml } = require('../utils/getImage.js');
-const { getLatestBlogPost } = require('../utils/getLatestBlogPost.js');
+import { getWebsiteImage, getWebsiteImageHtml } from '../utils/getImage.js';
+import { getLatestBlogPost } from '../utils/getLatestBlogPost.js';
 
-module.exports = async () => {
+export default async () => {
   const blogs = {
     WebDev: [
       { name: 'Adam Argyle', url: 'https://nerdy.dev', feed: '/rss.xml' },

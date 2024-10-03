@@ -1,9 +1,11 @@
-const { html } = require('../utils');
-const { getTitle } = require('../utils/layout.js');
+import { html } from '../utils/index.js';
+import { getTitle } from '../utils/layout.js';
 
-exports.render = ({ partial: { data } }) => html`
-  <script>
-    document.title = ${JSON.stringify(getTitle(data))};
-  </script>
-  ${data.content}
-`;
+export const render = ({ partial: { data }, content }) => {
+  return html`
+    <script>
+      document.title = ${JSON.stringify(getTitle(data))};
+    </script>
+    ${content}
+  `;
+};

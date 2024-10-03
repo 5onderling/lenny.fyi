@@ -1,15 +1,16 @@
-const { marked } = require('marked');
+import { marked } from 'marked';
 
+/** @type {import('marked').RendererObject} */
 const renderer = {
-  heading(text, level) {
-    if (level === 1) return `<h1>${text}</h1>`;
+  heading({ text, depth }) {
+    if (depth === 1) return `<h1>${text}</h1>`;
 
     const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
     return html`
-      <h${level} id="${escapedText}">
+      <h${depth} id="${escapedText}">
         <a class="permalink icon icon--clipboard" href="#${escapedText}" aria-label="${text} permalink"></a>
         ${text}
-      </h${level}>
+      </h${depth}>
     `;
   },
 };
@@ -21,7 +22,7 @@ marked.use({ renderer });
  * @param {Array<any>} keys
  * @returns {String}
  */
-const html = (strings, ...keys) => {
+export const html = (strings, ...keys) => {
   return strings.reduce((res, string, index) => {
     let ret = res + string;
     const keyVal = keys[index];
@@ -37,7 +38,7 @@ const html = (strings, ...keys) => {
  * @param {Array<any>} keys
  * @returns {String}
  */
-const md = (strings, ...keys) => {
+export const md = (strings, ...keys) => {
   const string = html(strings, ...keys)
     .split('\n')
     .map((s) => s.trim())
@@ -45,5 +46,3 @@ const md = (strings, ...keys) => {
 
   return marked.parse(string);
 };
-
-module.exports = { html, md };

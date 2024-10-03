@@ -1,12 +1,12 @@
-const { html, md } = require('../utils/index.js');
+import { html, md } from '../utils/index.js';
 
-exports.data = {
+export const data = {
   title: 'Blogroll',
   nav: true,
   order: 2,
 };
 
-exports.render = (data) => {
+export const render = (data) => {
   return md`
     # ${data.title}
 

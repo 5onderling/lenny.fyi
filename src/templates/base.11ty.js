@@ -1,7 +1,7 @@
-const { html } = require('../utils');
-const { getTitle } = require('../utils/layout.js');
+import { html } from '../utils/index.js';
+import { getTitle } from '../utils/layout.js';
 
-exports.render = (data) => {
+export const render = (data) => {
   const curUrl = data.page.url;
   const desc = data.description || data.meta.description;
 

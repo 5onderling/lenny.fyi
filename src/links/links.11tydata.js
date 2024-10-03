@@ -1,6 +1,6 @@
-const { getWebsiteImage, getWebsiteImageHtml } = require('../utils/getImage.js');
+import { getWebsiteImage, getWebsiteImageHtml } from '../utils/getImage.js';
 
-module.exports = async () => {
+export default async () => {
   const links = {
     Methodologies: [
       { name: 'BEM', url: 'https://getbem.com' },

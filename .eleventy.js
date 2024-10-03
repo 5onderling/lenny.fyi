@@ -1,8 +1,7 @@
-const { rmSync } = require('fs');
-const { minify } = require('html-minifier');
-
-const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
-const inclusiveLanguage = require('@11ty/eleventy-plugin-inclusive-language');
+import { default as inclusiveLanguage } from '@11ty/eleventy-plugin-inclusive-language';
+import EleventyVitePlugin from '@11ty/eleventy-plugin-vite';
+import { rmSync } from 'fs';
+import { minify } from 'html-minifier';
 
 const config = {
   dir: {
@@ -14,7 +13,7 @@ const config = {
   dataTemplateEngine: '11ty.js',
 };
 
-module.exports = (eleventyConfig) => {
+export default (eleventyConfig) => {
   rmSync('dist', { force: true, recursive: true });
 
   eleventyConfig.addPlugin(EleventyVitePlugin, {

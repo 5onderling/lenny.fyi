@@ -1,6 +1,6 @@
-const EleventyFetch = require('@11ty/eleventy-fetch');
-const cheerio = require('cheerio');
-const { fetchOptions } = require('../shared/fetchOptions.js');
+import EleventyFetch from '@11ty/eleventy-fetch';
+import * as cheerio from 'cheerio';
+import { fetchOptions } from '../shared/fetchOptions.js';
 
 const getFormattedDate = (date) => {
   if (!date) return;
@@ -34,7 +34,7 @@ const getEntries = (siteTextContent) => {
   }
 };
 
-exports.getLatestBlogPost = async (feedUrl) => {
+export const getLatestBlogPost = async (feedUrl) => {
   try {
     const siteTextContent = await EleventyFetch(feedUrl, { type: 'text', fetchOptions });
     const entries = getEntries(siteTextContent);

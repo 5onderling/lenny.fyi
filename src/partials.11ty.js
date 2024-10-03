@@ -1,4 +1,4 @@
-exports.data = {
+export const data = {
   pagination: {
     data: 'collections.all',
     size: 1,
@@ -9,4 +9,4 @@ exports.data = {
   layout: 'partial.11ty.js',
 };
 
-exports.render = ({ partial }) => partial.content;
+export const render = ({ partial }) => partial.content;

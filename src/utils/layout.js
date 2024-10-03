@@ -1,5 +1,5 @@
-const { html } = require('./index.js');
+import { html } from './index.js';
 
-exports.getTitle = (data) => {
+export const getTitle = (data) => {
   return html`${data.title && data.page.url !== '/' && `${data.title} | `}${data.meta.title}`;
 };

@@ -1,11 +1,11 @@
 // getting images inspired by https://github.com/11ty/api-indieweb-avatar
 
-const { extname } = require('path');
-const EleventyImage = require('@11ty/eleventy-img');
-const EleventyFetch = require('@11ty/eleventy-fetch');
-const cheerio = require('cheerio');
-const icoToPng = require('ico-to-png');
-const { fetchOptions } = require('../shared/fetchOptions.js');
+import EleventyFetch from '@11ty/eleventy-fetch';
+import EleventyImage from '@11ty/eleventy-img';
+import * as cheerio from 'cheerio';
+import icoToPng from 'ico-to-png';
+import { extname } from 'path';
+import { fetchOptions } from '../shared/fetchOptions.js';
 
 /**
  * @param {string} path
@@ -82,7 +82,7 @@ const getImageUrl = async (url) => {
   }
 };
 
-const getImageHtml = async (
+export const getImageHtml = async (
   urlOrBuffer,
   { width = 'auto', alt = '', class: css = '', lazy = true } = {},
 ) => {
@@ -98,16 +98,14 @@ const getImageHtml = async (
     ...(lazy && { loading: 'lazy' }),
   });
 };
-module.exports.getImageHtml = getImageHtml;
 
 const websiteImageClass = 'page-list__image';
-const getWebsiteImageHtml = (urlOrBuffer) => {
+export const getWebsiteImageHtml = (urlOrBuffer) => {
   return getImageHtml(urlOrBuffer, { width: 40, class: websiteImageClass });
 };
-module.exports.getWebsiteImageHtml = getWebsiteImageHtml;
 
 /** @param {string} url */
-module.exports.getWebsiteImage = async (url, useFullUrl) => {
+export const getWebsiteImage = async (url, useFullUrl) => {
   try {
     const imageUrl = await getImageUrl(useFullUrl ? url : new URL(url).origin);
 
