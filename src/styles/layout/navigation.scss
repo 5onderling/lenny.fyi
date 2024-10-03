@@ -18,6 +18,21 @@
   }
 }
 
+.spotify {
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #45d75f;
+  font-size: 1rem;
+  color: #000;
+
+  .icon {
+    font-size: 1.25rem;
+  }
+}
+
 .nav {
   padding: 0 $contentPadding;
   display: flex;

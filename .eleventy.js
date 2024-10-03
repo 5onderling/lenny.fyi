@@ -13,6 +13,7 @@ const config = {
   dataTemplateEngine: '11ty.js',
 };
 
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 export default (eleventyConfig) => {
   rmSync('dist', { force: true, recursive: true });
 

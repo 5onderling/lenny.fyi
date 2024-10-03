@@ -43,7 +43,6 @@ export const render = async (data) => md`
 
   ## Here you can find me
 
-  - [<span class="icon icon--bluesky"></span> Bluesky](https://bsky.app/profile/lenny.fyi)
   - [<span class="icon icon--twitter"></span> Twitter / x](https://twitter.com/5onderling)
   - [<span class="icon icon--letterboxd"></span> Letterboxd](https://letterboxd.com/LennyAnders)
   - [<span class="icon icon--anilist"></span> AniList](https://anilist.co/user/lenny)

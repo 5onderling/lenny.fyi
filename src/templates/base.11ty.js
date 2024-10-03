@@ -52,6 +52,10 @@ export const render = (data) => {
       <body>
         <a class="skip-navigation" href="#content">Skip Navigation</a>
 
+        <a href="https://open.spotify.com/playlist/1VjeXlXUnVetW2tFqn6ttZ" class="spotify">
+          Listen to "Die Beste Spotify Playlist"
+          <div class="icon icon--spotify"></div>
+        </a>
         <header class="nav">
           <a
             class="logo"
