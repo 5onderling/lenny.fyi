@@ -1,13 +1,10 @@
-@import 'abstracts/logic.scss';
-@import 'abstracts/data.scss';
+@use 'base/reset.scss';
+@use 'base/base.scss';
+@use 'base/typographie.scss';
+@use 'base/icons.scss';
 
-@import 'base/reset.scss';
-@import 'base/base.scss';
-@import 'base/typographie.scss';
-@import 'base/icons.scss';
+@use 'layout/navigation.scss';
+@use 'layout/content.scss';
 
-@import 'layout/navigation.scss';
-@import 'layout/content.scss';
-
-@import 'components/hero.scss';
-@import 'components/page-list.scss';
+@use 'components/hero.scss';
+@use 'components/page-list.scss';

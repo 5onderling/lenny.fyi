@@ -1,3 +1,4 @@
+@use 'sass:string';
 @use 'sass:math';
 
 @mixin minTablet {
@@ -17,10 +18,10 @@
 }
 
 @mixin fluid-size($minWidth, $maxWidth, $minSize, $maxSize, $property: 'font-size') {
-  $u1: unit($minWidth);
-  $u2: unit($maxWidth);
-  $u3: unit($minSize);
-  $u4: unit($maxSize);
+  $u1: math.unit($minWidth);
+  $u2: math.unit($maxWidth);
+  $u3: math.unit($minSize);
+  $u4: math.unit($maxSize);
 
   @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
     & {
@@ -42,7 +43,7 @@
   //
   //  Add missing namespace
   //
-  @if not str-index($svg, xmlns) {
+  @if not string.index($svg, xmlns) {
     $svg: str-replace($svg, '<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
   }
   //
@@ -52,9 +53,9 @@
   $encoded: '';
   $slice: 2000;
   $index: 0;
-  $loops: ceil(math.div(str-length($svg), $slice));
+  $loops: math.ceil(math.div(string.length($svg), $slice));
   @for $i from 1 through $loops {
-    $chunk: str-slice($svg, $index, $index + $slice - 1);
+    $chunk: string.slice($svg, $index, $index + $slice - 1);
     //
     //   Encode
     //
@@ -66,24 +67,6 @@
     $chunk: str-replace($chunk, '<', '%3C');
     $chunk: str-replace($chunk, '>', '%3E');
 
-    //
-    //    The maybe list
-    //
-    //    Keep size and compile time down
-    //    ... only add on documented fail
-    //
-    //  $chunk: str-replace($chunk, '&', '%26');
-    //  $chunk: str-replace($chunk, '|', '%7C');
-    //  $chunk: str-replace($chunk, '[', '%5B');
-    //  $chunk: str-replace($chunk, ']', '%5D');
-    //  $chunk: str-replace($chunk, '^', '%5E');
-    //  $chunk: str-replace($chunk, '`', '%60');
-    //  $chunk: str-replace($chunk, ';', '%3B');
-    //  $chunk: str-replace($chunk, '?', '%3F');
-    //  $chunk: str-replace($chunk, ':', '%3A');
-    //  $chunk: str-replace($chunk, '@', '%40');
-    //  $chunk: str-replace($chunk, '=', '%3D');
-
     $encoded: #{$encoded}#{$chunk};
     $index: $index + $slice;
   }
@@ -92,11 +75,11 @@
 
 //  Helper function to replace characters in a string
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
   @return if(
     $index,
-    str-slice($string, 1, $index - 1) + $replace +
-      str-replace(str-slice($string, $index + str-length($search)), $search, $replace),
+    string.slice($string, 1, $index - 1) + $replace +
+      str-replace(string.slice($string, $index + string.length($search)), $search, $replace),
     $string
   );
 }

@@ -1,3 +1,5 @@
+@use "../abstracts/logic";
+
 /* libre-baskerville-700 - latin */
 @font-face {
   font-family: 'Libre Baskerville';
@@ -51,11 +53,11 @@ h2 {
 }
 
 h1 {
-  @include fluid-size(20rem, 75rem, 2rem, 4rem);
+  @include logic.fluid-size(20rem, 75rem, 2rem, 4rem);
 }
 
 h2 {
-  @include fluid-size(20rem, 75rem, 1.5rem, 2rem);
+  @include logic.fluid-size(20rem, 75rem, 1.5rem, 2rem);
 }
 
 h3 {

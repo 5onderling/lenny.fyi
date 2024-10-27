@@ -1,10 +1,12 @@
+@use "../abstracts/data";
+
 @use 'sass:math';
 
 .content {
   min-block-size: 100vh;
-  max-inline-size: $contentWidth;
-  margin: math.div($navHeight, 1.5) auto $navHeight;
-  padding: 0 $contentPadding;
+  max-inline-size: data.$contentWidth;
+  margin: math.div(data.$navHeight, 1.5) auto data.$navHeight;
+  padding: 0 data.$contentPadding;
 
   > *:not(.hero, hr) {
     max-inline-size: 48rem;

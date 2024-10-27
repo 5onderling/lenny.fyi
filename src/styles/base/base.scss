@@ -1,3 +1,6 @@
+@use "../abstracts/data";
+@use "../abstracts/logic";
+
 @view-transition {
   navigation: auto;
 }
@@ -5,21 +8,21 @@
 :root {
   --primary-color: hsl(340, 82%, 52%);
 
-  @include default-theme;
-  @include final-theme-colors;
+  @include data.default-theme;
+  @include data.final-theme-colors;
 
-  @include schemeDark {
-    @include dark-theme;
+  @include logic.schemeDark {
+    @include data.dark-theme;
   }
 }
 
 html {
   &.other-theme {
-    @include dark-theme;
-    @include final-theme-colors;
+    @include data.dark-theme;
+    @include data.final-theme-colors;
 
-    @include schemeDark {
-      @include default-theme;
+    @include logic.schemeDark {
+      @include data.default-theme;
     }
   }
 }
@@ -36,7 +39,7 @@ a {
 }
 
 :focus {
-  @include focus;
+  @include data.focus;
 }
 [tabindex='-1'] {
   outline: none;

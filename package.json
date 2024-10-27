@@ -16,7 +16,7 @@
     "@11ty/eleventy-fetch": "^4.0.0",
     "@11ty/eleventy-img": "^5.0.0",
     "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
-    "@11ty/eleventy-plugin-vite": "^5.0.0-alpha.5",
+    "@11ty/eleventy-plugin-vite": "^5.0.0",
     "@types/dom-navigation": "^1.0.1",
     "@types/dom-view-transitions": "^1.0.2",
     "cheerio": "^1.0.0-rc.12",

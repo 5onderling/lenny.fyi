@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use '../abstracts/data';
 
 .skip-navigation {
   position: fixed;
@@ -34,13 +35,13 @@
 }
 
 .nav {
-  padding: 0 $contentPadding;
+  padding: 0 data.$contentPadding;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  max-inline-size: $contentWidth;
+  max-inline-size: data.$contentWidth;
   margin-inline: auto;
 
   &__menu {
@@ -89,7 +90,7 @@
 .logo {
   flex-shrink: 0;
   margin-inline-end: auto;
-  block-size: $navHeight;
+  block-size: data.$navHeight;
   aspect-ratio: #{math.div(128, 96)} / 1;
 }
 

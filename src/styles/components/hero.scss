@@ -1,8 +1,10 @@
+@use "../abstracts/logic";
+
 .hero {
   min-block-size: 40vh;
   padding: 2rem 0;
 
-  @include minTablet {
+  @include logic.minTablet {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -10,15 +12,15 @@
   }
 
   &__headline {
-    @include fluid-size(20rem, 75rem, 2.25rem, 5rem);
+    @include logic.fluid-size(20rem, 75rem, 2.25rem, 5rem);
   }
 
   &__image {
     border-radius: 50%;
     margin: 0 auto 2rem;
-    @include fluid-size(20rem, 75rem, 9rem, 20rem, 'inline-size');
+    @include logic.fluid-size(20rem, 75rem, 9rem, 20rem, 'inline-size');
 
-    @include minTablet {
+    @include logic.minTablet {
       margin: 0;
     }
   }
