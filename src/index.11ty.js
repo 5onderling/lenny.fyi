@@ -7,7 +7,7 @@ export const data = {
   order: 1,
 };
 
-export const render = async (data) => md`
+export const render = async () => md`
   <div class="hero">
     ${await getImageHtml('./src/assets/avatar.png', {
       width: 640,
@@ -16,7 +16,8 @@ export const render = async (data) => md`
       lazy: false,
     })}
     <h1 class="hero__headline">
-      <small>Hey I'm</small><br/>${data.meta.owner.name}
+      <small>Hey I'm</small><br/>
+      Lenny Anders
     </h1>
   </div>
 

@@ -3,7 +3,7 @@ import { getTitle } from '../utils/layout.js';
 
 export const render = (data) => {
   const curUrl = data.page.url;
-  const desc = data.description || data.meta.description;
+  const desc = data.description || 'Lenny Anders is a frontend developer based in Kürten, Germany.';
 
   return html`
     <!DOCTYPE html>
