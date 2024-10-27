@@ -1,7 +1,7 @@
 import { default as inclusiveLanguage } from '@11ty/eleventy-plugin-inclusive-language';
 import EleventyVitePlugin from '@11ty/eleventy-plugin-vite';
 import { rmSync } from 'fs';
-import { minify } from 'html-minifier';
+import { minify } from 'html-minifier-terser';
 
 const config = {
   dir: {
