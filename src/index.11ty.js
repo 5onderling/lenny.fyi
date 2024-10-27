@@ -44,11 +44,11 @@ export const render = async (data) => md`
   ## Here you can find me
 
   - [<span class="icon icon--twitter"></span> Twitter / x](https://twitter.com/5onderling)
-  - [<span class="icon icon--letterboxd"></span> Letterboxd](https://letterboxd.com/LennyAnders)
+  - [<span class="icon icon--letterboxd"></span> Letterboxd](https://letterboxd.com/5onderling)
   - [<span class="icon icon--anilist"></span> AniList](https://anilist.co/user/lenny)
   - [<span class="icon icon--discogs"></span> Discogs](https://www.discogs.com/user/5onderling)
-  - [<span class="icon icon--linkedin"></span> Linkedin](https://www.linkedin.com/in/lenny-anders-698684271)
-  - [<span class="icon icon--github"></span> Github](https://github.com/lennyanders)
+  - [<span class="icon icon--linkedin"></span> Linkedin](https://www.linkedin.com/in/5onderling)
+  - [<span class="icon icon--github"></span> Github](https://github.com/5onderling)
   - [<span class="icon icon--email"></span> E-Mail](mailto:hey@lenny.fyi)
 
   ## Things I use
