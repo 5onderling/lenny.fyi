@@ -30,7 +30,7 @@ export const render = async () => {
 
     Currently, I'm working as an angular frontend developer at Ströer.
 
-    In my free time, I'm learning a lot about accessibility and HTML markup in general. When I'm not programming, I probably watch a great piece of audiovisual entertainment, listen to fantastic music, browse through Reddit/Twitter and enjoy wonderful art. In May 2023 I started learning piano.
+    In my free time, I'm learning a lot about accessibility and HTML markup in general. When I'm not programming, I probably watch a great piece of audiovisual entertainment, listen to fantastic music or enjoy wonderful art.
 
     ## My skills
 
@@ -47,7 +47,7 @@ export const render = async () => {
 
     ## Here you can find me
 
-    - [<span class="icon icon--twitter"></span> Twitter / x](https://twitter.com/5onderling)
+    - [<span class="icon icon--bluesky"></span> Bluesky](https://bsky.app/profile/lenny.fyi)
     - [<span class="icon icon--letterboxd"></span> Letterboxd](https://letterboxd.com/5onderling)
     - [<span class="icon icon--anilist"></span> AniList](https://anilist.co/user/lenny)
     - [<span class="icon icon--discogs"></span> Discogs](https://www.discogs.com/user/5onderling)
