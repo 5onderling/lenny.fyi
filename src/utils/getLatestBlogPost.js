@@ -29,7 +29,9 @@ const getEntries = (siteTextContent) => {
   const rssEntries = $('rss item');
   if (rssEntries.length) {
     return rssEntries.toArray().map((entry) => {
-      const title = getHtmlSaveString($(entry).find('title'));
+      const title =
+        getHtmlSaveString($(entry).find('title')) ||
+        getHtmlSaveString($(entry).find('description'));
       const link = $(entry).find('link').text();
       const updated = getHtmlSaveString($(entry).find('pubDate'));
       return { title, link, updated: updated && new Date(updated) };
