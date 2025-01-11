@@ -13,8 +13,8 @@
   "type": "module",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-fetch": "^4.0.0",
-    "@11ty/eleventy-img": "^5.0.0",
+    "@11ty/eleventy-fetch": "^5.0.2",
+    "@11ty/eleventy-img": "^6.0.0",
     "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
     "@11ty/eleventy-plugin-vite": "^5.0.0",
     "@types/dom-navigation": "^1.0.1",
@@ -22,7 +22,7 @@
     "cheerio": "^1.0.0-rc.12",
     "html-minifier-terser": "^7.2.0",
     "ico-to-png": "^0.2.1",
-    "marked": "^14.1.2",
+    "marked": "^15.0.6",
     "sass": "^1.68.0"
   },
   "dependencies": {
