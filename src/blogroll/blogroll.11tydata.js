@@ -49,20 +49,13 @@ export default async () => {
       { name: 'Zach Leatherman', url: 'https://www.zachleat.com', feed: '/web/feed/' },
       { name: 'zserge', url: 'https://zserge.com', feed: '/rss.xml' },
     ],
-    GameDev: [
-      { name: 'AMANO', url: 'https://amano.games', feed: '/rss/feed.xml' },
-      { name: 'Cadin Batrack', url: 'https://devblog.cadinbatrack.com', feed: '/feed.xml' },
-      {
-        name: 'Lucas Pope',
-        url: 'https://dukope.com',
-        imageUrl:
-          'https://files.mastodon.social/accounts/avatars/109/515/037/453/915/631/original/202e0871ff959941.png',
-        feed: 'https://dukope.itch.io/mars-after-midnight/devlog.rss',
-      },
-      { name: 'matt sephton', url: 'https://blog.gingerbeardman.com', feed: '/feed.xml' },
-      { name: 'Retronator', url: 'https://www.retronator.com', feed: '/rss' },
-    ],
     Other: [
+      {
+        name: "Atlantic '41 (StephanRewind)",
+        url: 'https://stephanrewind.itch.io/atlantic-41',
+        feed: '/atlantic-41/devlog.rss',
+        useFullUrlForImage: true,
+      },
       {
         name: 'Annands Anime Stube (German)',
         url: 'https://annandsanimestube.wordpress.com',
