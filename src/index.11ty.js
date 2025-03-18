@@ -62,7 +62,7 @@ export const render = async () => {
     - **Programming theme:** [SynthWave '84](https://github.com/robb0wen/synthwave-vscode)
     - **Computer:** MacBook Pro (M3 Max, 36 GB RAM)
     - **Monitor:** LG 27GP950 and Eizo FlexScan EV2450-BK (older model)
-    - **Keyboard:** Ducky One 2 mini
+    - **Keyboard:** [ZSA Voyager](https://www.zsa.io/voyager)
     - **Mouse:** Logitech MX Master 3
 
     ---
