@@ -63,7 +63,6 @@ export default async () => {
       },
       { name: 'Björn Ottosson', url: 'https://bottosson.github.io', feed: '/feed/feed.xml' },
       { name: 'Sakuga Blog', url: 'https://blog.sakugabooru.com', feed: '/feed' },
-      { name: 'StorySplinters', url: 'https://storysplinters.com', feed: '/feed' },
     ],
   };
 
