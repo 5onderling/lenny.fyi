@@ -1,0 +1,88 @@
+@use "../abstracts/data";
+
+@use 'sass:math';
+
+.content {
+  min-block-size: 100vh;
+  max-inline-size: data.$contentWidth;
+  margin: math.div(data.$navHeight, 1.5) auto data.$navHeight;
+  padding: 0 data.$contentPadding;
+
+  > *:not(.hero, hr) {
+    max-inline-size: 48rem;
+    margin-inline: auto;
+
+    &:not(h1, h2) {
+      max-inline-size: 47rem;
+    }
+  }
+
+  > p {
+    margin-block: 1em;
+  }
+
+  > h1 {
+    margin-block-end: 2rem;
+  }
+
+  > h2 {
+    margin-block-start: 2rem;
+  }
+
+  > blockquote {
+    font-style: italic;
+
+    p:first-of-type:before,
+    p:last-of-type:after {
+      display: inline-block;
+      min-inline-size: 0.5em;
+      font-size: 2em;
+      line-height: 1rem;
+      vertical-align: text-bottom;
+      color: var(--primary-color);
+    }
+
+    p:first-of-type:before {
+      content: open-quote;
+    }
+    p:last-of-type:after {
+      content: close-quote;
+      text-align: center;
+    }
+  }
+}
+
+a:not([class]) {
+  padding-inline: 0.125rem;
+  margin-inline: -0.125rem;
+  box-shadow: 0 0.1em var(--primary-color), inset 0 -0.1em var(--primary-color);
+  transition: box-shadow 0.2s ease, color 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 0.1em var(--primary-color), inset 0 -1.6em var(--primary-color);
+  }
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+
+  &:hover .permalink {
+    opacity: 0.25;
+  }
+}
+
+.permalink {
+  $size: 1.5rem;
+  position: absolute;
+  inset-inline-start: -$size;
+  inset-block-start: 50%;
+  inline-size: $size;
+  block-size: $size;
+  margin-block-start: math.div(-$size, 2);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}

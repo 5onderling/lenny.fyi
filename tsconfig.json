@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noImplicitAny": true
+  },
+  "include": ["src/scripts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,70 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  min-block-size: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+ul[class],
+ol[class] {
+  margin-inline: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+main,
+svg,
+img {
+  display: block;
+}
+
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+}

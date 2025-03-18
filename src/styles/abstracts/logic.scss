@@ -1,0 +1,85 @@
+@use 'sass:string';
+@use 'sass:math';
+
+@mixin minTablet {
+  @media screen and (min-width: 48rem) {
+    @content;
+  }
+}
+
+@mixin schemeDark {
+  @media screen and (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@mixin fluid-size($minWidth, $maxWidth, $minSize, $maxSize, $property: 'font-size') {
+  $u1: math.unit($minWidth);
+  $u2: math.unit($maxWidth);
+  $u3: math.unit($minSize);
+  $u4: math.unit($maxSize);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      #{$property}: $minSize;
+      @media screen and (min-width: $minWidth) {
+        #{$property}: calc(
+          #{$minSize} + #{strip-unit($maxSize - $minSize)} *
+            ((100vw - #{$minWidth}) / #{strip-unit($maxWidth - $minWidth)})
+        );
+      }
+      @media screen and (min-width: $maxWidth) {
+        #{$property}: $maxSize;
+      }
+    }
+  }
+}
+
+@function svg-url($svg) {
+  //
+  //  Add missing namespace
+  //
+  @if not string.index($svg, xmlns) {
+    $svg: str-replace($svg, '<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+  //
+  //  Chunk up string in order to avoid
+  //  "stack level too deep" error
+  //
+  $encoded: '';
+  $slice: 2000;
+  $index: 0;
+  $loops: math.ceil(math.div(string.length($svg), $slice));
+  @for $i from 1 through $loops {
+    $chunk: string.slice($svg, $index, $index + $slice - 1);
+    //
+    //   Encode
+    //
+    $chunk: str-replace($chunk, '"', "'");
+    $chunk: str-replace($chunk, '%', '%25');
+    $chunk: str-replace($chunk, '#', '%23');
+    $chunk: str-replace($chunk, '{', '%7B');
+    $chunk: str-replace($chunk, '}', '%7D');
+    $chunk: str-replace($chunk, '<', '%3C');
+    $chunk: str-replace($chunk, '>', '%3E');
+
+    $encoded: #{$encoded}#{$chunk};
+    $index: $index + $slice;
+  }
+  @return url('data:image/svg+xml,#{$encoded}');
+}
+
+//  Helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+  $index: string.index($string, $search);
+  @return if(
+    $index,
+    string.slice($string, 1, $index - 1) + $replace +
+      str-replace(string.slice($string, $index + string.length($search)), $search, $replace),
+    $string
+  );
+}

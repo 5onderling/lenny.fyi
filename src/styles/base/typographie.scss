@@ -1,0 +1,70 @@
+@use "../abstracts/logic";
+
+/* libre-baskerville-700 - latin */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Libre Baskerville Bold'), local('LibreBaskerville-Bold'),
+    url('/assets/fonts/libre-baskerville-v7-latin-700.woff2') format('woff2'),
+    url('/assets/fonts/libre-baskerville-v7-latin-700.woff') format('woff');
+}
+/* lato-regular - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lato Regular'), local('Lato-Regular'),
+    url('/assets/fonts/lato-v16-latin-regular.woff2') format('woff2'),
+    url('/assets/fonts/lato-v16-latin-regular.woff') format('woff');
+}
+/* lato-italic - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lato Italic'), local('Lato-Italic'),
+    url('/assets/fonts/lato-v16-latin-italic.woff2') format('woff2'),
+    url('/assets/fonts/lato-v16-latin-italic.woff') format('woff');
+}
+/* lato-700 - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lato Bold'), local('Lato-Bold'),
+    url('/assets/fonts/lato-v16-latin-700.woff2') format('woff2'),
+    url('/assets/fonts/lato-v16-latin-700.woff') format('woff');
+}
+
+body {
+  font-size: 1.25rem;
+  font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  font-family: 'Libre Baskerville', serif;
+}
+
+h1 {
+  @include logic.fluid-size(20rem, 75rem, 2rem, 4rem);
+}
+
+h2 {
+  @include logic.fluid-size(20rem, 75rem, 1.5rem, 2rem);
+}
+
+h3 {
+  font-weight: 400;
+}
+
+code:not([class]) {
+  font-size: 1.1em;
+  font-weight: 700;
+}

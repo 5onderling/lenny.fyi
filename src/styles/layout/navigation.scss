@@ -1,0 +1,124 @@
+@use 'sass:math';
+@use '../abstracts/data';
+
+.skip-navigation {
+  position: fixed;
+  inset-block-start: 0.25em;
+  inset-inline-start: 50%;
+  padding: 0.5em 1em;
+  transform: translate3d(-50%, -150%, 0);
+  background-color: #111;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.1s 0.05s;
+  z-index: 2;
+
+  &:focus {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.spotify {
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #45d75f;
+  font-size: 1rem;
+  color: #000;
+
+  .icon {
+    font-size: 1.25rem;
+    color: #111;
+  }
+}
+
+.nav {
+  min-block-size: data.$navHeight;
+  padding: 0 data.$contentPadding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-inline-size: data.$contentWidth;
+  margin-inline: auto;
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-inline-start: auto;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    max-block-size: 100vh;
+
+    view-transition-name: nav-menu;
+  }
+
+  &__link {
+    position: relative;
+    padding: 0.3em 0.2em;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      inset-block-end: 0;
+      inset-inline: 0;
+      block-size: 0.3em;
+      background-color: currentColor;
+      opacity: 0;
+      transition: opacity 0.25s ease, background-color 0.25s ease;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      opacity: 0.2;
+    }
+
+    &[aria-current]::after {
+      background-color: var(--primary-color);
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    position: relative;
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+  block-size: data.$navHeight;
+  padding-block: 0.5rem;
+
+  &__image {
+    block-size: 100%;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+  }
+}
+
+.logo-image-transition {
+  view-transition-name: logo;
+}
+
+::view-transition-group(logo) {
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.theme-switcher {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  background-image: var(--theme-switch-image);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: background-image 0.25s ease;
+}

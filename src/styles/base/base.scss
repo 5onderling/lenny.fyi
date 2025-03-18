@@ -1,0 +1,52 @@
+@use "../abstracts/data";
+@use "../abstracts/logic";
+
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  --primary-color: hsl(340, 82%, 52%);
+
+  @include data.default-theme;
+  @include data.final-theme-colors;
+
+  @include logic.schemeDark {
+    @include data.dark-theme;
+  }
+}
+
+html {
+  &.other-theme {
+    @include data.dark-theme;
+    @include data.final-theme-colors;
+
+    @include logic.schemeDark {
+      @include data.default-theme;
+    }
+  }
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus {
+  @include data.focus;
+}
+[tabindex='-1'] {
+  outline: none;
+}
+
+hr {
+  border: 0;
+  border-block-start: 1px solid grey;
+  margin-block: 5rem;
+}

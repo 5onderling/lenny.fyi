@@ -1,0 +1,27 @@
+@use '../abstracts/logic';
+
+.hero {
+  min-block-size: 40vh;
+  padding: 2rem 0;
+
+  @include logic.minTablet {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__headline {
+    @include logic.fluid-size(20rem, 75rem, 2.25rem, 5rem);
+  }
+
+  &__image {
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    @include logic.fluid-size(20rem, 75rem, 9rem, 20rem, 'inline-size');
+
+    @include logic.minTablet {
+      margin: 0;
+    }
+  }
+}

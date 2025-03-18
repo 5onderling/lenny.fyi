@@ -1,0 +1,11 @@
+# classic
+node_modules
+.vscode
+.DS_Store
+
+# 11ty output
+dist
+.cache
+
+# zeit.now configuration
+.now
