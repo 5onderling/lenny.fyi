@@ -96,13 +96,73 @@ export const quotes = [
     link: 'https://letterboxd.com/film/oldboy/',
   },
   {
+    quote: `I don't like sand. It's coarse and rough and irritating and it gets everywhere. Not like here. Here everything is soft and smooth.`,
+    author: 'Anakin Skywalker (Star Wars: Episode II – Attack of the Clones)',
+    link: 'https://letterboxd.com/film/star-wars-episode-ii-attack-of-the-clones/',
+  },
+  {
     quote: `Just keep swimming.`,
     author: 'Dory (Finding Nemo)',
     link: 'https://letterboxd.com/film/finding-nemo/',
   },
   {
+    quote: `It was one of those days when it's a minute away from snowing and there's this electricity in the air, you can almost hear it. Right? And this bag was just dancing with me. Like a little kid begging me to play with it. For fifteen minutes. That's the day I realized that there was this entire life behind things, and this incredibly benevolent force that wanted me to know there was no reason to be afraid, ever. Video's a poor excuse, I know. But it helps me remember... I need to remember... Sometimes there's so much beauty in the world, I feel like I can't take it, and my heart is just going to cave in.`,
+    author: 'Ricky Fitts (American Beauty)',
+    link: 'https://letterboxd.com/film/american-beauty/',
+  },
+  {
+    quote: `There are countless ingredients that make up the human body and mind, like all the components that make up me as an individual with my own personality. Sure I have a face and voice to distinguish myself from others, but my thoughts and memories are unique only to me, and I carry a sense of my own destiny. Each of those things are just a small part of it. I collect information to use in my own way. All of that blends to create a mixture that forms me and gives rise to my conscience. I feel confined, only free to expand myself within boundaries.`,
+    author: 'Motoko Kusanagi (Ghost in the Shell)',
+    link: 'https://letterboxd.com/film/ghost-in-the-shell/',
+  },
+  {
+    quote: `That's all it is. Information. Even a simulated experience or a dream is simultaneous reality and fantasy. Any way you look at it, all the information that a person accumulates in a lifetime is just a drop in the bucket.`,
+    author: 'Batou (Ghost in the Shell)',
+    link: 'https://letterboxd.com/film/ghost-in-the-shell/',
+  },
+  {
+    quote: `I'd rather be a pig than a fascist.`,
+    author: 'Porco Rosso (Porco Rosso)',
+    link: 'https://letterboxd.com/film/porco-rosso/',
+  },
+  {
+    quote: `A pig that doesn't fly is just a pig.`,
+    author: 'Porco Rosso (Porco Rosso)',
+    link: 'https://letterboxd.com/film/porco-rosso/',
+  },
+  {
+    quote: `Nazis. I hate these guys.`,
+    author: 'Indiana Jones (Indiana Jones and the Last Crusade)',
+    link: 'https://letterboxd.com/film/indiana-jones-and-the-last-crusade/',
+  },
+  {
+    quote: `I'd buy that for a dollar!`,
+    author: 'Bixby Snyder (RoboCop)',
+    link: 'https://letterboxd.com/film/robocop/',
+  },
+  {
+    quote: `When the child was a child, it was the time of these questions. Why am I me, and why not you? Why am I here, and why not there? When did time begin, and where does space end? Isn't life under the sun just a dream? Isn't what I see, hear, and smell just the mirage of a world before the world? Does evil actually exist, and are there people who are really evil? How can it be that I, who am I, wasn't before I was, and that sometime I, the one I am, no longer will be the one I am?`,
+    author: 'Damiel (Wings of Desire)',
+    link: 'https://letterboxd.com/film/wings-of-desire/',
+  },
+  {
+    quote: `Did IQs just drop sharply while I was away?`,
+    author: 'Ripley (Aliens)',
+    link: 'https://letterboxd.com/film/aliens/',
+  },
+  {
     quote: `I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion. I watched C-beams glitter in the dark near the Tannhauser gate. All those moments will be lost in time... like tears in rain... Time to die.`,
     author: 'Batty (Blade Runner)',
     link: 'https://letterboxd.com/film/blade-runner/',
+  },
+  {
+    quote: `People are frightened by what they don't understand.`,
+    author: 'John Merrick (The Elephant Man)',
+    link: 'https://letterboxd.com/film/the-elephant-man/',
+  },
+  {
+    quote: `Do... or do not. There is no try.`,
+    author: 'Yoda (The Empire Strikes Back)',
+    link: 'https://letterboxd.com/film/the-empire-strikes-back/',
   },
 ];
