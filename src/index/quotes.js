@@ -56,6 +56,51 @@ export const quotes = [
     link: 'https://letterboxd.com/film/swiss-army-man/',
   },
   {
+    quote: `You don't have to be the bad guy. You are the most talented, most interesting, and most extraordinary person in the universe. And you are capable of amazing things. Because you are the Special. And so am I. And so is everyone. The prophecy is made up, but it's also true. It's about all of us. Right now, it's about you. And you... still... can change everything.`,
+    author: 'Emmet (The Lego Movie)',
+    link: 'https://letterboxd.com/film/the-lego-movie/',
+  },
+  {
+    quote: `Spaceship!`,
+    author: 'Benny (The Lego Movie)',
+    link: 'https://letterboxd.com/film/the-lego-movie/',
+  },
+  {
+    quote: `Today will not be known as Taco Tuesday. It will be known as freedom Friday, but still on a Tuesday!`,
+    author: 'Lucy (The Lego Movie)',
+    link: 'https://letterboxd.com/film/the-lego-movie/',
+  },
+  {
+    quote: `I'm twenty-seven, but I don't feel any smarter than I did twelve years ago.`,
+    author: 'Yukari Yukino (The Garden of Words)',
+    link: 'https://letterboxd.com/film/the-garden-of-words/',
+  },
+  {
+    quote: `...the Internet and dreams are similar. They're areas where the repressed conscious mind escapes.`,
+    author: 'Paprika (Paprika)',
+    link: 'https://letterboxd.com/film/paprika-2006/',
+  },
+  {
+    quote: `Seeing is believing, but sometimes the most real things in the world are the things we can't see.`,
+    author: 'The Conductor (The Polar Express)',
+    link: 'https://letterboxd.com/film/the-polar-express/',
+  },
+  {
+    quote: `When dialog fails, it's time for violence.`,
+    author: 'Batou (Ghost in the Shell 2: Innocence)',
+    link: 'https://letterboxd.com/film/ghost-in-the-shell-2-innocence/',
+  },
+  {
+    quote: `Even though I'm no more than a monster - don't I, too, have the right to live?`,
+    author: 'Dae-su Oh (Oldboy)',
+    link: 'https://letterboxd.com/film/oldboy/',
+  },
+  {
+    quote: `Just keep swimming.`,
+    author: 'Dory (Finding Nemo)',
+    link: 'https://letterboxd.com/film/finding-nemo/',
+  },
+  {
     quote: `I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion. I watched C-beams glitter in the dark near the Tannhauser gate. All those moments will be lost in time... like tears in rain... Time to die.`,
     author: 'Batty (Blade Runner)',
     link: 'https://letterboxd.com/film/blade-runner/',
