@@ -16,13 +16,13 @@
     "@11ty/eleventy-fetch": "^5.0.2",
     "@11ty/eleventy-img": "^6.0.0",
     "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
-    "@11ty/eleventy-plugin-vite": "^6.0.0",
+    "@11ty/eleventy-plugin-vite": "^7.0.0",
     "@types/dom-navigation": "^1.0.1",
     "@types/dom-view-transitions": "^1.0.2",
     "cheerio": "^1.0.0-rc.12",
     "html-minifier-terser": "^7.2.0",
     "ico-to-png": "^0.2.1",
-    "marked": "^15.0.6",
+    "marked": "^16.1.1",
     "sass": "^1.68.0"
   },
   "dependencies": {
