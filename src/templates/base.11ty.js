@@ -53,9 +53,12 @@ export const render = async (data) => {
       <body>
         <a class="skip-navigation" href="#content">Skip Navigation</a>
 
-        <a href="https://open.spotify.com/playlist/1VjeXlXUnVetW2tFqn6ttZ" class="spotify">
-          Listen to "Die Beste Spotify Playlist"
-          <div class="icon icon--spotify"></div>
+        <a
+          href="https://music.apple.com/de/playlist/die-beste-musik/pl.u-06oxpz3sYRq9W30"
+          class="playlist"
+        >
+          Listen to "Die Beste Musik"
+          <div class="icon icon--playlist"></div>
         </a>
         <header class="nav">
           ${data.page.url !== '/' &&

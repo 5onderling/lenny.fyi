@@ -19,13 +19,13 @@
   }
 }
 
-.spotify {
+.playlist {
   padding: 0.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
-  background-color: #45d75f;
+  background-color: var(--primary-color);
   font-size: 1rem;
   color: #000;
 
