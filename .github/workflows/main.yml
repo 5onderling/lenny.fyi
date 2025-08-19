@@ -18,8 +18,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install node_modules and run build
-        run: npm i && npm run build
+      - name: Install node_modules
+        run: npm ci
+
+      - name: build
+        run: npm run build
 
       - name: Get server folder
         id: serverDir
