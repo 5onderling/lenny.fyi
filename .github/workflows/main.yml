@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, next]
+    branches: [main]
   schedule:
     - cron: "0 0 * * *"
 
@@ -24,18 +24,6 @@ jobs:
       - name: build
         run: npm run build
 
-      - name: Get server folder
-        id: serverDir
-        run: |
-          if [ $IS_MAIN ]
-          then
-            echo "SERVER_DIR=./public_html/lenny.fyi/" >> $GITHUB_OUTPUT
-          else
-            echo "SERVER_DIR=./public_html/qa.lenny.fyi/" >> $GITHUB_OUTPUT
-          fi
-        env:
-          IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
-
       - name: Deploy build to server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -45,4 +33,4 @@ jobs:
           port: 21
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ steps.serverDir.outputs.SERVER_DIR }}
+          server-dir: ./
